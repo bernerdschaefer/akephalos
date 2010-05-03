@@ -18,10 +18,14 @@ require "xalan-2.7.1.jar"
 require "xercesImpl-2.9.1.jar"
 require "xml-apis-1.3.04.jar"
 
+logger = org.apache.commons.logging.LogFactory.getLog('com.gargoylesoftware.htmlunit') 
+logger.getLogger().setLevel(java.util.logging.Level::SEVERE)
+
 java_import 'java.io.StringWriter'
 java_import 'java.io.PrintWriter'
 java_import "com.gargoylesoftware.htmlunit.WebClient"
 java_import "com.gargoylesoftware.htmlunit.html.HtmlPage"
+java_import "com.gargoylesoftware.htmlunit.html.HtmlSubmitInput"
 
 com.gargoylesoftware.htmlunit.BrowserVersion.setDefault(
     com.gargoylesoftware.htmlunit.BrowserVersion::FIREFOX_3

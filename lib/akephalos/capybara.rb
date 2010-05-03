@@ -18,7 +18,13 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
     def value
       if tag_name == "select" && self[:multiple]
-        node.getSelectedOptions.map { |n| n.asText }
+        values = []
+        results = node.getSelectedOptions
+        while (i ||= 0) < results.size
+          values << results[i].asText
+          i += 1
+        end
+        values
       elsif tag_name == "select"
         node.getSelectedOptions.first.asText
       else
@@ -29,12 +35,12 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     def set(value)
       if tag_name == 'textarea'
         node.setText(value.to_s)
-      elsif tag_name == 'input' and %w(text password hidden file).include?(type)
-        node.setValueAttribute(value.to_s)
       elsif tag_name == 'input' and type == 'radio'
         node.click
       elsif tag_name == 'input' and type == 'checkbox'
         node.click
+      elsif tag_name == 'input'
+        node.setValueAttribute(value.to_s)
       end
     end
 
@@ -42,7 +48,13 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       result = node.select_option(option)
 
       if result == nil
-        options = node.getOptions.map { |opt| opt.asText }.join(", ")
+        options = []
+        results = node.getOptions
+        while (i ||= 0) < results.size
+          options << results[i].asText
+          i += 1
+        end
+        options = options.join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -57,7 +69,13 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       result = node.unselect_option(option)
 
       if result == nil
-        options = node.getOptions.map { |opt| opt.asText }.join(", ")
+        options = []
+        results = node.getOptions
+        while (i ||= 0) < results.size
+          options << results[i].asText
+          i += 1
+        end
+        options = options.join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -89,7 +107,13 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     private
 
     def all_unfiltered(selector)
-      node.getByXPath(selector).map { |n| self.class.new(driver, n) }
+      nodes = []
+      results = node.getByXPath(selector)
+      while (i ||= 0) < results.size
+        nodes << Node.new(driver, results[i])
+        i += 1
+      end
+      nodes
     end
 
     def type
@@ -105,11 +129,21 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       @driver ||= WebClient.new
     else
       @driver ||= begin
-        uri = "drbunix:///tmp/htmlunit.sock"
+        socket_file = "/tmp/akephalos.#{Process.pid}.sock"
+        uri = "drbunix://#{socket_file}"
+
+        server = fork do
+          exec("#{Pathname(__FILE__).dirname.parent.parent + 'bin/akephalos'} #{socket_file}")
+        end
+
         DRb.start_service
+
+        sleep 1 until File.exists?(socket_file)
+
         client_class = DRbObject.new_with_uri(uri)
-        at_exit { client_class.cleanup! }
-        client_class.new
+
+        at_exit { Process.kill(:INT, server); File.unlink(socket_file) }
+        client_class
       end
     end
   end
@@ -127,14 +161,23 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   def source
     page.source
   end
-  alias body source
+
+  def body
+    page.modified_source
+  end
 
   def current_url
     page.current_url
   end
 
   def find(selector)
-    page.find(selector).map { |node| Node.new(self, node) }
+    nodes = []
+    results = page.find(selector)
+    while (i ||= 0) < results.size
+      nodes << Node.new(self, results[i])
+      i += 1
+    end
+    nodes
   end
 
   def evaluate_script(script)

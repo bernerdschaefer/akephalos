@@ -1,12 +1,13 @@
 module Akephalos
   module Htmlunit
     module HtmlPage
+
+      def modified_source
+        asXml
+      end
+
       def source
-        writer = StringWriter.new
-        printer = PrintWriter.new(writer)
-        printXml('', printer)
-        printer.close
-        writer.toString
+        getWebResponse.getContentAsString
       end
 
       def current_url
