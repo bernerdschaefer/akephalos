@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# vim:set filetype=ruby:
+
+require 'pathname'
+
+root = Pathname(__FILE__).expand_path.dirname.parent
+jruby = root + "src/jruby-complete-1.4.0.jar"
+server = root + "lib/akephalos/server"
+
+exec "java -jar #{jruby} -r#{server} -e 'Akephalos::Server.start!'"
