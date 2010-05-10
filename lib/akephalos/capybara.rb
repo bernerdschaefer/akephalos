@@ -6,41 +6,36 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       name = name.to_s
       case name
       when 'checked'
-        node.isChecked
+        node.checked?
       else
         node[name.to_s]
       end
     end
 
     def text
-      node.asText
+      node.text
     end
 
     def value
       if tag_name == "select" && self[:multiple]
-        values = []
-        results = node.getSelectedOptions
-        while (i ||= 0) < results.size
-          values << results[i].asText
-          i += 1
-        end
-        values
+        node.selected_options.map { |option| option.text }
       elsif tag_name == "select"
-        node.getSelectedOptions.first.asText
+        selected_option = node.selected_options.first
+        selected_option ? selected_option.text : nil
       else
-        super
+        self[:value]
       end
     end
 
     def set(value)
       if tag_name == 'textarea'
-        node.setText(value.to_s)
+        node.value = value.to_s
       elsif tag_name == 'input' and type == 'radio'
-        node.click
+        click
       elsif tag_name == 'input' and type == 'checkbox'
-        node.click
+        click
       elsif tag_name == 'input'
-        node.setValueAttribute(value.to_s)
+        node.value = value.to_s
       end
     end
 
@@ -48,13 +43,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       result = node.select_option(option)
 
       if result == nil
-        options = []
-        results = node.getOptions
-        while (i ||= 0) < results.size
-          options << results[i].asText
-          i += 1
-        end
-        options = options.join(", ")
+        options = node.options.map(&:text).join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -69,13 +58,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       result = node.unselect_option(option)
 
       if result == nil
-        options = []
-        results = node.getOptions
-        while (i ||= 0) < results.size
-          options << results[i].asText
-          i += 1
-        end
-        options = options.join(", ")
+        options = node.options.map(&:text).join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -87,17 +70,17 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     end
 
     def tag_name
-      node.getNodeName
+      node.tag_name
     end
 
     def visible?
-      node.isDisplayed
+      node.visible?
     end
 
     def drag_to(element)
-      node.fire_event('mousedown')
-      element.node.fire_event('mousemove')
-      element.node.fire_event('mouseup')
+      trigger('mousedown')
+      element.trigger('mousemove')
+      element.trigger('mouseup')
     end
 
     def click
@@ -107,13 +90,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     private
 
     def all_unfiltered(selector)
-      nodes = []
-      results = node.getByXPath(selector)
-      while (i ||= 0) < results.size
-        nodes << Node.new(driver, results[i])
-        i += 1
-      end
-      nodes
+      node.find(selector).map { |node| Node.new(driver, node) }
     end
 
     def type
@@ -124,28 +101,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   attr_reader :app, :rack_server
 
   def self.driver
-    if RUBY_PLATFORM == "java"
-      require '/usr/local/projects/personal/htmlunit-ruby/jruby'
-      @driver ||= WebClient.new
-    else
-      @driver ||= begin
-        socket_file = "/tmp/akephalos.#{Process.pid}.sock"
-        uri = "drbunix://#{socket_file}"
-
-        server = fork do
-          exec("#{Pathname(__FILE__).dirname.parent.parent + 'bin/akephalos'} #{socket_file}")
-        end
-
-        DRb.start_service
-
-        sleep 1 until File.exists?(socket_file)
-
-        client_class = DRbObject.new_with_uri(uri)
-
-        at_exit { Process.kill(:INT, server); File.unlink(socket_file) }
-        client_class
-      end
-    end
+    @driver ||= Akephalos::Client.new
   end
 
   def initialize(app)
@@ -171,13 +127,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   end
 
   def find(selector)
-    nodes = []
-    results = page.find(selector)
-    while (i ||= 0) < results.size
-      nodes << Node.new(self, results[i])
-      i += 1
-    end
-    nodes
+    page.find(selector).map { |node| Node.new(self, node) }
   end
 
   def evaluate_script(script)

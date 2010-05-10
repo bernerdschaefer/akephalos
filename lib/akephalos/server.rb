@@ -1,6 +1,12 @@
 require "pathname"
 require "drb/drb"
-require Pathname(__FILE__).expand_path.dirname + "htmlunit"
+require "akephalos/client"
+
+class NameError::Message
+  def _dump
+    to_s
+  end
+end
 
 [
   java.net.URL,
@@ -17,34 +23,10 @@ require Pathname(__FILE__).expand_path.dirname + "htmlunit"
   com.gargoylesoftware.htmlunit.WebRequestSettings
 ].each { |klass| klass.send(:include, DRbUndumped) }
 
-class WebClient
-  def page
-    @page = getCurrentWindow.getEnclosedPage
-  end
-end
-
-class HtmlPage
-  def find(selector)
-    @present_nodes = getByXPath(selector).to_a
-    (@nodes ||= []).push(*@present_nodes)
-    @present_nodes
-  end
-end
-
-class HtmlSubmitInput
-  def click
-    super
-  rescue => e
-    puts e
-    puts e.backtrace.join("\n")
-  end
-end
-
 module Akephalos
   class Server
     def self.start!(socket_file)
-      client = WebClient.new
-      client.setCssErrorHandler(com.gargoylesoftware.htmlunit.SilentCssErrorHandler.new)
+      client = Client.new
       DRb.start_service("drbunix://#{socket_file}", client)
       DRb.thread.join
     end

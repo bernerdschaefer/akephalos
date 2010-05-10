@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{akephalos}
-  s.version = "0.0.0"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bernerd Schaefer"]
-  s.date = %q{2010-05-04}
+  s.date = %q{2010-05-10}
   s.default_executable = %q{akephalos}
   s.description = %q{}
   s.email = %q{bj.schaefer@gmail.com}
@@ -22,12 +22,12 @@ Gem::Specification.new do |s|
      "bin/akephalos",
      "lib/akephalos.rb",
      "lib/akephalos/capybara.rb",
+     "lib/akephalos/client.rb",
      "lib/akephalos/cucumber.rb",
      "lib/akephalos/htmlunit.rb",
-     "lib/akephalos/htmlunit/html_element.rb",
-     "lib/akephalos/htmlunit/html_page.rb",
-     "lib/akephalos/htmlunit/html_select.rb",
-     "lib/akephalos/htmlunit/web_client.rb",
+     "lib/akephalos/node.rb",
+     "lib/akephalos/page.rb",
+     "lib/akephalos/remote_client.rb",
      "lib/akephalos/server.rb",
      "spec/driver/akephalos_driver_spec.rb",
      "spec/session/akephalos_session_spec.rb",

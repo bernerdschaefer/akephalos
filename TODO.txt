@@ -1,0 +1,18 @@
+0.0.3
+=======================================================================================
+  * DRb server should never shut down prematurely -- missing methods, 500 errors,
+    even java errors (NPE error from bad javascript).
+
+0.0.2  -  10 May 2010
+=======================================================================================
+
+  - Ensure users cannot accidently call non-existant methods on DRb objects
+  - Refactor akephalos classes to expose HTMLUnit behavior, instead of shipping
+    objects directly to remote process.
+
+
+0.0.1  -  03 May 2010
+=======================================================================================
+  - DRb server starts automatically when needed
+  - DRb objects are undumped, and references are kept on the server
+  - All capybara provided specs pass.

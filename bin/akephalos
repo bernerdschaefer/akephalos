@@ -5,7 +5,9 @@ raise "Usage: akephalos socket_file" unless ARGV[0]
 require 'pathname'
 
 root = Pathname(__FILE__).expand_path.dirname.parent
+lib = root + 'lib'
 jruby = root + "src/jruby-complete-1.4.0.jar"
-server = root + "lib/akephalos/server"
+server = 'akephalos/server'
 
-exec "java -Xmx2048M -jar #{jruby} -r#{server} -e 'Akephalos::Server.start!(#{ARGV[0].inspect})'"
+command = %Q(java -Xmx2048M -jar #{jruby} -I#{lib} -r #{server} -e 'Akephalos::Server.start!(%s)')
+exec command % ARGV[0].inspect
