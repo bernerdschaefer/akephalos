@@ -14,9 +14,14 @@ Gem::Specification.new do |s|
   s.description = %q{}
   s.email = %q{bj.schaefer@gmail.com}
   s.executables = ["akephalos"]
+  s.extra_rdoc_files = [
+    "README"
+  ]
   s.files = [
     ".gitignore",
+     "README",
      "Rakefile",
+     "TODO.txt",
      "VERSION",
      "akephalos.gemspec",
      "bin/akephalos",
