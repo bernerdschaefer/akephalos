@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/bernerdschaefer/akephalos"
     gem.authors = ["Bernerd Schaefer"]
 
-    gem.add_dependency "capybara", '0.3.7'
+    gem.add_dependency "capybara", '0.3.8'
 
     gem.add_development_dependency "sinatra"
     gem.add_development_dependency "rspec", '1.3.0'

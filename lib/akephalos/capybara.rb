@@ -33,7 +33,9 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       elsif tag_name == 'input' and type == 'radio'
         click
       elsif tag_name == 'input' and type == 'checkbox'
-        click
+        if value != self['checked']
+          click
+        end
       elsif tag_name == 'input'
         node.value = value.to_s
       end
