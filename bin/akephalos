@@ -17,7 +17,7 @@ parser.parse!
 
 root = Pathname(__FILE__).expand_path.dirname.parent
 lib = root + 'lib'
-jruby = root + "src/jruby-complete-1.4.0.jar"
+jruby = root + "src/jruby-complete-1.5.0.jar"
 jruby_cmd = %Q(java -Xmx2048M -jar #{jruby} -I#{lib})
 
 if options[:interactive]
@@ -37,4 +37,3 @@ else
   command = %Q(#{jruby_cmd} -r#{server} -e 'Akephalos::Server.start!(%s)')
   exec command % socket_file.inspect
 end
-
