@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{akephalos}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bernerd Schaefer"]
-  s.date = %q{2010-06-03}
+  s.date = %q{2010-06-15}
   s.default_executable = %q{akephalos}
   s.description = %q{}
   s.email = %q{bj.schaefer@gmail.com}
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "lib/akephalos.rb",
      "lib/akephalos/capybara.rb",
      "lib/akephalos/client.rb",
+     "lib/akephalos/console.rb",
      "lib/akephalos/cucumber.rb",
      "lib/akephalos/htmlunit.rb",
      "lib/akephalos/node.rb",
@@ -36,6 +37,7 @@ Gem::Specification.new do |s|
      "lib/akephalos/server.rb",
      "spec/driver/akephalos_driver_spec.rb",
      "spec/session/akephalos_session_spec.rb",
+     "spec/slow_page_loads_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "src/commons-codec-1.4.jar",
@@ -47,7 +49,7 @@ Gem::Specification.new do |s|
      "src/cssparser-0.9.5.jar",
      "src/htmlunit-2.6.jar",
      "src/htmlunit-core-js-2.6.jar",
-     "src/jruby-complete-1.4.0.jar",
+     "src/jruby-complete-1.5.0.jar",
      "src/nekohtml-1.9.13.jar",
      "src/sac-1.3.jar",
      "src/serializer-2.7.1.jar",
@@ -63,6 +65,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "spec/driver/akephalos_driver_spec.rb",
      "spec/session/akephalos_session_spec.rb",
+     "spec/slow_page_loads_spec.rb",
      "spec/spec_helper.rb"
   ]
 

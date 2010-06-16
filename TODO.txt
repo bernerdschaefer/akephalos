@@ -1,7 +1,13 @@
-0.0.4
+0.0.5
 =======================================================================================
   * DRb server should never shut down prematurely -- missing methods, 500 errors,
     even java errors (NPE error from bad javascript).
+
+0.0.4
+=======================================================================================
+  - Update to jruby 1.5
+  - bin/akephalos for interactive mode
+  - use internally managed java threading instead of capybara's own wait methods
 
 0.0.3
 =======================================================================================
