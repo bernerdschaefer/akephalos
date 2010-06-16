@@ -59,6 +59,8 @@ module Akephalos
 
     def click
       @_node.click
+      @_node.getPage.getEnclosingWindow.getJobManager.waitForJobs(1000)
+      @_node.getPage.getEnclosingWindow.getJobManager.waitForJobsStartingBefore(1000)
     end
 
     def find(selector)

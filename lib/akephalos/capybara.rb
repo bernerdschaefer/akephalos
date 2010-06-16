@@ -144,7 +144,9 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     self.class.driver
   end
 
-  def wait?; true end
+  def wait
+    false
+  end
 
 private
 
