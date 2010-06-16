@@ -1,13 +1,40 @@
 #!/usr/bin/env ruby
 # vim:set filetype=ruby:
 
-raise "Usage: akephalos socket_file" unless ARGV[0]
-require 'pathname'
+require "pathname"
+require "optparse"
+
+options = { :interactive => false }
+
+parser = OptionParser.new do |opts|
+  opts.banner = "Usage: akephalos [--interactive] | [--server] <socket_file>"
+  opts.on("-s", "--server", "Run in server mode (default)")
+  opts.on("-i", "--interactive", "Run in interactive mode") { options[:interactive] = true }
+
+  opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
+end
+parser.parse!
 
 root = Pathname(__FILE__).expand_path.dirname.parent
 lib = root + 'lib'
 jruby = root + "src/jruby-complete-1.4.0.jar"
-server = 'akephalos/server'
+jruby_cmd = %Q(java -Xmx2048M -jar #{jruby} -I#{lib})
 
-command = %Q(java -Xmx2048M -jar #{jruby} -I#{lib} -r #{server} -e 'Akephalos::Server.start!(%s)')
-exec command % ARGV[0].inspect
+if options[:interactive]
+  $:.unshift(lib)
+  require 'rubygems'
+  require 'akephalos'
+  require 'akephalos/console'
+  Akephalos::Console.start
+else
+  unless socket_file = ARGV[0]
+    puts parser.help
+    exit
+  end
+
+  server = 'akephalos/server'
+
+  command = %Q(#{jruby_cmd} -r#{server} -e 'Akephalos::Server.start!(%s)')
+  exec command % socket_file.inspect
+end
+

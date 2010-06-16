@@ -1,3 +1,5 @@
+require 'drb/drb'
+
 module Akephalos
   class RemoteClient
     @socket_file = "/tmp/akephalos.#{Process.pid}.sock"
