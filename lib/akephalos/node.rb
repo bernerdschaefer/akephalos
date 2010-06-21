@@ -1,6 +1,7 @@
 module Akephalos
   class Node
     def initialize(node)
+      @nodes = []
       @_node = node
     end
 
@@ -64,7 +65,9 @@ module Akephalos
     end
 
     def find(selector)
-      @_node.getByXPath(selector).map { |node| Node.new(node) }
+      nodes = @_node.getByXPath(selector).map { |node| Node.new(node) }
+      @nodes << nodes
+      nodes
     end
   end
 end

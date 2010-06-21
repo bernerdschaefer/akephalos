@@ -92,7 +92,9 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     private
 
     def all_unfiltered(selector)
-      node.find(selector).map { |node| Node.new(driver, node) }
+      nodes = []
+      node.find(selector).each { |node| nodes << Node.new(driver, node) }
+      nodes
     end
 
     def type
@@ -129,7 +131,9 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   end
 
   def find(selector)
-    page.find(selector).map { |node| Node.new(self, node) }
+    nodes = []
+    page.find(selector).each { |node| nodes << Node.new(self, node) }
+    nodes
   end
 
   def evaluate_script(script)
