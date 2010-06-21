@@ -22,6 +22,9 @@ else
             @client = client
           end
 
+          def webWindowClosed(event)
+          end
+
           def webWindowContentChanged(event)
             @client.page = event.getNewPage
             if latch = Thread.current[:latch]
