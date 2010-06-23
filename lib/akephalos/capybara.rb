@@ -1,3 +1,4 @@
+class NativeException < StandardError; end
 class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   class Node < Capybara::Node
