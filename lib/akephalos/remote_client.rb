@@ -1,5 +1,7 @@
 require 'drb/drb'
 
+class NativeException < StandardError; end
+
 module Akephalos
   class RemoteClient
     @socket_file = "/tmp/akephalos.#{Process.pid}.sock"
@@ -17,7 +19,9 @@ module Akephalos
     def self.new
       start!
       DRb.start_service
-      DRbObject.new_with_uri("drbunix://#{@socket_file}")
+      client = DRbObject.new_with_uri("drbunix://#{@socket_file}")
+      client.configuration = Akephalos.configuration.extend(DRbUndumped)
+      client
     end
   end
 end

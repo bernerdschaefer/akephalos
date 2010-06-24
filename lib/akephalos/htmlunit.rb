@@ -18,11 +18,14 @@ require "xalan-2.7.1.jar"
 require "xercesImpl-2.9.1.jar"
 require "xml-apis-1.3.04.jar"
 
-logger = org.apache.commons.logging.LogFactory.getLog('com.gargoylesoftware.htmlunit') 
-logger.getLogger().setLevel(java.util.logging.Level::SEVERE)
+java.lang.System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog")
+java.lang.System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "fatal")
+java.lang.System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true")
 
 java_import "com.gargoylesoftware.htmlunit.WebClient"
+java_import "com.gargoylesoftware.htmlunit.util.WebConnectionWrapper"
+java_import 'com.gargoylesoftware.htmlunit.HttpMethod'
 
 com.gargoylesoftware.htmlunit.BrowserVersion.setDefault(
-    com.gargoylesoftware.htmlunit.BrowserVersion::FIREFOX_3
+  com.gargoylesoftware.htmlunit.BrowserVersion::FIREFOX_3
 )

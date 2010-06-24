@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bernerd Schaefer"]
-  s.date = %q{2010-06-22}
+  s.date = %q{2010-06-24}
   s.default_executable = %q{akephalos}
   s.description = %q{}
   s.email = %q{bj.schaefer@gmail.com}
@@ -28,9 +28,13 @@ Gem::Specification.new do |s|
      "lib/akephalos.rb",
      "lib/akephalos/capybara.rb",
      "lib/akephalos/client.rb",
+     "lib/akephalos/client/filter.rb",
+     "lib/akephalos/client/listener.rb",
+     "lib/akephalos/configuration.rb",
      "lib/akephalos/console.rb",
      "lib/akephalos/cucumber.rb",
      "lib/akephalos/htmlunit.rb",
+     "lib/akephalos/htmlunit/ext/http_method.rb",
      "lib/akephalos/node.rb",
      "lib/akephalos/page.rb",
      "lib/akephalos/remote_client.rb",
@@ -60,10 +64,11 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/bernerdschaefer/akephalos}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.7}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{}
   s.test_files = [
     "spec/driver/akephalos_driver_spec.rb",
+     "spec/filter_spec.rb",
      "spec/session/akephalos_session_spec.rb",
      "spec/slow_page_loads_spec.rb",
      "spec/spec_helper.rb"
@@ -73,7 +78,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<capybara>, ["= 0.3.8"])
       s.add_development_dependency(%q<sinatra>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["= 1.3.0"])

@@ -1,46 +1,46 @@
+require 'akephalos/configuration'
+
 if RUBY_PLATFORM != "java"
   require 'akephalos/remote_client'
   Akephalos::Client = Akephalos::RemoteClient
 else
   require 'akephalos/htmlunit'
+  require 'akephalos/htmlunit/ext/http_method'
+
   require 'akephalos/page'
   require 'akephalos/node'
 
+  require 'akephalos/client/filter'
+  require 'akephalos/client/listener'
+
   module Akephalos
     class Client
+      java_import 'com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController'
+      java_import 'com.gargoylesoftware.htmlunit.SilentCssErrorHandler'
+
       attr_reader :page
 
       def initialize
-        @_client = WebClient.new
+        @_client = java.util.concurrent.FutureTask.new do
+          client = WebClient.new
 
-        @_client.setAjaxController(com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController.new)
+          Filter.new(client)
+          client.addWebWindowListener(Listener.new(self))
+          client.setAjaxController(NicelyResynchronizingAjaxController.new)
+          client.setCssErrorHandler(SilentCssErrorHandler.new)
 
-        listener = Class.new do
-          include com.gargoylesoftware.htmlunit.WebWindowListener
-
-          def initialize(client)
-            @client = client
-          end
-
-          def webWindowClosed(event)
-          end
-
-          def webWindowContentChanged(event)
-            @client.page = event.getNewPage
-            if latch = Thread.current[:latch]
-              latch.countDown
-              Thread.current[:latch] = nil
-            end
-          end
+          client
         end
+        Thread.new { @_client.run }
+      end
 
-        @_client.addWebWindowListener(listener.new(self))
-        @_client.setCssErrorHandler(com.gargoylesoftware.htmlunit.SilentCssErrorHandler.new)
+      def configuration=(config)
+        Akephalos.configuration = config
       end
 
       def visit(url)
         self.class.wait_for_result do
-          @_client.getPage(url)
+          client.getPage(url)
         end
       end
 
@@ -49,6 +49,11 @@ else
           @page = Page.new(_page)
         end
         @page
+      end
+
+      private
+      def client
+        @client ||= @_client.get
       end
 
       def self.wait_for_result(timeout = 3)
