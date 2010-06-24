@@ -12,10 +12,6 @@ module Akephalos
 
       def webWindowContentChanged(event)
         @client.page = event.getNewPage
-        if latch = Thread.current[:latch]
-          latch.countDown
-          Thread.current[:latch] = nil
-        end
       end
     end
   end

@@ -39,9 +39,7 @@ else
       end
 
       def visit(url)
-        self.class.wait_for_result do
-          client.getPage(url)
-        end
+        client.getPage(url)
       end
 
       def page=(_page)
@@ -55,17 +53,6 @@ else
       def client
         @client ||= @_client.get
       end
-
-      def self.wait_for_result(timeout = 3)
-        latch = java.util.concurrent.CountDownLatch.new(1)
-        Thread.new do
-          Thread.current[:latch] = latch
-          yield
-        end.join
-        start = Time.now
-        latch.await(timeout, java.util.concurrent.TimeUnit::SECONDS)
-      end
-
     end
   end
 end
