@@ -1,7 +1,11 @@
 0.0.5
 =======================================================================================
-  * DRb server should never shut down prematurely -- missing methods, 500 errors,
-    even java errors (NPE error from bad javascript).
+  * Upgrade to htmlunit-2.7
+  * Fix DRb recycled object errors
+  * Define NativeException on ruby side so that uncaught exceptions are displayed with
+    a proper backtrace.
+  * Add Akephalos.filter() for enabling FakeWeb style request/response mocking in the
+    HtmlUnit browser.
 
 0.0.4
 =======================================================================================

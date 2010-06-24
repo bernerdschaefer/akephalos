@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{akephalos}
-  s.version = "0.0.4"
+  s.version = "0.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bernerd Schaefer"]
@@ -40,6 +40,7 @@ Gem::Specification.new do |s|
      "lib/akephalos/remote_client.rb",
      "lib/akephalos/server.rb",
      "spec/driver/akephalos_driver_spec.rb",
+     "spec/filter_spec.rb",
      "spec/session/akephalos_session_spec.rb",
      "spec/slow_page_loads_spec.rb",
      "spec/spec.opts",
