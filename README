@@ -13,11 +13,11 @@ Using akephalos is as simple as requiring it and setting Capybara's javascript
 driver:
 
   require 'akephalos'
-  Capybara.default_javascript_driver = :akephalos
+  Capybara.javascript_driver = :akephalos
 
 Running for Cucumber
 ====================
 
 When akephalos is required from a cucumber environment, it will only run for
-features tagged with @akephalos. Set Capybara's default_javascript_driver to
+features tagged with @akephalos. Set Capybara's javascript_driver to
 also use akephalos for features tagged as @javascript.
