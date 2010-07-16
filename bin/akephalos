@@ -10,6 +10,7 @@ parser = OptionParser.new do |opts|
   opts.banner = "Usage: akephalos [--interactive] | [--server] <socket_file>"
   opts.on("-s", "--server", "Run in server mode (default)")
   opts.on("-i", "--interactive", "Run in interactive mode") { options[:interactive] = true }
+  opts.on("--use-htmlunit-snapshot", "Use the snapshot of htmlunit") { options[:use_htmlunit_snapshot] = true }
 
   opts.on_tail("-h", "--help", "Show this message") { puts opts; exit }
 end
@@ -17,11 +18,35 @@ parser.parse!
 
 root = Pathname(__FILE__).expand_path.dirname.parent
 lib = root + 'lib'
+src = root + 'src'
 jruby = root + "src/jruby-complete-1.5.0.jar"
-jruby_cmd = %Q(java -Xmx2048M -jar #{jruby} -I#{lib})
+jruby_cmd = %Q(java -Xmx2048M -jar #{jruby} -I"vendor:#{lib}:#{src}")
 
-if options[:interactive]
-  $:.unshift(lib)
+case
+when options[:use_htmlunit_snapshot]
+  require "fileutils"
+
+  FileUtils.mkdir_p("vendor/htmlunit")
+  Dir["vendor/htmlunit/*.jar"].each { |jar| File.unlink(jar) }
+
+  Dir.chdir("vendor") do
+    $stdout.print "Downloading latest snapshot... "
+    $stdout.flush
+    %x[curl -O http://build.canoo.com/htmlunit/artifacts/htmlunit-2.8-SNAPSHOT-with-dependencies.zip &> /dev/null]
+    puts "done"
+
+    $stdout.print "Extracting dependencies... "
+    $stdout.flush
+    %x[unzip -j -d htmlunit htmlunit-2.8-SNAPSHOT-with-dependencies.zip htmlunit-2.8-SNAPSHOT/lib htmlunit-2.8-SNAPSHOT/lib/* &> /dev/null]
+    puts "done"
+
+    File.unlink "htmlunit-2.8-SNAPSHOT-with-dependencies.zip"
+  end
+
+  $stdout.puts "="*40
+  $stdout.puts "The latest HtmlUnit snapshot has been extracted to vendor/htmlunit!"
+when options[:interactive]
+  $:.unshift('vendor', lib, src)
   require 'rubygems'
   require 'akephalos'
   require 'akephalos/console'

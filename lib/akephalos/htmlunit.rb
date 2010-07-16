@@ -1,22 +1,13 @@
 require "pathname"
 require "java"
 
-$:.unshift((Pathname(__FILE__).dirname + "../../src").expand_path)
-require "commons-codec-1.4.jar"
-require "commons-collections-3.2.1.jar"
-require "commons-httpclient-3.1.jar"
-require "commons-io-1.4.jar"
-require "commons-lang-2.4.jar"
-require "commons-logging-1.1.1.jar"
-require "cssparser-0.9.5.jar"
-require "htmlunit-2.7.jar"
-require "htmlunit-core-js-2.7.jar"
-require "nekohtml-1.9.14.jar"
-require "sac-1.3.jar"
-require "serializer-2.7.1.jar"
-require "xalan-2.7.1.jar"
-require "xercesImpl-2.9.1.jar"
-require "xml-apis-1.3.04.jar"
+dependency_directory = $:.detect { |path| Dir[File.join(path, 'htmlunit/htmlunit-*.jar')].any? }
+
+raise "Could not find htmlunit/htmlunit-VERSION.jar in load path:\n  [ #{$:.join(",\n    ")}\n  ]" unless dependency_directory
+
+Dir[File.join(dependency_directory, "htmlunit/*.jar")].each do |jar|
+  require jar
+end
 
 java.lang.System.setProperty("org.apache.commons.logging.Log", "org.apache.commons.logging.impl.SimpleLog")
 java.lang.System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "fatal")

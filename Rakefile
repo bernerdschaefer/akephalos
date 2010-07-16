@@ -11,6 +11,7 @@ begin
     gem.homepage = "http://github.com/bernerdschaefer/akephalos"
     gem.authors = ["Bernerd Schaefer"]
 
+    gem.require_paths = ['lib', 'src']
     gem.add_dependency "capybara", '0.3.8'
 
     gem.add_development_dependency "sinatra"

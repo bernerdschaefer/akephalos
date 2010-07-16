@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bernerd Schaefer"]
-  s.date = %q{2010-06-24}
+  s.date = %q{2010-07-16}
   s.default_executable = %q{akephalos}
   s.description = %q{}
   s.email = %q{bj.schaefer@gmail.com}
@@ -45,26 +45,26 @@ Gem::Specification.new do |s|
      "spec/slow_page_loads_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
-     "src/commons-codec-1.4.jar",
-     "src/commons-collections-3.2.1.jar",
-     "src/commons-httpclient-3.1.jar",
-     "src/commons-io-1.4.jar",
-     "src/commons-lang-2.4.jar",
-     "src/commons-logging-1.1.1.jar",
-     "src/cssparser-0.9.5.jar",
-     "src/htmlunit-2.7.jar",
-     "src/htmlunit-core-js-2.7.jar",
-     "src/jruby-complete-1.5.0.jar",
-     "src/nekohtml-1.9.14.jar",
-     "src/sac-1.3.jar",
-     "src/serializer-2.7.1.jar",
-     "src/xalan-2.7.1.jar",
-     "src/xercesImpl-2.9.1.jar",
-     "src/xml-apis-1.3.04.jar"
+     "src/htmlunit/commons-codec-1.4.jar",
+     "src/htmlunit/commons-collections-3.2.1.jar",
+     "src/htmlunit/commons-httpclient-3.1.jar",
+     "src/htmlunit/commons-io-1.4.jar",
+     "src/htmlunit/commons-lang-2.4.jar",
+     "src/htmlunit/commons-logging-1.1.1.jar",
+     "src/htmlunit/cssparser-0.9.5.jar",
+     "src/htmlunit/htmlunit-2.7.jar",
+     "src/htmlunit/htmlunit-core-js-2.7.jar",
+     "src/htmlunit/jruby-complete-1.5.0.jar",
+     "src/htmlunit/nekohtml-1.9.14.jar",
+     "src/htmlunit/sac-1.3.jar",
+     "src/htmlunit/serializer-2.7.1.jar",
+     "src/htmlunit/xalan-2.7.1.jar",
+     "src/htmlunit/xercesImpl-2.9.1.jar",
+     "src/htmlunit/xml-apis-1.3.04.jar"
   ]
   s.homepage = %q{http://github.com/bernerdschaefer/akephalos}
   s.rdoc_options = ["--charset=UTF-8"]
-  s.require_paths = ["lib"]
+  s.require_paths = ["lib", "src"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{}
   s.test_files = [
