@@ -11,7 +11,12 @@ module Akephalos
         exec("#{Akephalos::BIN_DIR + 'akephalos'} #{@socket_file}")
       end
 
-      sleep 1 until File.exists?(@socket_file)
+      server_monitor = Thread.new { Thread.current[:exited] = Process.wait }
+      until File.exists?(@socket_file)
+        exit!(1) if server_monitor[:exited]
+        sleep 1
+      end
+      server_monitor.kill
 
       at_exit { Process.kill(:INT, remote_client); File.unlink(@socket_file) }
     end
