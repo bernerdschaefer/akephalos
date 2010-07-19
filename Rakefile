@@ -1,24 +1,35 @@
 require 'rubygems'
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "akephalos"
-    gem.summary = ""
-    gem.description = ""
-    gem.email = "bj.schaefer@gmail.com"
-    gem.homepage = "http://github.com/bernerdschaefer/akephalos"
-    gem.authors = ["Bernerd Schaefer"]
+JAVA = RUBY_PLATFORM == "java"
 
-    gem.require_paths = ['lib', 'src']
-    gem.add_dependency "capybara", '0.3.8'
+$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require "akephalos/version"
 
-    gem.add_development_dependency "sinatra"
-    gem.add_development_dependency "rspec", '1.3.0'
+task :build do
+  system "gem build akephalos.gemspec"
+end
+
+task "build:java" do
+  system "export PLATFORM=java && gem build akephalos.gemspec"
+end
+
+task :build_all => ['build', 'build:java']
+
+task :install => (JAVA ? 'build:java' : 'build') do
+  gemfile = "akephalos-#{Akephalos::VERSION}#{"-java" if JAVA}.gem"
+  system "gem install #{gemfile}"
+end
+
+task :release => :build_all do
+  puts "Tagging #{Akephalos::VERSION}..."
+  system "git tag -a #{Akephalos::VERSION} -m 'Tagging #{Akephalos::VERSION}'"
+  puts "Pushing to Github..."
+  system "git push --tags"
+  puts "Pushing to Gemcutter..."
+  ["", "-java"].each do |platform|
+    system "gem push akephalos-#{Akephalos::VERSION}#{platform}.gem"
   end
-rescue LoadError
-  puts "Jeweler not available. Install it with: gem install jeweler"
 end
 
 require 'spec/rake/spectask'
@@ -33,6 +44,5 @@ Spec::Rake::SpecTask.new(:rcov) do |spec|
   spec.rcov = true
 end
 
-task :spec => :check_dependencies
-
+task :spec
 task :default => :spec

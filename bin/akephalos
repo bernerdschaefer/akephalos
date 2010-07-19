@@ -7,7 +7,7 @@ require "optparse"
 options = { :interactive => false }
 
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: akephalos [--interactive] | [--server] <socket_file>"
+  opts.banner = "Usage: akephalos [--interactive, --use-htmlunit-snapshot] | [--server] <socket_file>"
   opts.on("-s", "--server", "Run in server mode (default)")
   opts.on("-i", "--interactive", "Run in interactive mode") { options[:interactive] = true }
   opts.on("--use-htmlunit-snapshot", "Use the snapshot of htmlunit") { options[:use_htmlunit_snapshot] = true }
@@ -19,8 +19,6 @@ parser.parse!
 root = Pathname(__FILE__).expand_path.dirname.parent
 lib = root + 'lib'
 src = root + 'src'
-jruby = root + "src/jruby-complete-1.5.0.jar"
-jruby_cmd = %Q(java -Xmx2048M -jar #{jruby} -I"vendor:#{lib}:#{src}")
 
 case
 when options[:use_htmlunit_snapshot]
@@ -57,8 +55,28 @@ else
     exit
   end
 
-  server = 'akephalos/server'
+  if RUBY_PLATFORM == "java"
+    $:.unshift("vendor", lib, src)
+    require 'akephalos/server'
+    Akephalos::Server.start!(socket_file)
+  else
+    require 'rubygems'
+    require 'jruby-jars'
 
-  command = %Q(#{jruby_cmd} -r#{server} -e 'Akephalos::Server.start!(%s)')
-  exec command % socket_file.inspect
+    jruby = JRubyJars.core_jar_path
+    jruby_stdlib = JRubyJars.stdlib_jar_path
+
+    java_args = [
+      "-Xmx128M",
+      "-cp", [JRubyJars.core_jar_path, JRubyJars.stdlib_jar_path].join(":"),
+      "org.jruby.Main"
+    ]
+    ruby_args = [
+      "-I", "vendor:#{lib}:#{src}",
+      "-r", "akephalos/server",
+      "-e", "Akephalos::Server.start!(#{socket_file.inspect})"
+    ]
+
+    exec("java", *(java_args + ruby_args))
+  end
 end

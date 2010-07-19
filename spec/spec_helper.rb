@@ -1,4 +1,11 @@
 require 'rubygems'
+
+root = File.expand_path('../../', __FILE__)
+%w(vendor lib src).each do |dir|
+  dir = File.join(root, dir)
+  $:.unshift dir unless $:.include?(dir)
+end
+
 require 'akephalos'
 
 spec_dir = nil
