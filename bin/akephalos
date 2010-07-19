@@ -77,6 +77,11 @@ else
       "-e", "Akephalos::Server.start!(#{socket_file.inspect})"
     ]
 
+    # Bundler sets ENV["RUBYOPT"] to automatically load bundler/setup.rb, but
+    # since the akephalos server doesn't have any gem dependencies and is
+    # always executed with the same context, we clear RUBYOPT before running
+    # exec.
+    ENV["RUBYOPT"] = ""
     exec("java", *(java_args + ruby_args))
   end
 end
