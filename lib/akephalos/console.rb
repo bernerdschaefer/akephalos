@@ -1,5 +1,5 @@
 def session
-  Capybara.app_host = "http://localhost:8070"
+  Capybara.app_host = "http://localhost:3000"
   @session ||= Capybara::Session.new(:Akephalos)
 end
 alias page session
