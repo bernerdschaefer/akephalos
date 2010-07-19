@@ -1,4 +1,6 @@
 .rvmrc
+.yardoc
 burn
 pkg
 tags
+docs/build

@@ -1,0 +1,9 @@
+body { padding: 0; }
+header { width: 100%; }
+header p { margin: 1em 1em; color: #777; font-style: italic; }
+article#blog section { width: auto; padding: 0 1em; }
+time { position: relative; left: 0; float: left; margin-right: 1em; }
+aside { width: 100%; min-width: 0; margin: 0; padding: 1em 0; left: 0 }
+aside pre { margin: 0 1.5em; }
+footer { padding: 0; left: 0; text-indent: 0; text-align: center }
+pre { white-space: pre-wrap; word-break: break-all; text-wrap: unrestricted }

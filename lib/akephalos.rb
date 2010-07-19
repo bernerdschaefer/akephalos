@@ -1,3 +1,8 @@
+# **Akephalos** is a cross-platform Ruby interface for *HtmlUnit*, a headless
+# browser for the Java platform.
+#
+# The only requirement is that a Java runtime is available.
+#
 require 'java' if RUBY_PLATFORM == 'java'
 require 'capybara'
 

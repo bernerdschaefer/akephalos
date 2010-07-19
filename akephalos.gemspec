@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sinatra"
   s.add_development_dependency "rspec", "1.30"
 
-  s.files        = Dir.glob("lib/**/*.rb") + Dir.glob("src/**/*.jar") + %w(README)
+  s.files        = Dir.glob("lib/**/*.rb") + Dir.glob("src/**/*.jar") + %w(README.md MIT_LICENSE)
   s.require_path = %w(lib src)
   s.executables  = %w(akephalos)
 end

@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'rake'
+require 'rake/clean'
 
 JAVA = RUBY_PLATFORM == "java"
 
@@ -31,6 +32,8 @@ task :release => :build_all do
     system "gem push akephalos-#{Akephalos::VERSION}#{platform}.gem"
   end
 end
+
+load 'tasks/docs.rake'
 
 require 'spec/rake/spectask'
 Spec::Rake::SpecTask.new(:spec) do |spec|

@@ -1,0 +1,49 @@
+- @title = 'bin/akephalos'
+%section
+  :markdown
+    ## bin/akephalos
+
+    The bundled `akephalos` binary provides a command line interface to a few
+    useful features.
+
+    ### `akephalos --interactive`
+
+    Running akephalos in interactive mode gives you an IRB context for
+    interacting with your site just as you would in your tests:
+
+%aside
+  :code
+    # akephalos --interactive
+    Capybara.app_host # => "http://localhost:3000"
+    page.visit "/"
+    page.fill_in "Search", :with => "akephalos"
+    page.click_button "Go"
+    page.has_css?("#search_results") # => true
+
+%section
+  :markdown
+    ### `akephalos --use-htmlunit-snapshot`
+
+    This will instruct akephalos to use the latest development snapshot of
+    HtmlUnit as found on it's [Cruise Control
+    server](http://build.canoo.com/htmlunit/). HtmlUnit and its dependencies
+    will be unpacked into vendor/htmlunit in the current working directory.
+
+    This is what the output looks like:
+
+%aside
+  :bash
+    > bin/akephalos --use-htmlunit-snapshot
+    Downloading latest snapshot... done
+    Extracting dependencies... done
+    ========================================
+    The latest HtmlUnit snapshot has been extracted to vendor/htmlunit!
+
+%section
+  :markdown
+    Once HtmlUnit has been extracted, Akephalos will automatically detect the
+    vendored version and use it instead of the bundled version.
+
+    ### `akephalos --server <socket_file>`
+
+    Akephalos uses this command internally to start a JRuby DRb server using the provided socket file.
