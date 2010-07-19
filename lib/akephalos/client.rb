@@ -40,6 +40,7 @@ else
 
       def visit(url)
         client.getPage(url)
+        page
       end
 
       def page=(_page)
