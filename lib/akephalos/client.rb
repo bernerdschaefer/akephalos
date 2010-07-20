@@ -52,7 +52,9 @@ else
 
       private
       def client
-        @client ||= @_client.get
+        @client ||= @_client.get.tap do |client|
+          client.getCurrentWindow.getHistory.ignoreNewPages_.set(true)
+        end
       end
     end
   end

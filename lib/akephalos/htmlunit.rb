@@ -17,6 +17,11 @@ java_import "com.gargoylesoftware.htmlunit.WebClient"
 java_import "com.gargoylesoftware.htmlunit.util.WebConnectionWrapper"
 java_import 'com.gargoylesoftware.htmlunit.HttpMethod'
 
+
+# Disable history tracking
+com.gargoylesoftware.htmlunit.History.field_reader :ignoreNewPages_
+
+# Run in Firefox compatibility mode
 com.gargoylesoftware.htmlunit.BrowserVersion.setDefault(
   com.gargoylesoftware.htmlunit.BrowserVersion::FIREFOX_3
 )
