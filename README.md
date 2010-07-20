@@ -40,13 +40,16 @@ Here's some sample RSpec code:
 
 ## More
 
-* [bin/akephalos](/akephalos-bin.html) allows you to start an interactive
-shell or DRb server, as well as perform other maintenance features.
+* [bin/akephalos](http://bernerdschaefer.github.com/akephalos/akephalos-bin.html)
+  allows you to start an interactive shell or DRb server, as well as perform
+  other maintenance features.
 
-* [Filters](/filters.html) allows you to declare mock responses for
-external resources and services requested by the browser.
+* [Filters](http://bernerdschaefer.github.com/akephalos/filters.html) allows
+  you to declare mock responses for external resources and services requested
+  by the browser.
 
 ## Resources
 
-* [Source](http://github.com/bernerdschaefer/akephalos)
-* [Issues](http://github.com/bernerdschaefer/akephalos/issues)
+* [Source code](http://github.com/bernerdschaefer/akephalos) and
+  [issues](http://github.com/bernerdschaefer/akephalos/issues) are hosted on
+  github.
