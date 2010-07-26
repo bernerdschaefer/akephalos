@@ -15,7 +15,7 @@ task "build:java" do
   system "export PLATFORM=java && gem build akephalos.gemspec"
 end
 
-task :build_all => ['build', 'build:java']
+task "build:all" => ['build', 'build:java']
 
 task :install => (JAVA ? 'build:java' : 'build') do
   gemfile = "akephalos-#{Akephalos::VERSION}#{"-java" if JAVA}.gem"
