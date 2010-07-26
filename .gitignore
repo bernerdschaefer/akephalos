@@ -1,7 +1,8 @@
 .bundle/
 .rvmrc
 .yardoc
+Gemfile.lock
 burn
+docs/build
 pkg
 tags
-docs/build
