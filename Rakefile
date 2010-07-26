@@ -7,6 +7,8 @@ JAVA = RUBY_PLATFORM == "java"
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 require "akephalos/version"
 
+CLEAN.include "*.gem"
+
 task :build do
   system "gem build akephalos.gemspec"
 end
