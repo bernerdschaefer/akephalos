@@ -4,6 +4,7 @@
 # The only requirement is that a Java runtime is available.
 #
 require 'java' if RUBY_PLATFORM == 'java'
+require 'pathname'
 require 'capybara'
 
 module Akephalos
