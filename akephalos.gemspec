@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "capybara", "~> 0.3.8"
 
-  if ENV["PLATFORM"] != "java"
+  if RUBY_PLATFORM != "java" && ENV["PLATFORM"] != "java"
     s.add_runtime_dependency "jruby-jars"
   end
 
