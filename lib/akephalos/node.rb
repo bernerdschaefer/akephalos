@@ -17,6 +17,22 @@ module Akephalos
       @_node.hasAttribute(name.to_s) ? @_node.getAttribute(name.to_s) : nil
     end
 
+    def value
+      case tag_name
+      when "select"
+        if self[:multiple]
+          @_node.selected_options.map { |option| option.text }
+        else
+          selected_option = @_node.selected_options.first
+          selected_option ? selected_option.text : nil
+        end
+      when "textarea"
+        @_node.getText
+      else
+        self[:value]
+      end
+    end
+
     def value=(value)
       case tag_name
       when "textarea"

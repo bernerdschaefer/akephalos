@@ -24,6 +24,11 @@ module Akephalos
     end
 
     def execute_script(script)
+      @_page.executeJavaScript(script)
+      nil
+    end
+
+    def evaluate_script(script)
       @_page.executeJavaScript(script).getJavaScriptResult
     end
 

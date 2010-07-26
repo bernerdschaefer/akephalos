@@ -17,14 +17,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     end
 
     def value
-      if tag_name == "select" && self[:multiple]
-        node.selected_options.map { |option| option.text }
-      elsif tag_name == "select"
-        selected_option = node.selected_options.first
-        selected_option ? selected_option.text : nil
-      else
-        self[:value]
-      end
+      node.value
     end
 
     def set(value)
@@ -136,8 +129,12 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     nodes
   end
 
-  def evaluate_script(script)
+  def execute_script(script)
     page.execute_script script
+  end
+
+  def evaluate_script(script)
+    page.evaluate_script script
   end
 
   def page
