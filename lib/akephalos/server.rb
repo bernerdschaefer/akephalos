@@ -5,7 +5,7 @@ require "akephalos/client"
 
 # In ruby-1.8.7 and later, the message for a NameError exception is lazily
 # evaluated. There are, however, different implementations of this between ruby
-# and jrby, so we realize these messages when sending over DRb.
+# and jruby, so we realize these messages when sending over DRb.
 class NameError::Message
   def _dump
     to_s
