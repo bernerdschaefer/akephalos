@@ -9,7 +9,7 @@ begin
 
   desc 'Build API documentation (docs/api)'
   task 'docs:api' => ['docs/build/.git'] do
-    sh("yardoc -o docs/build/api lib/**/*.rb")
+    sh("yardoc -o docs/build/api -")
   end
 
   desc 'Build static documentation (docs)'
