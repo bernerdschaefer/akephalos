@@ -1,4 +1,13 @@
+# Reopen com.gargoylesoftware.htmlunit.HttpMethod to add convenience methods.
 class HttpMethod
+
+  # Loosely compare HttpMethod with another object, accepting either an
+  # HttpMethod instance or a symbol describing the method. Note that :any is a
+  # special symbol which will always return true.
+  #
+  # @param [HttpMethod] other an HtmlUnit HttpMethod object
+  # @param [Symbol] other a symbolized representation of an http method
+  # @return [true/false]
   def ===(other)
     case other
     when HttpMethod
@@ -15,4 +24,5 @@ class HttpMethod
       self == self.class::DELETE
     end
   end
+
 end
