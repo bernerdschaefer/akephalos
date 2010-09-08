@@ -1,10 +1,9 @@
 module Akephalos
-  def self.configuration
-    @configuration ||= {}
-  end
 
-  def self.configuration=(config)
-    @configuration = config
+  @configuration = {}
+
+  class << self
+    attr_accessor :configuration
   end
 
   module Filters
