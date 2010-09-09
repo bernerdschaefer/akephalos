@@ -1,6 +1,6 @@
 # Akephalos
 Akephalos is a full-stack headless browser for integration testing with
-Capybara. It is built on top of [HtmlUnit](http://htmlunit.sourceforge.com),
+Capybara. It is built on top of [HtmlUnit](http://htmlunit.sourceforge.net),
 a GUI-less browser for the Java platform, but can be run on both JRuby and
 MRI with no need for JRuby to be installed on the system.
 
