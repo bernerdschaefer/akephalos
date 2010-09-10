@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>
+      akephalos
+      :: bin/akephalos
+    </title>
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0;' name='viewport' />
+    <link charset='utf-8' href='stylesheets/screen.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='stylesheets/iphone.css' media='only screen and (max-width: 480px)' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href='/akephalos'>
+          akephalos
+        </a>
+      </h1>
+    </header>
+    <article>
+      <section>
+        <h2>bin/akephalos</h2>
+        
+        <p>The bundled <code>akephalos</code> binary provides a command line interface to a few
+        useful features.</p>
+        
+        <h3><code>akephalos --interactive</code></h3>
+        
+        <p>Running akephalos in interactive mode gives you an IRB context for
+        interacting with your site just as you would in your tests:</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="c1"># akephalos --interactive</span>&#x000A;<span class="no">Capybara</span><span class="o">.</span><span class="n">app_host</span> <span class="c1"># =&gt; &quot;http://localhost:3000&quot;</span>&#x000A;<span class="n">page</span><span class="o">.</span><span class="n">visit</span> <span class="s2">&quot;/&quot;</span>&#x000A;<span class="n">page</span><span class="o">.</span><span class="n">fill_in</span> <span class="s2">&quot;Search&quot;</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="s2">&quot;akephalos&quot;</span>&#x000A;<span class="n">page</span><span class="o">.</span><span class="n">click_button</span> <span class="s2">&quot;Go&quot;</span>&#x000A;<span class="n">page</span><span class="o">.</span><span class="n">has_css?</span><span class="p">(</span><span class="s2">&quot;#search_results&quot;</span><span class="p">)</span> <span class="c1"># =&gt; true</span></pre></div>
+      </aside>
+      <section>
+        <h3><code>akephalos --use-htmlunit-snapshot</code></h3>
+        
+        <p>This will instruct akephalos to use the latest development snapshot of
+        HtmlUnit as found on it's <a href="http://build.canoo.com/htmlunit/">Cruise Control
+        server</a>. HtmlUnit and its dependencies
+        will be unpacked into vendor/htmlunit in the current working directory.</p>
+        
+        <p>This is what the output looks like:</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre>&gt; bin/akephalos --use-htmlunit-snapshot&#x000A;Downloading latest snapshot... <span class="k">done</span>&#x000A;Extracting dependencies... <span class="k">done</span>&#x000A;<span class="o">========================================</span>&#x000A;The latest HtmlUnit snapshot has been extracted to vendor/htmlunit!</pre></div>
+      </aside>
+      <section>
+        <p>Once HtmlUnit has been extracted, Akephalos will automatically detect the
+        vendored version and use it instead of the bundled version.</p>
+        
+        <h3><code>akephalos --server &lt;socket_file&gt;</code></h3>
+        
+        <p>Akephalos uses this command internally to start a JRuby DRb server using the provided socket file.</p>
+      </section>
+    </article>
+    <footer>
+      <p>
+        &copy; 2010 &middot; Bernerd Schaefer
+      </p>
+    </footer>
+  </body>
+</html>

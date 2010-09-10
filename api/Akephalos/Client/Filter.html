@@ -1,0 +1,585 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Akephalos::Client::Filter</title>
+<link rel="stylesheet" href="../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../_index.html">Index (F)</a> &raquo; 
+    <span class='title'><a href="../../Akephalos.html" title="Akephalos (module)">Akephalos</a></span> &raquo; <span class='title'><a href="../Client.html" title="Akephalos::Client (class)">Client</a></span>
+     &raquo; 
+    <span class="title">Filter</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Akephalos::Client::Filter
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">WebConnectionWrapper</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">WebConnectionWrapper</li>
+          
+            <li class="next">Akephalos::Client::Filter</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/akephalos/client/filter.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Akephalos::Client::Filter extends HtmlUnit&#8217;s WebConnectionWrapper to
+enable filtering outgoing requests generated interally by HtmlUnit.
+</p>
+<p>
+When a request comes through, it will be tested against the filters defined
+in Akephalos.filters and return a mock response if a match is found. If no
+filters are defined, or no filters match the request, then the response
+will bubble up to HtmlUnit for the normal request/response cycle.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="HTTP_STATUS_CODES-constant" class="">HTTP_STATUS_CODES =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+Map of status codes to their English descriptions.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace token'>{</span>
+  <span class='integer val'>100</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Continue&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>101</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Switching Protocols&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>102</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Processing&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>200</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;OK&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>201</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Created&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>202</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Accepted&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>203</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Non-Authoritative Information&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>204</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;No Content&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>205</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Reset Content&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>206</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Partial Content&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>207</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Multi-Status&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>300</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Multiple Choices&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>301</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Moved Permanently&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>302</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Found&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>303</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;See Other&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>304</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Not Modified&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>305</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Use Proxy&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>306</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Switch Proxy&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>307</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Temporary Redirect&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>400</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bad Request&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>401</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Unauthorized&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>402</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Payment Required&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>403</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Forbidden&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>404</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Not Found&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>405</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Method Not Allowed&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>406</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Not Acceptable&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>407</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Proxy Authentication Required&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>408</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Request Timeout&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>409</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Conflict&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>410</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Gone&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>411</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Length Required&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>412</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Precondition Failed&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>413</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Request Entity Too Large&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>414</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Request-URI Too Long&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>415</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Unsupported Media Type&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>416</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Requested Range Not Satisfiable&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>417</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Expectation Failed&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>418</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;I'm a teapot&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>421</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;There are too many connections from your internet address&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>422</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Unprocessable Entity&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>423</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Locked&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>424</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Failed Dependency&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>425</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Unordered Collection&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>426</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Upgrade Required&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>449</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Retry With&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>450</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Blocked by Windows Parental Controls&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>500</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Internal Server Error&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>501</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Not Implemented&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>502</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bad Gateway&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>503</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Service Unavailable&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>504</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Gateway Timeout&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>505</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;HTTP Version Not Supported&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>506</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Variant Also Negotiates&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>507</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Insufficient Storage&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>509</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Bandwidth Limit Exceeded&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>510</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Not Extended&quot;</span><span class='comma token'>,</span>
+  <span class='integer val'>530</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;User access denied&quot;</span>
+<span class='rbrace token'>}</span><span class='dot token'>.</span><span class='freeze identifier id'>freeze</span>
+</pre></dd>
+      
+    </dl>
+  
+
+
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#filter-instance_method" title="#filter (instance method)">- (WebResponseImpl<sup>?</sup>) <strong>filter</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Filters an outgoing request, and if a match is found, returns the mock
+response.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#find_filter-instance_method" title="#find_filter (instance method)">- (Hash<sup>?</sup>) <strong>find_filter</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Searches for a filter which matches the request&#8217;s HTTP method and
+url.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#getResponse-instance_method" title="#getResponse (instance method)">- (WebResponseImpl) <strong>getResponse</strong>(request) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This method is called by WebClient when a page is requested, and will
+return a mock response if the request matches a defined filter or else
+return the actual response.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="filter-instance_method">
+  
+    - (<tt>WebResponseImpl</tt><sup>?</sup>) <strong>filter</strong>(request) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Filters an outgoing request, and if a match is found, returns the mock
+response.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>WebRequest</tt>)</span>
+      
+      
+        <span class='name'>request</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the pending HTTP request
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>WebResponseImpl</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+when the request matches a defined filter
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+when no filters match the request
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client/filter.rb', line 23</span>
+
+<span class='def def kw'>def</span> <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='if if kw'>if</span> <span class='filter identifier id'>filter</span> <span class='assign token'>=</span> <span class='find_filter identifier id'>find_filter</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+    <span class='start_time identifier id'>start_time</span> <span class='assign token'>=</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span>
+    <span class='headers identifier id'>headers</span> <span class='assign token'>=</span> <span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:headers</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='name identifier id'>name</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='bitor op'>|</span> <span class='NameValuePair constant id'>NameValuePair</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='comma token'>,</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='response identifier id'>response</span> <span class='assign token'>=</span> <span class='WebResponseData constant id'>WebResponseData</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span>
+      <span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:body</span><span class='rbrack token'>]</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='dot token'>.</span><span class='to_java_bytes identifier id'>to_java_bytes</span><span class='comma token'>,</span>
+      <span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:status</span><span class='rbrack token'>]</span><span class='comma token'>,</span>
+      <span class='HTTP_STATUS_CODES constant id'>HTTP_STATUS_CODES</span><span class='dot token'>.</span><span class='fetch identifier id'>fetch</span><span class='lparen token'>(</span><span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:status</span><span class='rbrack token'>]</span><span class='comma token'>,</span> <span class='string val'>&quot;Unknown&quot;</span><span class='rparen token'>)</span><span class='comma token'>,</span>
+      <span class='headers identifier id'>headers</span>
+    <span class='rparen token'>)</span>
+    <span class='WebResponseImpl constant id'>WebResponseImpl</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='response identifier id'>response</span><span class='comma token'>,</span> <span class='request identifier id'>request</span><span class='comma token'>,</span> <span class='Time constant id'>Time</span><span class='dot token'>.</span><span class='now identifier id'>now</span> <span class='minus op'>-</span> <span class='start_time identifier id'>start_time</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="find_filter-instance_method">
+  
+    - (<tt>Hash</tt><sup>?</sup>) <strong>find_filter</strong>(request) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Searches for a filter which matches the request&#8217;s HTTP method and
+url.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>WebRequest</tt>)</span>
+      
+      
+        <span class='name'>request</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the pending HTTP request
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+when a filter matches the request
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+when no filters match the request
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client/filter.rb', line 42</span>
+
+<span class='def def kw'>def</span> <span class='find_filter identifier id'>find_filter</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='filters identifier id'>filters</span><span class='dot token'>.</span><span class='find identifier id'>find</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='filter identifier id'>filter</span><span class='bitor op'>|</span>
+    <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='http_method identifier id'>http_method</span> <span class='eqq op'>===</span> <span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:method</span><span class='rbrack token'>]</span> <span class='andop op'>&amp;&amp;</span> <span class='request identifier id'>request</span><span class='dot token'>.</span><span class='url identifier id'>url</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span> <span class='match op'>=~</span> <span class='filter identifier id'>filter</span><span class='lbrack token'>[</span><span class='symbol val'>:filter</span><span class='rbrack token'>]</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="getResponse-instance_method">
+  
+    - (<tt>WebResponseImpl</tt>) <strong>getResponse</strong>(request) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This method is called by WebClient when a page is requested, and will
+return a mock response if the request matches a defined filter or else
+return the actual response.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>WebRequest</tt>)</span>
+      
+      
+        <span class='name'>request</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the pending HTTP request
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>WebResponseImpl</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client/filter.rb', line 55</span>
+
+<span class='def def kw'>def</span> <span class='getResponse identifier id'>getResponse</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span>
+  <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='request identifier id'>request</span><span class='rparen token'>)</span> <span class='orop op'>||</span> <span class='super super kw'>super</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Wed Sep  8 17:26:57 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

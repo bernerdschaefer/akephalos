@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>
+      akephalos
+      :: Filters
+    </title>
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0;' name='viewport' />
+    <link charset='utf-8' href='stylesheets/screen.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='stylesheets/iphone.css' media='only screen and (max-width: 480px)' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href='/akephalos'>
+          akephalos
+        </a>
+      </h1>
+    </header>
+    <article>
+      <section>
+        <h2>Filters</h2>
+        
+        <p>Akephalos allows you to filter requests originating from the browser and
+        return mock responses. This will let you easily filter requests for
+        external resources when running your tests, such as Facebook's API and
+        Google Analytics.</p>
+        
+        <p>Configuring filters in akephalos should be familiar to anyone who has used
+        FakeWeb or a similar library. The simplest filter requires only an
+        <abbr>HTTP</abbr> method (<code>:get</code>, <code>:post</code>, <code>:put</code>, <code>:delete</code>, <code>:any</code>) and a
+        string or regex to match against.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:get</span><span class="p">,</span> <span class="s2">&quot;http://www.google.com&quot;</span><span class="p">)</span>&#x000A;<span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:any</span><span class="p">,</span> <span class="sr">%r{^http://(api\.)?twitter\.com/.*$}</span><span class="p">)</span></pre></div>
+      </aside>
+      <section>
+        <p>By default, all filtered requests will return an empty body with a 200
+        status code. You can change this by passing additional options to your
+        filter call.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:get</span><span class="p">,</span> <span class="s2">&quot;http://google.com/missing&quot;</span><span class="p">,</span>&#x000A;  <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">404</span><span class="p">,</span> <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;... &lt;h1&gt;Not Found&lt;/h1&gt; ...&quot;</span><span class="p">)</span>&#x000A;&#x000A;<span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:post</span><span class="p">,</span> <span class="s2">&quot;http://my-api.com/resource.xml&quot;</span><span class="p">,</span>&#x000A;  <span class="ss">:status</span> <span class="o">=&gt;</span> <span class="mi">201</span><span class="p">,</span> <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="p">{</span>&#x000A;    <span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/xml&quot;</span><span class="p">,</span>&#x000A;    <span class="s2">&quot;Location&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;http://my-api.com/resources/1.xml&quot;</span> <span class="p">},</span>&#x000A;  <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:id</span> <span class="o">=&gt;</span> <span class="mi">100</span><span class="p">}</span><span class="o">.</span><span class="n">to_xml</span><span class="p">)</span></pre></div>
+      </aside>
+      <section>
+        <p>And that's really all there is to it! It should be fairly trivial to set up
+        filters for the external resources you need to fake. For reference,
+        however, here's what we ended up using for our external sources.</p>
+        
+        <h3>Google Analytics</h3>
+        
+        <p>Google Analytics code is passively applied based on HTML comments, so
+        simply returning an empty response body is enough to disable it without
+        errors.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:get</span><span class="p">,</span> <span class="s2">&quot;http://www.google-analytics.com/ga.js&quot;</span><span class="p">,</span>&#x000A;  <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/javascript&quot;</span><span class="p">})</span></pre></div>
+      </aside>
+      <section>
+        <h3>Facebook Connect</h3>
+        
+        <p>When you enable Facebook Connect on your page, the FeatureLoader is
+        requested, and then additional resources are loaded when you call
+        FB_RequireFeatures. We can therefore return an empty function from our
+        filter to disable all Facebook Connect code.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:get</span><span class="p">,</span> <span class="s2">&quot;http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php&quot;</span><span class="p">,</span>&#x000A;  <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/javascript&quot;</span><span class="p">},</span>&#x000A;  <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;window.FB_RequireFeatures = function() {};&quot;</span><span class="p">)</span></pre></div>
+      </aside>
+      <section>
+        <h3>Google Maps</h3>
+        
+        <p>Google Maps requires the most extensive amount of API definitions of the
+        three, but these few lines cover everything we've encountered so far.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Akephalos</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="ss">:get</span><span class="p">,</span> <span class="s2">&quot;http://maps.google.com/maps/api/js?sensor=false&quot;</span><span class="p">,</span>&#x000A;  <span class="ss">:headers</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;application/javascript&quot;</span><span class="p">},</span>&#x000A;  <span class="ss">:body</span> <span class="o">=&gt;</span> <span class="s2">&quot;window.google = {</span>&#x000A;<span class="s2">              maps: {</span>&#x000A;<span class="s2">                LatLng: function(){},</span>&#x000A;<span class="s2">                Map: function(){},</span>&#x000A;<span class="s2">                Marker: function(){},</span>&#x000A;<span class="s2">                MapTypeId: {ROADMAP:1}</span>&#x000A;<span class="s2">              }</span>&#x000A;<span class="s2">            };&quot;</span><span class="p">)</span></pre></div>
+      </aside>
+    </article>
+    <footer>
+      <p>
+        &copy; 2010 &middot; Bernerd Schaefer
+      </p>
+    </footer>
+  </body>
+</html>

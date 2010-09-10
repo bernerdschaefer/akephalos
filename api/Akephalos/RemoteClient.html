@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Class: Akephalos::RemoteClient</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (R)</a> &raquo; 
+    <span class='title'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span>
+     &raquo; 
+    <span class="title">RemoteClient</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: Akephalos::RemoteClient
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Akephalos::RemoteClient</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/akephalos/remote_client.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+The <tt>RemoteClient</tt> class provides an interface to an
+<tt>Akephalos::Client</tt> isntance on a remote DRb server.
+</p>
+<h2>Usage</h2>
+<pre class="code">
+    <span class='client identifier id'>client</span> <span class='assign token'>=</span> <span class='Akephalos constant id'>Akephalos</span><span class='colon2 op'>::</span><span class='RemoteClient constant id'>RemoteClient</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+    <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='visit identifier id'>visit</span> <span class='string val'>&quot;http://www.oinopa.com&quot;</span>
+    <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='page identifier id'>page</span><span class='dot token'>.</span><span class='source identifier id'>source</span> <span class='comment val'># =&gt; &quot;&lt;!DOCTYPE html PUBLIC...&quot;</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-class_method" title="new (class method)">+ (Object) <strong>new</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Starts a remote akephalos server and returns the remote Akephalos::Client
+instance.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#start%21-class_method" title="start! (class method)">+ (Object) <strong>start!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Start a remote server process, returning when it is available for use.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="new-class_method">
+  
+    + (<tt>Object</tt>) <strong>new</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Starts a remote akephalos server and returns the remote Akephalos::Client
+instance.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/remote_client.rb', line 22</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+  <span class='start! fid id'>start!</span>
+  <span class='DRb constant id'>DRb</span><span class='dot token'>.</span><span class='start_service identifier id'>start_service</span>
+  <span class='client identifier id'>client</span> <span class='assign token'>=</span> <span class='DRbObject constant id'>DRbObject</span><span class='dot token'>.</span><span class='new_with_uri identifier id'>new_with_uri</span><span class='lparen token'>(</span><span class='dstring node'>&quot;drbunix://#{@socket_file}&quot;</span><span class='rparen token'>)</span>
+  <span class='comment val'># We want to share our local configuration with the remote server</span>
+  <span class='comment val'># process, so we share an undumped version of our configuration. This</span>
+  <span class='comment val'># lets us continue to make changes locally and have them reflected in the</span>
+  <span class='comment val'># remote process.</span>
+  <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span> <span class='assign token'>=</span> <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span><span class='dot token'>.</span><span class='extend identifier id'>extend</span><span class='lparen token'>(</span><span class='DRbUndumped constant id'>DRbUndumped</span><span class='rparen token'>)</span>
+  <span class='client identifier id'>client</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="start!-class_method">
+  
+    + (<tt>Object</tt>) <strong>start!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Start a remote server process, returning when it is available for use.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/remote_client.rb', line 36</span>
+
+<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='start! fid id'>start!</span>
+  <span class='remote_client identifier id'>remote_client</span> <span class='assign token'>=</span> <span class='fork identifier id'>fork</span> <span class='do do kw'>do</span>
+    <span class='exec identifier id'>exec</span><span class='lparen token'>(</span><span class='dstring node'>&quot;#{Akephalos::BIN_DIR + 'akephalos'} #{@socket_file}&quot;</span><span class='rparen token'>)</span>
+  <span class='end end kw'>end</span>
+
+  <span class='comment val'># Set up a monitor thread to detect if the forked server exits</span>
+  <span class='comment val'># prematurely.</span>
+  <span class='server_monitor identifier id'>server_monitor</span> <span class='assign token'>=</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='current identifier id'>current</span><span class='lbrack token'>[</span><span class='symbol val'>:exited</span><span class='rbrack token'>]</span> <span class='assign token'>=</span> <span class='Process constant id'>Process</span><span class='dot token'>.</span><span class='wait identifier id'>wait</span> <span class='rbrace token'>}</span>
+
+  <span class='comment val'># Wait for the server to be accessible on the socket we specified.</span>
+  <span class='until until kw'>until</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='exists? fid id'>exists?</span><span class='lparen token'>(</span><span class='@socket_file ivar id'>@socket_file</span><span class='rparen token'>)</span>
+    <span class='exit! fid id'>exit!</span><span class='lparen token'>(</span><span class='integer val'>1</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='server_monitor identifier id'>server_monitor</span><span class='lbrack token'>[</span><span class='symbol val'>:exited</span><span class='rbrack token'>]</span>
+    <span class='sleep identifier id'>sleep</span> <span class='integer val'>1</span>
+  <span class='end end kw'>end</span>
+  <span class='server_monitor identifier id'>server_monitor</span><span class='dot token'>.</span><span class='kill identifier id'>kill</span>
+
+  <span class='comment val'># Ensure that the remote server shuts down gracefully when we are</span>
+  <span class='comment val'># finished.</span>
+  <span class='at_exit identifier id'>at_exit</span> <span class='lbrace token'>{</span> <span class='Process constant id'>Process</span><span class='dot token'>.</span><span class='kill identifier id'>kill</span><span class='lparen token'>(</span><span class='symbol val'>:INT</span><span class='comma token'>,</span> <span class='remote_client identifier id'>remote_client</span><span class='rparen token'>)</span><span class='semicolon token'>;</span> <span class='File constant id'>File</span><span class='dot token'>.</span><span class='unlink identifier id'>unlink</span><span class='lparen token'>(</span><span class='@socket_file ivar id'>@socket_file</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Sep 10 11:04:23 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

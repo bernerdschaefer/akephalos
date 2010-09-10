@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=utf-8" />
+<title>Documentation by YARD 0.5.8</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html" title="Index">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><div id='filecontents'><h1 id='akephalos'>Akephalos</h1>
+
+<p>Akephalos is a full-stack headless browser for integration testing with Capybara. It is built on top of <a href='http://htmlunit.sourceforge.net'>HtmlUnit</a>, a GUI-less browser for the Java platform, but can be run on both JRuby and MRI with no need for JRuby to be installed on the system.</p>
+
+<h2 id='installation'>Installation</h2>
+
+<pre class="code"><span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='akephalos identifier id'>akephalos</span>
+</pre>
+
+<h2 id='setup'>Setup</h2>
+
+<p>Configuring akephalos is as simple as requiring it and setting Capybara&#8217;s javascript driver:</p>
+
+<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'akephalos'</span>
+<span class='Capybara constant id'>Capybara</span><span class='dot token'>.</span><span class='javascript_driver identifier id'>javascript_driver</span> <span class='assign token'>=</span> <span class='symbol val'>:akephalos</span>
+</pre>
+
+<h2 id='basic_usage'>Basic Usage</h2>
+
+<p>Akephalos provides a driver for Capybara, so using Akephalos is no different than using Selenium or Rack::Test. For a full usage guide, check out Capybara&#8217;s DSL <a href='http://github.com/jnicklas/capybara'>documentation</a>. It makes no assumptions about the testing framework being used, and works with RSpec, Cucumber, and Test::Unit.</p>
+
+<p>Here&#8217;s some sample RSpec code:</p>
+
+<pre class="code"><span class='describe identifier id'>describe</span> <span class='string val'>&quot;Home Page&quot;</span> <span class='do do kw'>do</span>
+  <span class='before identifier id'>before</span> <span class='lbrace token'>{</span> <span class='visit identifier id'>visit</span> <span class='string val'>&quot;/&quot;</span> <span class='rbrace token'>}</span>
+  <span class='context identifier id'>context</span> <span class='string val'>&quot;searching&quot;</span> <span class='do do kw'>do</span>
+    <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
+      <span class='fill_in identifier id'>fill_in</span> <span class='string val'>&quot;Search&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:with</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;akephalos&quot;</span>
+      <span class='click_button identifier id'>click_button</span> <span class='string val'>&quot;Go&quot;</span>
+    <span class='end end kw'>end</span>
+    <span class='it identifier id'>it</span> <span class='string val'>&quot;returns results&quot;</span> <span class='lbrace token'>{</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='should identifier id'>should</span> <span class='have_css identifier id'>have_css</span><span class='lparen token'>(</span><span class='string val'>&quot;#results&quot;</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+    <span class='it identifier id'>it</span> <span class='string val'>&quot;includes the search term&quot;</span> <span class='lbrace token'>{</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='should identifier id'>should</span> <span class='have_content identifier id'>have_content</span><span class='lparen token'>(</span><span class='string val'>&quot;akephalos&quot;</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
+  <span class='end end kw'>end</span>
+<span class='end end kw'>end</span>
+</pre>
+
+<h2 id='more'>More</h2>
+
+<ul>
+<li>
+<p><a href='http://bernerdschaefer.github.com/akephalos/akephalos-bin.html'>bin/akephalos</a> allows you to start an interactive shell or DRb server, as well as perform other maintenance features.</p>
+</li>
+
+<li>
+<p><a href='http://bernerdschaefer.github.com/akephalos/filters.html'>Filters</a> allows you to declare mock responses for external resources and services requested by the browser.</p>
+</li>
+</ul>
+
+<h2 id='resources'>Resources</h2>
+
+<ul>
+<li><a href='http://github.com/bernerdschaefer/akephalos'>Source code</a> and <a href='http://github.com/bernerdschaefer/akephalos/issues'>issues</a> are hosted on github.</li>
+</ul></div></div>
+    
+    <div id="footer">
+  Generated on Fri Sep 10 11:04:22 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.8 (ruby-1.8.7).
+</div>
+
+  </body>
+</html>

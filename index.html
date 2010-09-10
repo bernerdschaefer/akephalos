@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='content-type' />
+    <title>
+      akephalos
+      
+    </title>
+    <meta content='width=device-width; initial-scale=1.0; maximum-scale=1.0;' name='viewport' />
+    <link charset='utf-8' href='stylesheets/screen.css' media='screen' rel='stylesheet' type='text/css' />
+    <link href='stylesheets/iphone.css' media='only screen and (max-width: 480px)' rel='stylesheet' type='text/css' />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href='/akephalos'>
+          akephalos
+        </a>
+      </h1>
+    </header>
+    <article>
+      <section>
+        <p>Akephalos is a full-stack headless browser for integration testing with
+        Capybara. It is built on top of <a href="http://htmlunit.sourceforge.net">HtmlUnit</a>,
+        a GUI-less browser for the Java platform, but can be run on both JRuby and
+        MRI with no need for JRuby to be installed on the system.</p>
+      </section>
+      <section>
+        <h2>Installation</h2>
+      </section>
+      <aside>
+        <div class="highlight"><pre>gem install akephalos</pre></div>
+      </aside>
+      <section>
+        <h2>Setup</h2>
+        
+        <p>Configuring akephalos is as simple as requiring it and setting Capybara's
+        javascript driver:</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;akephalos&#39;</span>&#x000A;<span class="no">Capybara</span><span class="o">.</span><span class="n">javascript_driver</span> <span class="o">=</span> <span class="ss">:akephalos</span></pre></div>
+      </aside>
+      <section>
+        <h2>Basic Usage</h2>
+        
+        <p>Akephalos provides a driver for Capybara, so using Akephalos is no
+        different than using Selenium or Rack::Test. For a full usage guide, check
+        out Capybara's DSL <a href="http://github.com/jnicklas/capybara">documentation</a>. It
+        makes no assumptions about the testing framework being used, and works with
+        RSpec, Cucumber, and Test::Unit.</p>
+        
+        <p>Here's some sample RSpec code:</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="n">describe</span> <span class="s2">&quot;Home Page&quot;</span> <span class="k">do</span>&#x000A;  <span class="n">before</span> <span class="p">{</span> <span class="n">visit</span> <span class="s2">&quot;/&quot;</span> <span class="p">}</span>&#x000A;  <span class="n">context</span> <span class="s2">&quot;searching&quot;</span> <span class="k">do</span>&#x000A;    <span class="n">before</span> <span class="k">do</span>&#x000A;      <span class="n">fill_in</span> <span class="s2">&quot;Search&quot;</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="s2">&quot;akephalos&quot;</span>&#x000A;      <span class="n">click_button</span> <span class="s2">&quot;Go&quot;</span>&#x000A;    <span class="k">end</span>&#x000A;    <span class="n">it</span> <span class="s2">&quot;returns results&quot;</span> <span class="p">{</span> <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_css</span><span class="p">(</span><span class="s2">&quot;#results&quot;</span><span class="p">)</span> <span class="p">}</span>&#x000A;    <span class="n">it</span> <span class="s2">&quot;includes the search term&quot;</span> <span class="p">{</span> <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="s2">&quot;akephalos&quot;</span><span class="p">)</span> <span class="p">}</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span></pre></div>
+      </aside>
+      <section>
+        <h2>More</h2>
+        
+        <ul>
+        <li><p><a href="akephalos-bin.html">bin/akephalos</a> allows you to start an interactive
+        shell or DRb server, as well as perform other maintenance features.</p></li>
+        <li><p><a href="filters.html">Filters</a> allows you to declare mock responses for
+        external resources and services requested by the browser.</p></li>
+        </ul>
+        
+        
+        <h2>Resources</h2>
+        
+        <ul>
+        <li><a href="http://github.com/bernerdschaefer/akephalos">Source code</a> and
+        <a href="http://github.com/bernerdschaefer/akephalos/issues">issues</a> are hosted on
+        github.</li>
+        </ul>
+      </section>
+    </article>
+    <footer>
+      <p>
+        &copy; 2010 &middot; Bernerd Schaefer
+      </p>
+    </footer>
+  </body>
+</html>
