@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/akephalos/version.rb<span class="defines">,<br />
-  lib/akephalos/node.rb,<br /> lib/akephalos/page.rb,<br /> lib/akephalos/client.rb,<br /> lib/akephalos/console.rb,<br /> lib/akephalos/remote_client.rb,<br /> lib/akephalos/configuration.rb,<br /> lib/akephalos/server.rb</span>
+  lib/akephalos.rb,<br /> lib/akephalos/node.rb,<br /> lib/akephalos/page.rb,<br /> lib/akephalos/client.rb,<br /> lib/akephalos/console.rb,<br /> lib/akephalos/configuration.rb,<br /> lib/akephalos/remote_client.rb,<br /> lib/akephalos/client/filter.rb,<br /> lib/akephalos/client/listener.rb,<br /> lib/akephalos/server.rb</span>
 </dd>
   
 </dl>
@@ -98,6 +98,12 @@
   
     <dl class="constants">
       
+        <dt id="BIN_DIR-constant" class="">BIN_DIR =
+          
+        </dt>
+        <dd><pre class="code"><span class='Pathname constant id'>Pathname</span><span class='lparen token'>(</span><span class='__FILE__ __file__ kw'>__FILE__</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span><span class='dot token'>.</span><span class='dirname identifier id'>dirname</span><span class='dot token'>.</span><span class='parent identifier id'>parent</span> <span class='plus op'>+</span> <span class='string val'>'bin'</span>
+</pre></dd>
+      
         <dt id="VERSION-constant" class="">VERSION =
           
         </dt>
@@ -112,59 +118,38 @@
   
   
   
-
-  
-    <h2>
-      Class Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
+  <h2>Class Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
   <span class="summary_signature">
     
-      <a href="#configuration-class_method" title="configuration (class method)">+ (Object) <strong>configuration</strong> </a>
+      <a href="#configuration-class_method" title="configuration (class method)">+ (Hash) <strong>configuration</strong> </a>
     
 
     
   </span>
   
   
+    
+    
+  
   
   
   
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The configuration.
+</p>
+</div></span>
   
 </li>
 
-      
-        <li class="public ">
-  <span class="summary_signature">
     
-      <a href="#configuration%3D-class_method" title="configuration= (class method)">+ (Object) <strong>configuration=</strong>(config) </a>
-    
+  </ul>
 
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
 
 
   
@@ -172,67 +157,69 @@
   
   
   
-  
+  <h2>Method Summary</h2>
   
   <h3 class="inherited">Methods included from <a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Akephalos::Filters</a></h3>
   <p class="inherited"><a href="Akephalos/Filters.html#filter-instance_method" title="Akephalos::Filters#filter (method)">filter</a>, <a href="Akephalos/Filters.html#filters-instance_method" title="Akephalos::Filters#filters (method)">filters</a></p>
 
-
-  <div id="class_method_details" class="method_details_list">
-    <h2>Class Method Details</h2>
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
     
-    
+      
+      <span id="configuration=-class_method"></span>
+      <span id="configuration-class_method"></span>
       <div class="method_details first">
   <p class="signature first" id="configuration-class_method">
   
-    + (<tt>Object</tt>) <strong>configuration</strong> 
+    + (<tt>Hash</tt>) <strong>configuration</strong> 
   
 
   
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The configuration
+</p>
 
 
-2
-3
-4</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 2</span>
-
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span>
-  <span class='@configuration ivar id'>@configuration</span> <span class='opasgn op'>||=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
-    </td>
-  </tr>
-</table>
+  </div>
 </div>
-    
-      <div class="method_details ">
-  <p class="signature " id="configuration=-class_method">
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
   
-    + (<tt>Object</tt>) <strong>configuration=</strong>(config) 
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the configuration
+</p>
+</div>
+      
+    </li>
   
+</ul>
 
-  
-</p><table class="source_code">
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-6
 7
-8</pre>
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span><span class='assign token'>=</span><span class='lparen token'>(</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
-  <span class='@configuration ivar id'>@configuration</span> <span class='assign token'>=</span> <span class='config identifier id'>config</span>
+<span class='def def kw'>def</span> <span class='configuration identifier id'>configuration</span>
+  <span class='@configuration ivar id'>@configuration</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -242,10 +229,11 @@
     
   </div>
 
+
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:03 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

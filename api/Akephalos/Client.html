@@ -74,11 +74,36 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/akephalos/client.rb</dd>
+    <dd class="r2 last">lib/akephalos/client.rb<span class="defines">,<br />
+  lib/akephalos/client/filter.rb,<br /> lib/akephalos/client/listener.rb</span>
+</dd>
   
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Akephalos::Client wraps HtmlUnit&#8217;s WebClient class. It is the main
+entry point for all interaction with the browser, exposing its current page
+and allowing navigation.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <a href="Client/Filter.html" title="Akephalos::Client::Filter (class)">Filter</a>, <a href="Client/Listener.html" title="Akephalos::Client::Listener (class)">Listener</a>
+    
+  
+</p>
 
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
@@ -125,7 +150,7 @@ Returns the value of attribute page.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#configuration%3D-instance_method" title="#configuration= (instance method)">- (Object) <strong>configuration=</strong>(config) </a>
+      <a href="#configuration%3D-instance_method" title="#configuration= (instance method)">- (Hash) <strong>configuration=</strong>(config) </a>
     
 
     
@@ -138,7 +163,10 @@ Returns the value of attribute page.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Set the global configuration settings for Akephalos.
+</p>
+</div></span>
   
 </li>
 
@@ -172,7 +200,7 @@ A new instance of Client.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#visit-instance_method" title="#visit (instance method)">- (Object) <strong>visit</strong>(url) </a>
+      <a href="#visit-instance_method" title="#visit (instance method)">- (Page) <strong>visit</strong>(url) </a>
     
 
     
@@ -185,7 +213,10 @@ A new instance of Client.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Visit the requested URL and return the page.
+</p>
+</div></span>
   
 </li>
 
@@ -220,10 +251,6 @@ A new instance of Client
       <pre class="lines">
 
 
-23
-24
-25
-26
 27
 28
 29
@@ -232,10 +259,14 @@ A new instance of Client
 32
 33
 34
-35</pre>
+35
+36
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
   <span class='@_client ivar id'>@_client</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='concurrent identifier id'>concurrent</span><span class='dot token'>.</span><span class='FutureTask constant id'>FutureTask</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span>
@@ -288,12 +319,12 @@ Returns the value of attribute page
       <pre class="lines">
 
 
-21
-22
-23</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 25</span>
 
 <span class='def def kw'>def</span> <span class='page identifier id'>page</span>
   <span class='@page ivar id'>@page</span>
@@ -314,22 +345,83 @@ Returns the value of attribute page
       <div class="method_details first">
   <p class="signature first" id="configuration=-instance_method">
   
-    - (<tt>Object</tt>) <strong>configuration=</strong>(config) 
+    - (<tt>Hash</tt>) <strong>configuration=</strong>(config) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong> 
+    <div class='inline'><p>
+This is only used when communicating over DRb, since just a single client
+instance is exposed.
+</p>
+</div>
+  </div>
+
+<p>
+Set the global configuration settings for Akephalos.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>config</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the configuration settings
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the configuration
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
-38
-39</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 47</span>
 
 <span class='def def kw'>def</span> <span class='configuration= identifier id'>configuration=</span><span class='lparen token'>(</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
   <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span> <span class='assign token'>=</span> <span class='config identifier id'>config</span>
@@ -343,23 +435,74 @@ Returns the value of attribute page
       <div class="method_details ">
   <p class="signature " id="visit-instance_method">
   
-    - (<tt>Object</tt>) <strong>visit</strong>(url) 
+    - (<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>) <strong>visit</strong>(url) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Visit the requested URL and return the page.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>url</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the URL to load
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the loaded page
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-41
-42
-43
-44</pre>
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 55</span>
 
 <span class='def def kw'>def</span> <span class='visit identifier id'>visit</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
   <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
@@ -376,7 +519,7 @@ Returns the value of attribute page
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:05 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

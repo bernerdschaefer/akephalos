@@ -84,7 +84,7 @@
     <p>
 In ruby-1.8.7 and later, the message for a NameError exception is lazily
 evaluated. There are, however, different implementations of this between
-ruby and jrby, so we realize these messages when sending over DRb.
+ruby and jruby, so we realize these messages when sending over DRb.
 </p>
 
 
@@ -106,7 +106,7 @@ ruby and jrby, so we realize these messages when sending over DRb.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#_dump-instance_method" title="#_dump (instance method)">- (Object) <strong>_dump</strong> </a>
+      <a href="#_dump-instance_method" title="#_dump (instance method)">- (String) <strong>_dump</strong> </a>
     
 
     
@@ -119,7 +119,10 @@ ruby and jrby, so we realize these messages when sending over DRb.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The inner message.
+</p>
+</div></span>
   
 </li>
 
@@ -136,22 +139,62 @@ ruby and jrby, so we realize these messages when sending over DRb.
       <div class="method_details first">
   <p class="signature first" id="_dump-instance_method">
   
-    - (<tt>Object</tt>) <strong>_dump</strong> 
+    - (<tt>String</tt>) <strong>_dump</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    
+  <div class="note notetag">
+    <strong>Note:</strong> 
+    <div class='inline'><p>
+This method is called by DRb before sending the error to the remote
+connection.
+</p>
+</div>
+  </div>
+
+<p>
+The inner message.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the inner message.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/server.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/server.rb', line 12</span>
 
 <span class='def def kw'>def</span> <span class='_dump identifier id'>_dump</span>
   <span class='to_s identifier id'>to_s</span>
@@ -167,7 +210,7 @@ ruby and jrby, so we realize these messages when sending over DRb.
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:24 2010 by 
+  Generated on Sat Sep 11 15:42:05 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

@@ -95,7 +95,11 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Defines a new filter to be tested by Akephalos::Filter when executing page
+requests.
+</p>
+</div></span>
   
 </li>
 
@@ -103,7 +107,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#filters-instance_method" title="#filters (instance method)">- (Object) <strong>filters</strong> </a>
+      <a href="#filters-instance_method" title="#filters (instance method)">- (Array) <strong>filters</strong> </a>
     
 
     
@@ -116,7 +120,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+All defined filters.
+</p>
+</div></span>
   
 </li>
 
@@ -137,19 +144,114 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Defines a new filter to be tested by Akephalos::Filter when executing page
+requests. An HTTP method and a regex or string to match against the URL are
+required for defining a filter.
+</p>
+<p>
+You can additionally pass the following options to define how the filtered
+request should respond:
+</p>
+<pre class="code">
+  <span class='symbol val'>:status</span>       <span class='lparen token'>(</span><span class='defaults identifier id'>defaults</span> <span class='to identifier id'>to</span> <span class='integer val'>200</span><span class='rparen token'>)</span>
+  <span class='symbol val'>:body</span>         <span class='lparen token'>(</span><span class='defaults identifier id'>defaults</span> <span class='to identifier id'>to</span> <span class='string val'>&quot;&quot;</span><span class='rparen token'>)</span>
+  <span class='symbol val'>:headers</span>      <span class='lparen token'>(</span><span class='defaults identifier id'>defaults</span> <span class='to identifier id'>to</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
+</pre>
+<p>
+If we define a filter with no additional options, then, we will get an
+empty HTML response:
+</p>
+<pre class="code">
+  <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span> <span class='symbol val'>:post</span><span class='comma token'>,</span> <span class='string val'>&quot;http://example.com&quot;</span>
+  <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span> <span class='symbol val'>:any</span><span class='comma token'>,</span> <span class='regexp val'>%r{http://.*\.com}</span>
+</pre>
+<p>
+If you instead, say, wanted to simulate a failure in an external system,
+you could do this:
+</p>
+<pre class="code">
+  <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='filter identifier id'>filter</span> <span class='symbol val'>:post</span><span class='comma token'>,</span> <span class='string val'>&quot;http://example.com&quot;</span><span class='comma token'>,</span>
+    <span class='symbol val'>:status</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='integer val'>500</span><span class='comma token'>,</span> <span class='symbol val'>:body</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;Something went wrong&quot;</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <span class='name'>method</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the HTTP method to match
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>RegExp</tt>, <tt>String</tt>)</span>
+      
+      
+        <span class='name'>regex</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+URL matcher
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+response values
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-15
-16
-17
-18</pre>
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 42</span>
 
 <span class='def def kw'>def</span> <span class='filter identifier id'>filter</span><span class='lparen token'>(</span><span class='method identifier id'>method</span><span class='comma token'>,</span> <span class='regex identifier id'>regex</span><span class='comma token'>,</span> <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='lbrace token'>{</span><span class='rbrace token'>}</span><span class='rparen token'>)</span>
   <span class='regex identifier id'>regex</span> <span class='assign token'>=</span> <span class='Regexp constant id'>Regexp</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='Regexp constant id'>Regexp</span><span class='dot token'>.</span><span class='escape identifier id'>escape</span><span class='lparen token'>(</span><span class='regex identifier id'>regex</span><span class='rparen token'>)</span><span class='rparen token'>)</span> <span class='if if_mod kw'>if</span> <span class='regex identifier id'>regex</span><span class='dot token'>.</span><span class='is_a? fid id'>is_a?</span><span class='lparen token'>(</span><span class='String constant id'>String</span><span class='rparen token'>)</span>
@@ -164,22 +266,52 @@
       <div class="method_details ">
   <p class="signature " id="filters-instance_method">
   
-    - (<tt>Object</tt>) <strong>filters</strong> 
+    - (<tt>Array</tt>) <strong>filters</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+All defined filters
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+all defined filters
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-11
 12
-13</pre>
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 12</span>
 
 <span class='def def kw'>def</span> <span class='filters identifier id'>filters</span>
   <span class='configuration identifier id'>configuration</span><span class='lbrack token'>[</span><span class='symbol val'>:filters</span><span class='rbrack token'>]</span> <span class='opasgn op'>||=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -195,7 +327,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:03 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

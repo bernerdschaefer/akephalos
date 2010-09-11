@@ -111,7 +111,7 @@ The <tt>RemoteClient</tt> class provides an interface to an
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new-class_method" title="new (class method)">+ (Object) <strong>new</strong> </a>
+      <a href="#new-class_method" title="new (class method)">+ (DRbObject) <strong>new</strong> </a>
     
 
     
@@ -125,7 +125,7 @@ The <tt>RemoteClient</tt> class provides an interface to an
 
   
     <span class="summary_desc"><div class='inline'><p>
-Starts a remote akephalos server and returns the remote Akephalos::Client
+Start a remote akephalos server and return the remote Akephalos::Client
 instance.
 </p>
 </div></span>
@@ -150,7 +150,7 @@ instance.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Start a remote server process, returning when it is available for use.
+Start a remote server process and return when it is available for use.
 </p>
 </div></span>
   
@@ -169,14 +169,14 @@ Start a remote server process, returning when it is available for use.
       <div class="method_details first">
   <p class="signature first" id="new-class_method">
   
-    + (<tt>Object</tt>) <strong>new</strong> 
+    + (<tt>DRbObject</tt>) <strong>new</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Starts a remote akephalos server and returns the remote Akephalos::Client
+Start a remote akephalos server and return the remote Akephalos::Client
 instance.
 </p>
 
@@ -184,14 +184,32 @@ instance.
   </div>
 </div>
 <div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
   
+    <li>
+      
+        <span class='type'>(<tt>DRbObject</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the remote client instance
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
 23
 24
 25
@@ -201,10 +219,11 @@ instance.
 29
 30
 31
-32</pre>
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/remote_client.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/remote_client.rb', line 23</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
   <span class='start! fid id'>start!</span>
@@ -233,7 +252,7 @@ instance.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Start a remote server process, returning when it is available for use.
+Start a remote server process and return when it is available for use.
 </p>
 
 
@@ -302,7 +321,7 @@ Start a remote server process, returning when it is available for use.
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:06 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

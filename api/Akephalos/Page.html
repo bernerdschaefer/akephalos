@@ -79,7 +79,19 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Akephalos::Page wraps HtmlUnit&#8217;s HtmlPage class, exposing an API for
+interacting with a page in the browser.
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
 
   
@@ -93,7 +105,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (Object) <strong>==</strong>(other) </a>
+      <a href="#%3D%3D-instance_method" title="#== (instance method)">- (true, false) <strong>==</strong>(other) </a>
     
 
     
@@ -106,7 +118,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Compare this page with an HtmlUnit page.
+</p>
+</div></span>
   
 </li>
 
@@ -114,7 +129,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#current_url-instance_method" title="#current_url (instance method)">- (Object) <strong>current_url</strong> </a>
+      <a href="#current_url-instance_method" title="#current_url (instance method)">- (String) <strong>current_url</strong> </a>
     
 
     
@@ -127,7 +142,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The current page&#8217;s URL.
+</p>
+</div></span>
   
 </li>
 
@@ -148,7 +166,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Execute JavaScript against the current page and return the results.
+</p>
+</div></span>
   
 </li>
 
@@ -156,7 +177,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute_script-instance_method" title="#execute_script (instance method)">- (Object) <strong>execute_script</strong>(script) </a>
+      <a href="#execute_script-instance_method" title="#execute_script (instance method)">- (nil) <strong>execute_script</strong>(script) </a>
     
 
     
@@ -169,7 +190,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Execute JavaScript against the current page, discarding any return value.
+</p>
+</div></span>
   
 </li>
 
@@ -177,7 +201,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find-instance_method" title="#find (instance method)">- (Object) <strong>find</strong>(selector) </a>
+      <a href="#find-instance_method" title="#find (instance method)">- (Array&lt;Node&gt;) <strong>find</strong>(selector) </a>
     
 
     
@@ -190,7 +214,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Search for nodes which match the given XPath selector.
+</p>
+</div></span>
   
 </li>
 
@@ -224,7 +251,7 @@ A new instance of Page.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#modified_source-instance_method" title="#modified_source (instance method)">- (Object) <strong>modified_source</strong> </a>
+      <a href="#modified_source-instance_method" title="#modified_source (instance method)">- (String) <strong>modified_source</strong> </a>
     
 
     
@@ -237,7 +264,11 @@ A new instance of Page.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Return the page&#8217;s source, including any JavaScript-triggered DOM
+changes.
+</p>
+</div></span>
   
 </li>
 
@@ -245,7 +276,7 @@ A new instance of Page.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+      <a href="#source-instance_method" title="#source (instance method)">- (String) <strong>source</strong> </a>
     
 
     
@@ -258,7 +289,10 @@ A new instance of Page.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Return the page&#8217;s source as returned by the web server.
+</p>
+</div></span>
   
 </li>
 
@@ -286,20 +320,35 @@ A new instance of Page
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='type'>(<tt>HtmlUnit::HtmlPage</tt>)</span>
+      
+      
+        <span class='name'>page</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-3
-4
-5
-6</pre>
+7
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 7</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
   <span class='@nodes ivar id'>@nodes</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -321,22 +370,67 @@ A new instance of Page
       <div class="method_details first">
   <p class="signature first" id="==-instance_method">
   
-    - (<tt>Object</tt>) <strong>==</strong>(other) 
+    - (<tt>true</tt>, <tt>false</tt>) <strong>==</strong>(other) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Compare this page with an HtmlUnit page.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>HtmlUnit::HtmlPage</tt>)</span>
+      
+      
+        <span class='name'>other</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an HtmlUnit page
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-35
-36
-37</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 62</span>
 
 <span class='def def kw'>def</span> <span class='eq op'>==</span><span class='lparen token'>(</span><span class='other identifier id'>other</span><span class='rparen token'>)</span>
   <span class='@_page ivar id'>@_page</span> <span class='eq op'>==</span> <span class='other identifier id'>other</span>
@@ -350,22 +444,52 @@ A new instance of Page
       <div class="method_details ">
   <p class="signature " id="current_url-instance_method">
   
-    - (<tt>Object</tt>) <strong>current_url</strong> 
+    - (<tt>String</tt>) <strong>current_url</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The current page&#8217;s URL.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the current page&#8217;s URL.
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
-23
-24</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 37</span>
 
 <span class='def def kw'>def</span> <span class='current_url identifier id'>current_url</span>
   <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getRequestSettings identifier id'>getRequestSettings</span><span class='dot token'>.</span><span class='getUrl identifier id'>getUrl</span><span class='dot token'>.</span><span class='toString identifier id'>toString</span>
@@ -383,18 +507,69 @@ A new instance of Page
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute JavaScript against the current page and return the results.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>script</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the JavaScript to be executed
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the result of the JavaScript
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-31
-32
-33</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 54</span>
 
 <span class='def def kw'>def</span> <span class='evaluate_script identifier id'>evaluate_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='executeJavaScript identifier id'>executeJavaScript</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='getJavaScriptResult identifier id'>getJavaScriptResult</span>
@@ -408,23 +583,68 @@ A new instance of Page
       <div class="method_details ">
   <p class="signature " id="execute_script-instance_method">
   
-    - (<tt>Object</tt>) <strong>execute_script</strong>(script) 
+    - (<tt>nil</tt>) <strong>execute_script</strong>(script) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute JavaScript against the current page, discarding any return value.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>script</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the JavaScript to be executed
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
-28
-29</pre>
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 45</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='executeJavaScript identifier id'>executeJavaScript</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
@@ -439,24 +659,75 @@ A new instance of Page
       <div class="method_details ">
   <p class="signature " id="find-instance_method">
   
-    - (<tt>Object</tt>) <strong>find</strong>(selector) 
+    - (<tt>Array&lt;<a href="Node.html" title="Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>find</strong>(selector) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Search for nodes which match the given XPath selector.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>selector</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an XPath selector
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<a href="Node.html" title="Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the matched nodes
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-8
-9
-10
-11
-12</pre>
+16
+17
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 16</span>
 
 <span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
   <span class='nodes identifier id'>nodes</span> <span class='assign token'>=</span> <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='getByXPath identifier id'>getByXPath</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span> <span class='Node constant id'>Node</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
@@ -472,22 +743,53 @@ A new instance of Page
       <div class="method_details ">
   <p class="signature " id="modified_source-instance_method">
   
-    - (<tt>Object</tt>) <strong>modified_source</strong> 
+    - (<tt>String</tt>) <strong>modified_source</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return the page&#8217;s source, including any JavaScript-triggered DOM
+changes.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s modified source
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
-16</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 25</span>
 
 <span class='def def kw'>def</span> <span class='modified_source identifier id'>modified_source</span>
   <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='asXml identifier id'>asXml</span>
@@ -501,22 +803,52 @@ A new instance of Page
       <div class="method_details ">
   <p class="signature " id="source-instance_method">
   
-    - (<tt>Object</tt>) <strong>source</strong> 
+    - (<tt>String</tt>) <strong>source</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Return the page&#8217;s source as returned by the web server.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s original source
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-18
-19
-20</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 32</span>
 
 <span class='def def kw'>def</span> <span class='source identifier id'>source</span>
   <span class='@_page ivar id'>@_page</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsString identifier id'>getContentAsString</span>
@@ -532,7 +864,7 @@ A new instance of Page
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:03 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

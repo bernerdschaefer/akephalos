@@ -81,7 +81,18 @@
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Akephalos-specific implementation for Capybara&#8217;s Node class.
+</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
 
   
 
@@ -96,7 +107,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (Object) <strong>[]</strong>(name) </a>
+      <a href="#%5B%5D-instance_method" title="#[] (instance method)">- (String) <strong>[]</strong>(name) </a>
     
 
     
@@ -109,7 +120,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The attribute value.
+</p>
+</div></span>
   
 </li>
 
@@ -130,7 +144,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Click the element.
+</p>
+</div></span>
   
 </li>
 
@@ -151,7 +168,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Drag the element on top of the target element.
+</p>
+</div></span>
   
 </li>
 
@@ -172,7 +192,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Select an option from a select box.
+</p>
+</div></span>
   
 </li>
 
@@ -193,7 +216,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Set the form element&#8217;s value.
+</p>
+</div></span>
   
 </li>
 
@@ -201,7 +227,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#tag_name-instance_method" title="#tag_name (instance method)">- (Object) <strong>tag_name</strong> </a>
+      <a href="#tag_name-instance_method" title="#tag_name (instance method)">- (String) <strong>tag_name</strong> </a>
     
 
     
@@ -214,7 +240,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The element&#8217;s tag name.
+</p>
+</div></span>
   
 </li>
 
@@ -222,7 +251,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#text-instance_method" title="#text (instance method)">- (Object) <strong>text</strong> </a>
+      <a href="#text-instance_method" title="#text (instance method)">- (String) <strong>text</strong> </a>
     
 
     
@@ -235,7 +264,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The inner text of the node.
+</p>
+</div></span>
   
 </li>
 
@@ -256,7 +288,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Trigger an event on the element.
+</p>
+</div></span>
   
 </li>
 
@@ -277,7 +312,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Unselect an option from a select box.
+</p>
+</div></span>
   
 </li>
 
@@ -285,7 +323,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#value-instance_method" title="#value (instance method)">- (Object) <strong>value</strong> </a>
+      <a href="#value-instance_method" title="#value (instance method)">- (String) <strong>value</strong> </a>
     
 
     
@@ -298,7 +336,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The form element&#8217;s value.
+</p>
+</div></span>
   
 </li>
 
@@ -306,7 +347,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#visible%3F-instance_method" title="#visible? (instance method)">- (Boolean) <strong>visible?</strong> </a>
+      <a href="#visible%3F-instance_method" title="#visible? (instance method)">- (true, false) <strong>visible?</strong> </a>
     
 
     
@@ -319,7 +360,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The element&#8217;s visiblity.
+</p>
+</div></span>
   
 </li>
 
@@ -337,28 +381,79 @@
       <div class="method_details first">
   <p class="signature first" id="[]-instance_method">
   
-    - (<tt>Object</tt>) <strong>[]</strong>(name) 
+    - (<tt>String</tt>) <strong>[]</strong>(name) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The attribute value
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>name</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+attribute name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the attribute value
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5
-6
-7
-8
-9
-10
-11
-12
-13</pre>
+15
+16
+17
+18
+19
+20
+21
+22
+23</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 15</span>
 
 <span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
   <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
@@ -382,18 +477,29 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Click the element.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-81
-82
-83</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 120</span>
 
 <span class='def def kw'>def</span> <span class='click identifier id'>click</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
@@ -411,20 +517,52 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Drag the element on top of the target element.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt><a href="" title="Capybara::Driver::Akephalos::Node (class)">Node</a></tt>)</span>
+      
+      
+        <span class='name'>element</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the target element
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-75
-76
-77
-78
-79</pre>
+113
+114
+115
+116
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 113</span>
 
 <span class='def def kw'>def</span> <span class='drag_to identifier id'>drag_to</span><span class='lparen token'>(</span><span class='element identifier id'>element</span><span class='rparen token'>)</span>
   <span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='string val'>'mousedown'</span><span class='rparen token'>)</span>
@@ -444,25 +582,57 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Select an option from a select box.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>option</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the option to select
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46</pre>
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 59</span>
 
 <span class='def def kw'>def</span> <span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
   <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='select_option identifier id'>select_option</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
@@ -487,28 +657,60 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Set the form element&#8217;s value.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>value</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the form element&#8217;s new value
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 41</span>
 
 <span class='def def kw'>def</span> <span class='set identifier id'>set</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
   <span class='if if kw'>if</span> <span class='tag_name identifier id'>tag_name</span> <span class='eq op'>==</span> <span class='string val'>'textarea'</span>
@@ -532,22 +734,52 @@
       <div class="method_details ">
   <p class="signature " id="tag_name-instance_method">
   
-    - (<tt>Object</tt>) <strong>tag_name</strong> 
+    - (<tt>String</tt>) <strong>tag_name</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The element&#8217;s tag name
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the element&#8217;s tag name
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-67
-68
-69</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 99</span>
 
 <span class='def def kw'>def</span> <span class='tag_name identifier id'>tag_name</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='tag_name identifier id'>tag_name</span>
@@ -561,22 +793,52 @@
       <div class="method_details ">
   <p class="signature " id="text-instance_method">
   
-    - (<tt>Object</tt>) <strong>text</strong> 
+    - (<tt>String</tt>) <strong>text</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The inner text of the node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the inner text of the node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-15
-16
-17</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 27</span>
 
 <span class='def def kw'>def</span> <span class='text identifier id'>text</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='text identifier id'>text</span>
@@ -594,18 +856,50 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Trigger an event on the element.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>event</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the event to trigger
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-63
-64
-65</pre>
+93
+94
+95</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 93</span>
 
 <span class='def def kw'>def</span> <span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='event identifier id'>event</span><span class='rparen token'>)</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='fire_event identifier id'>fire_event</span><span class='lparen token'>(</span><span class='event identifier id'>event</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
@@ -623,29 +917,61 @@
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Unselect an option from a select box.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>option</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the option to unselect
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61</pre>
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 74</span>
 
 <span class='def def kw'>def</span> <span class='unselect identifier id'>unselect</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
   <span class='unless unless kw'>unless</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:multiple</span><span class='rbrack token'>]</span>
@@ -670,22 +996,52 @@
       <div class="method_details ">
   <p class="signature " id="value-instance_method">
   
-    - (<tt>Object</tt>) <strong>value</strong> 
+    - (<tt>String</tt>) <strong>value</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The form element&#8217;s value
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the form element&#8217;s value
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-19
-20
-21</pre>
+33
+34
+35</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 33</span>
 
 <span class='def def kw'>def</span> <span class='value identifier id'>value</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
@@ -699,13 +1055,16 @@
       <div class="method_details ">
   <p class="signature " id="visible?-instance_method">
   
-    - (<tt>Boolean</tt>) <strong>visible?</strong> 
+    - (<tt>true</tt>, <tt>false</tt>) <strong>visible?</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    
+    <p>
+The element&#8217;s visiblity
+</p>
+
 
   </div>
 </div>
@@ -715,10 +1074,16 @@
   
     <li>
       
-        <span class='type'>(<tt>Boolean</tt>)</span>
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
       
       
       
+      
+        &mdash;
+        <div class='inline'><p>
+the element&#8217;s visiblity
+</p>
+</div>
       
     </li>
   
@@ -730,12 +1095,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+105
+106
+107</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 105</span>
 
 <span class='def def kw'>def</span> <span class='visible? fid id'>visible?</span>
   <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='visible? fid id'>visible?</span>
@@ -751,7 +1116,7 @@
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:23 2010 by 
+  Generated on Sat Sep 11 15:42:06 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

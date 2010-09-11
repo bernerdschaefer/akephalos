@@ -81,7 +81,25 @@
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Driver class exposed to Capybara. It implements Capybara&#8217;s full
+driver API, and is the entry point for interaction between the test suites
+and HtmlUnit.
+</p>
+<p>
+This class and <tt>Capybara::Driver::Akephalos::Node</tt> are written to run on
+both MRI and JRuby, and is agnostic whether the Akephalos::Client instance
+is used directly or over DRb.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
    
     
@@ -165,7 +183,7 @@ Returns the value of attribute rack_server.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#driver-class_method" title="driver (class method)">+ (Object) <strong>driver</strong> </a>
+      <a href="#driver-class_method" title="driver (class method)">+ (Client) <strong>driver</strong> </a>
     
 
     
@@ -178,7 +196,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+An instance of Akephalos::Client.
+</p>
+</div></span>
   
 </li>
 
@@ -195,7 +216,7 @@ Returns the value of attribute rack_server.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#body-instance_method" title="#body (instance method)">- (Object) <strong>body</strong> </a>
+      <a href="#body-instance_method" title="#body (instance method)">- (String) <strong>body</strong> </a>
     
 
     
@@ -208,7 +229,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The page&#8217;s modified source.
+</p>
+</div></span>
   
 </li>
 
@@ -229,7 +253,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The browser.
+</p>
+</div></span>
   
 </li>
 
@@ -237,7 +264,7 @@ Returns the value of attribute rack_server.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#current_url-instance_method" title="#current_url (instance method)">- (Object) <strong>current_url</strong> </a>
+      <a href="#current_url-instance_method" title="#current_url (instance method)">- (String) <strong>current_url</strong> </a>
     
 
     
@@ -250,7 +277,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The page&#8217;s current URL.
+</p>
+</div></span>
   
 </li>
 
@@ -271,7 +301,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Execute JavaScript against the current page and return the results.
+</p>
+</div></span>
   
 </li>
 
@@ -279,7 +312,7 @@ Returns the value of attribute rack_server.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#execute_script-instance_method" title="#execute_script (instance method)">- (Object) <strong>execute_script</strong>(script) </a>
+      <a href="#execute_script-instance_method" title="#execute_script (instance method)">- (nil) <strong>execute_script</strong>(script) </a>
     
 
     
@@ -292,7 +325,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Execute JavaScript against the current page, discarding any return value.
+</p>
+</div></span>
   
 </li>
 
@@ -300,7 +336,7 @@ Returns the value of attribute rack_server.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#find-instance_method" title="#find (instance method)">- (Object) <strong>find</strong>(selector) </a>
+      <a href="#find-instance_method" title="#find (instance method)">- (Array&lt;Node&gt;) <strong>find</strong>(selector) </a>
     
 
     
@@ -313,7 +349,10 @@ Returns the value of attribute rack_server.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Search for nodes which match the given XPath selector.
+</p>
+</div></span>
   
 </li>
 
@@ -360,7 +399,10 @@ A new instance of Akephalos.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The current page.
+</p>
+</div></span>
   
 </li>
 
@@ -368,7 +410,7 @@ A new instance of Akephalos.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#source-instance_method" title="#source (instance method)">- (Object) <strong>source</strong> </a>
+      <a href="#source-instance_method" title="#source (instance method)">- (String) <strong>source</strong> </a>
     
 
     
@@ -381,7 +423,10 @@ A new instance of Akephalos.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+The page&#8217;s original source.
+</p>
+</div></span>
   
 </li>
 
@@ -402,7 +447,10 @@ A new instance of Akephalos.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Visit the given path in the browser.
+</p>
+</div></span>
   
 </li>
 
@@ -410,7 +458,7 @@ A new instance of Akephalos.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#wait-instance_method" title="#wait (instance method)">- (Object) <strong>wait</strong> </a>
+      <a href="#wait-instance_method" title="#wait (instance method)">- (false) <strong>wait</strong> </a>
     
 
     
@@ -423,7 +471,11 @@ A new instance of Akephalos.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+Disable waiting in Capybara, since waiting is handled directly by
+Akephalos.
+</p>
+</div></span>
   
 </li>
 
@@ -459,14 +511,14 @@ A new instance of Akephalos
       <pre class="lines">
 
 
-104
-105
-106
-107
-108</pre>
+149
+150
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 104</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 149</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='app identifier id'>app</span><span class='rparen token'>)</span>
   <span class='@app ivar id'>@app</span> <span class='assign token'>=</span> <span class='app identifier id'>app</span>
@@ -511,12 +563,12 @@ Returns the value of attribute app
       <pre class="lines">
 
 
-98
-99
-100</pre>
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 142</span>
 
 <span class='def def kw'>def</span> <span class='app identifier id'>app</span>
   <span class='@app ivar id'>@app</span>
@@ -554,12 +606,12 @@ Returns the value of attribute rack_server
       <pre class="lines">
 
 
-98
-99
-100</pre>
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 142</span>
 
 <span class='def def kw'>def</span> <span class='rack_server identifier id'>rack_server</span>
   <span class='@rack_server ivar id'>@rack_server</span>
@@ -580,22 +632,52 @@ Returns the value of attribute rack_server
       <div class="method_details first">
   <p class="signature first" id="driver-class_method">
   
-    + (<tt>Object</tt>) <strong>driver</strong> 
+    + (<tt>Client</tt>) <strong>driver</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+An instance of Akephalos::Client
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Client</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+an instance of Akephalos::Client
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-100
-101
-102</pre>
+145
+146
+147</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 145</span>
 
 <span class='def def kw'>def</span> <span class='self self kw'>self</span><span class='dot token'>.</span><span class='driver identifier id'>driver</span>
   <span class='@driver ivar id'>@driver</span> <span class='opasgn op'>||=</span> <span class='Akephalos constant id'>Akephalos</span><span class='colon2 op'>::</span><span class='Client constant id'>Client</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
@@ -615,22 +697,52 @@ Returns the value of attribute rack_server
       <div class="method_details first">
   <p class="signature first" id="body-instance_method">
   
-    - (<tt>Object</tt>) <strong>body</strong> 
+    - (<tt>String</tt>) <strong>body</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The page&#8217;s modified source
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s modified source
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-118
-119
-120</pre>
+168
+169
+170</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 168</span>
 
 <span class='def def kw'>def</span> <span class='body identifier id'>body</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='modified_source identifier id'>modified_source</span>
@@ -648,18 +760,48 @@ Returns the value of attribute rack_server
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The browser
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the browser
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-144
-145
-146</pre>
+209
+210
+211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 209</span>
 
 <span class='def def kw'>def</span> <span class='browser identifier id'>browser</span>
   <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='driver identifier id'>driver</span>
@@ -673,22 +815,52 @@ Returns the value of attribute rack_server
       <div class="method_details ">
   <p class="signature " id="current_url-instance_method">
   
-    - (<tt>Object</tt>) <strong>current_url</strong> 
+    - (<tt>String</tt>) <strong>current_url</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The page&#8217;s current URL
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s current URL
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-122
-123
-124</pre>
+173
+174
+175</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 173</span>
 
 <span class='def def kw'>def</span> <span class='current_url identifier id'>current_url</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='current_url identifier id'>current_url</span>
@@ -706,18 +878,69 @@ Returns the value of attribute rack_server
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute JavaScript against the current page and return the results.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>script</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the JavaScript to be executed
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the result of the JavaScript
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-136
-137
-138</pre>
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 136</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 199</span>
 
 <span class='def def kw'>def</span> <span class='evaluate_script identifier id'>evaluate_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='evaluate_script identifier id'>evaluate_script</span> <span class='script identifier id'>script</span>
@@ -731,22 +954,67 @@ Returns the value of attribute rack_server
       <div class="method_details ">
   <p class="signature " id="execute_script-instance_method">
   
-    - (<tt>Object</tt>) <strong>execute_script</strong>(script) 
+    - (<tt>nil</tt>) <strong>execute_script</strong>(script) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute JavaScript against the current page, discarding any return value.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>script</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the JavaScript to be executed
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-132
-133
-134</pre>
+191
+192
+193</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 132</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 191</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='execute_script identifier id'>execute_script</span> <span class='script identifier id'>script</span>
@@ -760,24 +1028,75 @@ Returns the value of attribute rack_server
       <div class="method_details ">
   <p class="signature " id="find-instance_method">
   
-    - (<tt>Object</tt>) <strong>find</strong>(selector) 
+    - (<tt>Array&lt;<a href="Akephalos/Node.html" title="Capybara::Driver::Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>find</strong>(selector) 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Search for nodes which match the given XPath selector.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>selector</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+XPath query
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<a href="Akephalos/Node.html" title="Capybara::Driver::Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the matched nodes
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-126
-127
-128
-129
-130</pre>
+181
+182
+183
+184
+185</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 181</span>
 
 <span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
   <span class='nodes identifier id'>nodes</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -797,18 +1116,48 @@ Returns the value of attribute rack_server
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The current page
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'></span>
+      
+      
+      
+      
+        
+        <div class='inline'><p>
+the current page
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-140
-141
-142</pre>
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 140</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 204</span>
 
 <span class='def def kw'>def</span> <span class='page identifier id'>page</span>
   <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='page identifier id'>page</span>
@@ -822,22 +1171,52 @@ Returns the value of attribute rack_server
       <div class="method_details ">
   <p class="signature " id="source-instance_method">
   
-    - (<tt>Object</tt>) <strong>source</strong> 
+    - (<tt>String</tt>) <strong>source</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The page&#8217;s original source
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s original source
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-114
-115
-116</pre>
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 163</span>
 
 <span class='def def kw'>def</span> <span class='source identifier id'>source</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='source identifier id'>source</span>
@@ -855,18 +1234,50 @@ Returns the value of attribute rack_server
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Visit the given path in the browser.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>path</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+relative path to visit
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-110
-111
-112</pre>
+158
+159
+160</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 158</span>
 
 <span class='def def kw'>def</span> <span class='visit identifier id'>visit</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span>
   <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='visit identifier id'>visit</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='lparen token'>(</span><span class='path identifier id'>path</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
@@ -880,22 +1291,47 @@ Returns the value of attribute rack_server
       <div class="method_details ">
   <p class="signature " id="wait-instance_method">
   
-    - (<tt>Object</tt>) <strong>wait</strong> 
+    - (<tt>false</tt>) <strong>wait</strong> 
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Disable waiting in Capybara, since waiting is handled directly by
+Akephalos.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>false</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-148
-149
-150</pre>
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 148</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 217</span>
 
 <span class='def def kw'>def</span> <span class='wait identifier id'>wait</span>
   <span class='false false kw'>false</span>
@@ -911,7 +1347,7 @@ Returns the value of attribute rack_server
 </div>
     
     <div id="footer">
-  Generated on Fri Sep 10 11:04:24 2010 by 
+  Generated on Sat Sep 11 15:42:05 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>
