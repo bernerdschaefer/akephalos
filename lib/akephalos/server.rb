@@ -1,4 +1,3 @@
-# This file runs a JRuby DRb server, and is run by `akephalos --server`.
 require "pathname"
 require "drb/drb"
 require "akephalos/client"
@@ -15,11 +14,18 @@ end
 [Akephalos::Page, Akephalos::Node].each { |klass| klass.send(:include, DRbUndumped) }
 
 module Akephalos
+
+  # Akephalos::Server is used by `akephalos --server` to start a DRb server
+  # serving an instance of Akephalos::Client.
   class Server
+    # Start DRb service for an Akephalos::Client.
+    #
+    # @param [String] socket_file path to socket file to start
     def self.start!(socket_file)
       client = Client.new
       DRb.start_service("drbunix://#{socket_file}", client)
       DRb.thread.join
     end
   end
+
 end
