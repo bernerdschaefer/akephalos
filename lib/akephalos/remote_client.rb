@@ -2,10 +2,10 @@ require 'drb/drb'
 
 # We need to define our own NativeException class for the cases when a native
 # exception is raised by the JRuby DRb server.
-class NativeException < StandardError; end # :nodoc:
+class NativeException < StandardError; end
 
 module Akephalos
-  ##
+
   # The +RemoteClient+ class provides an interface to an +Akephalos::Client+
   # isntance on a remote DRb server.
   #
@@ -16,9 +16,10 @@ module Akephalos
   class RemoteClient
     @socket_file = "/tmp/akephalos.#{Process.pid}.sock"
 
-    ##
-    # Starts a remote akephalos server and returns the remote Akephalos::Client
+    # Start a remote akephalos server and return the remote Akephalos::Client
     # instance.
+    #
+    # @return [DRbObject] the remote client instance
     def self.new
       start!
       DRb.start_service
@@ -31,8 +32,7 @@ module Akephalos
       client
     end
 
-    ##
-    # Start a remote server process, returning when it is available for use.
+    # Start a remote server process and return when it is available for use.
     def self.start!
       remote_client = fork do
         exec("#{Akephalos::BIN_DIR + 'akephalos'} #{@socket_file}")
