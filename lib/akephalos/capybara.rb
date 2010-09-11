@@ -141,6 +141,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   attr_reader :app, :rack_server
 
+  # @return [Client] an instance of Akephalos::Client
   def self.driver
     @driver ||= Akephalos::Client.new
   end
@@ -151,50 +152,76 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     @rack_server.boot if Capybara.run_server
   end
 
+  # Visit the given path in the browser.
+  #
+  # @param [String] path relative path to visit
   def visit(path)
     browser.visit(url(path))
   end
 
+  # @return [String] the page's original source
   def source
     page.source
   end
 
+  # @return [String] the page's modified source
   def body
     page.modified_source
   end
 
+  # @return [String] the page's current URL
   def current_url
     page.current_url
   end
 
+  # Search for nodes which match the given XPath selector.
+  #
+  # @param [String] selector XPath query
+  # @return [Array<Node>] the matched nodes
   def find(selector)
     nodes = []
     page.find(selector).each { |node| nodes << Node.new(self, node) }
     nodes
   end
 
+  # Execute JavaScript against the current page, discarding any return value.
+  #
+  # @param [String] script the JavaScript to be executed
+  # @return [nil]
   def execute_script(script)
     page.execute_script script
   end
 
+  # Execute JavaScript against the current page and return the results.
+  #
+  # @param [String] script the JavaScript to be executed
+  # @return the result of the JavaScript
   def evaluate_script(script)
     page.evaluate_script script
   end
 
+  # @return the current page
   def page
     browser.page
   end
 
+  # @return the browser
   def browser
     self.class.driver
   end
 
+  # Disable waiting in Capybara, since waiting is handled directly by
+  # Akephalos.
+  #
+  # @return [false]
   def wait
     false
   end
 
-private
+  private
 
+  # @param [String] path
+  # @return [String] the absolute URL for the given path
   def url(path)
     rack_server.url(path)
   end
