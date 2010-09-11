@@ -6,10 +6,6 @@ class SlowApp < TestApp
     "<p>Loaded!</p>"
   end
 
-  get '/really_slow_page' do
-    sleep 5
-  end
-
   get '/slow_ajax_load' do
     <<-HTML
   <head>
@@ -19,7 +15,6 @@ class SlowApp < TestApp
     <script type="text/javascript">
       $(function() {
        $('#ajax_load').click(function() {
-         // $('body').html("<p>Loaded!</p>");
          $('body').load('/slow_page');
          return false;
        });
