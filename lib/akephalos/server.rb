@@ -6,6 +6,9 @@ require "akephalos/client"
 # evaluated. There are, however, different implementations of this between ruby
 # and jruby, so we realize these messages when sending over DRb.
 class NameError::Message
+  # @note This method is called by DRb before sending the error to the remote
+  # connection.
+  # @return [String] the inner message.
   def _dump
     to_s
   end
