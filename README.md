@@ -50,7 +50,7 @@ Here's some sample RSpec code:
 
 ## Resources
 
-* [API Documentation](http://github.com/bernerdschaefer/akephalos/api)
+* [API Documentation](http://bernerdschaefer.github.com/akephalos/api)
 * [Source code](http://github.com/bernerdschaefer/akephalos) and
   [issues](http://github.com/bernerdschaefer/akephalos/issues) are hosted on
   github.
