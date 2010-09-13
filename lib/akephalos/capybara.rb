@@ -169,6 +169,11 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     page.modified_source
   end
 
+  # @return [Hash{String => String}] the page's response headers
+  def response_headers
+    page.response_headers
+  end
+
   # @return [String] the page's current URL
   def current_url
     page.current_url

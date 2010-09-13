@@ -33,6 +33,14 @@ module Akephalos
       @_page.getWebResponse.getContentAsString
     end
 
+    # @return [Hash{String => String}] the page's response headers
+    def response_headers
+      headers = @_page.getWebResponse.getResponseHeaders.map do |header|
+        [header.getName, header.getValue]
+      end
+      Hash[*headers.flatten]
+    end
+
     # @return [String] the current page's URL.
     def current_url
       @_page.getWebResponse.getRequestSettings.getUrl.toString
