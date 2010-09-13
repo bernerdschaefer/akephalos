@@ -174,6 +174,11 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     page.response_headers
   end
 
+  # @return [Integer] the response's status code
+  def status_code
+    page.status_code
+  end
+
   # @return [String] the page's current URL
   def current_url
     page.current_url

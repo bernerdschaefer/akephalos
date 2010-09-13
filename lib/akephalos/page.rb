@@ -41,6 +41,11 @@ module Akephalos
       Hash[*headers.flatten]
     end
 
+    # @return [Integer] the response's status code
+    def status_code
+      @_page.getWebResponse.getStatusCode
+    end
+
     # @return [String] the current page's URL.
     def current_url
       @_page.getWebResponse.getRequestSettings.getUrl.toString
