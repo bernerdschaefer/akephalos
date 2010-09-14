@@ -264,6 +264,30 @@ The browser.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#cleanup%21-instance_method" title="#cleanup! (instance method)">- (Object) <strong>cleanup!</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Clear all cookie session data.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#current_url-instance_method" title="#current_url (instance method)">- (String) <strong>current_url</strong> </a>
     
 
@@ -410,6 +434,30 @@ The current page.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#response_headers-instance_method" title="#response_headers (instance method)">- (Hash{String =&gt; String}) <strong>response_headers</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The page&#8217;s response headers.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#source-instance_method" title="#source (instance method)">- (String) <strong>source</strong> </a>
     
 
@@ -425,6 +473,30 @@ The current page.
   
     <span class="summary_desc"><div class='inline'><p>
 The page&#8217;s original source.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#status_code-instance_method" title="#status_code (instance method)">- (Integer) <strong>status_code</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The response&#8217;s status code.
 </p>
 </div></span>
   
@@ -474,6 +546,30 @@ Visit the given path in the browser.
     <span class="summary_desc"><div class='inline'><p>
 Disable waiting in Capybara, since waiting is handled directly by
 Akephalos.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#within_frame-instance_method" title="#within_frame (instance method)">- (Object) <strong>within_frame</strong>(frame_id, &amp;block) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Execute the given block within the context of a specified frame.
 </p>
 </div></span>
   
@@ -796,15 +892,55 @@ the browser
       <pre class="lines">
 
 
-209
-210
-211</pre>
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 209</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 234</span>
 
 <span class='def def kw'>def</span> <span class='browser identifier id'>browser</span>
   <span class='self self kw'>self</span><span class='dot token'>.</span><span class='class identifier id'>class</span><span class='dot token'>.</span><span class='driver identifier id'>driver</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="cleanup!-instance_method">
+  
+    - (<tt>Object</tt>) <strong>cleanup!</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Clear all cookie session data.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+193
+194
+195</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 193</span>
+
+<span class='def def kw'>def</span> <span class='cleanup! fid id'>cleanup!</span>
+  <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='clear_cookies identifier id'>clear_cookies</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -855,12 +991,12 @@ the page&#8217;s current URL
       <pre class="lines">
 
 
-173
-174
-175</pre>
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 198</span>
 
 <span class='def def kw'>def</span> <span class='current_url identifier id'>current_url</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='current_url identifier id'>current_url</span>
@@ -935,12 +1071,12 @@ the result of the JavaScript
       <pre class="lines">
 
 
-199
-200
-201</pre>
+224
+225
+226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 199</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 224</span>
 
 <span class='def def kw'>def</span> <span class='evaluate_script identifier id'>evaluate_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='evaluate_script identifier id'>evaluate_script</span> <span class='script identifier id'>script</span>
@@ -1009,12 +1145,12 @@ the JavaScript to be executed
       <pre class="lines">
 
 
-191
-192
-193</pre>
+216
+217
+218</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 216</span>
 
 <span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='execute_script identifier id'>execute_script</span> <span class='script identifier id'>script</span>
@@ -1089,14 +1225,14 @@ the matched nodes
       <pre class="lines">
 
 
-181
-182
-183
-184
-185</pre>
+206
+207
+208
+209
+210</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 206</span>
 
 <span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
   <span class='nodes identifier id'>nodes</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
@@ -1152,15 +1288,74 @@ the current page
       <pre class="lines">
 
 
-204
-205
-206</pre>
+229
+230
+231</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 204</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 229</span>
 
 <span class='def def kw'>def</span> <span class='page identifier id'>page</span>
   <span class='browser identifier id'>browser</span><span class='dot token'>.</span><span class='page identifier id'>page</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="response_headers-instance_method">
+  
+    - (<tt>Hash{String =&gt; String}</tt>) <strong>response_headers</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The page&#8217;s response headers
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Hash{String =&gt; String}</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the page&#8217;s response headers
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+173
+174
+175</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 173</span>
+
+<span class='def def kw'>def</span> <span class='response_headers identifier id'>response_headers</span>
+  <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='response_headers identifier id'>response_headers</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1220,6 +1415,65 @@ the page&#8217;s original source
 
 <span class='def def kw'>def</span> <span class='source identifier id'>source</span>
   <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='source identifier id'>source</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="status_code-instance_method">
+  
+    - (<tt>Integer</tt>) <strong>status_code</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The response&#8217;s status code
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the response&#8217;s status code
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+178
+179
+180</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 178</span>
+
+<span class='def def kw'>def</span> <span class='status_code identifier id'>status_code</span>
+  <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='status_code identifier id'>status_code</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1326,15 +1580,99 @@ Akephalos.
       <pre class="lines">
 
 
-217
-218
-219</pre>
+242
+243
+244</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 217</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 242</span>
 
 <span class='def def kw'>def</span> <span class='wait identifier id'>wait</span>
   <span class='false false kw'>false</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="within_frame-instance_method">
+  
+    - (<tt>Object</tt>) <strong>within_frame</strong>(frame_id, &amp;block) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Execute the given block within the context of a specified frame.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>frame_id</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the frame&#8217;s id
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+        <span class='type'>(<tt>Capybara::ElementNotFound</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+if the frame is not found
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 186</span>
+
+<span class='def def kw'>def</span> <span class='within_frame identifier id'>within_frame</span><span class='lparen token'>(</span><span class='frame_id identifier id'>frame_id</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+  <span class='unless unless kw'>unless</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='within_frame identifier id'>within_frame</span><span class='lparen token'>(</span><span class='frame_id identifier id'>frame_id</span><span class='comma token'>,</span> <span class='bitand op'>&amp;</span><span class='block identifier id'>block</span><span class='rparen token'>)</span>
+    <span class='raise identifier id'>raise</span> <span class='Capybara constant id'>Capybara</span><span class='colon2 op'>::</span><span class='ElementNotFound constant id'>ElementNotFound</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Unable to find frame with id '#{frame_id}'&quot;</span>
+  <span class='end end kw'>end</span>
 <span class='end end kw'>end</span>
 </pre>
     </td>
@@ -1347,7 +1685,7 @@ Akephalos.
 </div>
     
     <div id="footer">
-  Generated on Sat Sep 11 22:24:50 2010 by 
+  Generated on Tue Sep 14 17:54:09 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>

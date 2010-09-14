@@ -75,7 +75,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/akephalos/client.rb<span class="defines">,<br />
-  lib/akephalos/client/filter.rb,<br /> lib/akephalos/client/listener.rb</span>
+  lib/akephalos/client/filter.rb</span>
 </dd>
   
 </dl>
@@ -100,7 +100,7 @@ and allowing navigation.
     
    
     
-      <strong class="classes">Classes:</strong> <a href="Client/Filter.html" title="Akephalos::Client::Filter (class)">Filter</a>, <a href="Client/Listener.html" title="Akephalos::Client::Listener (class)">Listener</a>
+      <strong class="classes">Classes:</strong> <a href="Client/Filter.html" title="Akephalos::Client::Filter (class)">Filter</a>
     
   
 </p>
@@ -112,7 +112,7 @@ and allowing navigation.
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#page-instance_method" title="#page (instance method)">- (Object) <strong>page</strong> </a>
+      <a href="#page-instance_method" title="#page (instance method)">- (Page) <strong>page</strong> </a>
     
 
     
@@ -129,7 +129,7 @@ and allowing navigation.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Returns the value of attribute page.
+The current page.
 </p>
 </div></span>
   
@@ -146,6 +146,30 @@ Returns the value of attribute page.
     </h2>
 
     <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear_cookies-instance_method" title="#clear_cookies (instance method)">- (Object) <strong>clear_cookies</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Clear all cookies for this browser session.
+</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -251,6 +275,7 @@ A new instance of Client
       <pre class="lines">
 
 
+26
 27
 28
 29
@@ -261,19 +286,16 @@ A new instance of Client
 34
 35
 36
-37
-38
-39</pre>
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 26</span>
 
 <span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
   <span class='@_client ivar id'>@_client</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='concurrent identifier id'>concurrent</span><span class='dot token'>.</span><span class='FutureTask constant id'>FutureTask</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span>
     <span class='client identifier id'>client</span> <span class='assign token'>=</span> <span class='WebClient constant id'>WebClient</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
 
     <span class='Filter constant id'>Filter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='client identifier id'>client</span><span class='rparen token'>)</span>
-    <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='addWebWindowListener identifier id'>addWebWindowListener</span><span class='lparen token'>(</span><span class='Listener constant id'>Listener</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='self self kw'>self</span><span class='rparen token'>)</span><span class='rparen token'>)</span>
     <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='setAjaxController identifier id'>setAjaxController</span><span class='lparen token'>(</span><span class='NicelyResynchronizingAjaxController constant id'>NicelyResynchronizingAjaxController</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
     <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='setCssErrorHandler identifier id'>setCssErrorHandler</span><span class='lparen token'>(</span><span class='SilentCssErrorHandler constant id'>SilentCssErrorHandler</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
 
@@ -298,35 +320,56 @@ A new instance of Client
       <div class="method_details first">
   <p class="signature first" id="page-instance_method">
   
-    - (<tt>Object</tt>) <strong>page</strong> 
+    - (<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>) <strong>page</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Returns the value of attribute page
+The current page
 </p>
 
 
   </div>
 </div>
 <div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
   
+    <li>
+      
+        <span class='type'>(<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the current page
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-25
-26
-27</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 64</span>
 
 <span class='def def kw'>def</span> <span class='page identifier id'>page</span>
+  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getCurrentWindow identifier id'>getCurrentWindow</span><span class='dot token'>.</span><span class='getTopWindow identifier id'>getTopWindow</span><span class='dot token'>.</span><span class='getEnclosedPage identifier id'>getEnclosedPage</span>
   <span class='@page ivar id'>@page</span>
 <span class='end end kw'>end</span>
 </pre>
@@ -343,7 +386,47 @@ Returns the value of attribute page
     
     
       <div class="method_details first">
-  <p class="signature first" id="configuration=-instance_method">
+  <p class="signature first" id="clear_cookies-instance_method">
+  
+    - (<tt>Object</tt>) <strong>clear_cookies</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Clear all cookies for this browser session.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 59</span>
+
+<span class='def def kw'>def</span> <span class='clear_cookies identifier id'>clear_cookies</span>
+  <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getCookieManager identifier id'>getCookieManager</span><span class='dot token'>.</span><span class='clearCookies identifier id'>clearCookies</span>
+<span class='end end kw'>end</span>
+</pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="configuration=-instance_method">
   
     - (<tt>Hash</tt>) <strong>configuration=</strong>(config) 
   
@@ -416,12 +499,12 @@ the configuration
       <pre class="lines">
 
 
-47
-48
-49</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 45</span>
 
 <span class='def def kw'>def</span> <span class='configuration= identifier id'>configuration=</span><span class='lparen token'>(</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
   <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span> <span class='assign token'>=</span> <span class='config identifier id'>config</span>
@@ -496,13 +579,13 @@ the loaded page
       <pre class="lines">
 
 
+53
+54
 55
-56
-57
-58</pre>
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 53</span>
 
 <span class='def def kw'>def</span> <span class='visit identifier id'>visit</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
   <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
@@ -519,7 +602,7 @@ the loaded page
 </div>
     
     <div id="footer">
-  Generated on Sat Sep 11 22:24:51 2010 by 
+  Generated on Tue Sep 14 17:54:11 2010 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
   0.5.8 (ruby-1.8.7).
 </div>
