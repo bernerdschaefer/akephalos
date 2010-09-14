@@ -10,5 +10,6 @@ describe Capybara::Driver::Akephalos do
   it_should_behave_like "driver with javascript support"
   it_should_behave_like "driver with header support"
   it_should_behave_like "driver with status code support"
+  it_should_behave_like "driver with frame support"
 
 end
