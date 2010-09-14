@@ -24,7 +24,7 @@ task :install => (JAVA ? 'build:java' : 'build') do
   system "gem install #{gemfile}"
 end
 
-task :release => :build_all do
+task :release => 'build:all' do
   puts "Tagging #{Akephalos::VERSION}..."
   system "git tag -a #{Akephalos::VERSION} -m 'Tagging #{Akephalos::VERSION}'"
   puts "Pushing to Github..."
