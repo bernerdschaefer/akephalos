@@ -55,6 +55,11 @@ else
         page
       end
 
+      # Clear all cookies for this browser session.
+      def clear_cookies
+        client.getCookieManager.clearCookies
+      end
+
       # @return [Page] the current page
       def page
         self.page = client.getCurrentWindow.getTopWindow.getEnclosedPage

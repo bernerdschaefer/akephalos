@@ -189,6 +189,11 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     end
   end
 
+  # Clear all cookie session data.
+  def cleanup!
+    browser.clear_cookies
+  end
+
   # @return [String] the page's current URL
   def current_url
     page.current_url
