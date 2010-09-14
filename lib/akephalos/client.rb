@@ -11,7 +11,6 @@ else
   require 'akephalos/node'
 
   require 'akephalos/client/filter'
-  require 'akephalos/client/listener'
 
   module Akephalos
 
@@ -29,7 +28,6 @@ else
           client = WebClient.new
 
           Filter.new(client)
-          client.addWebWindowListener(Listener.new(self))
           client.setAjaxController(NicelyResynchronizingAjaxController.new)
           client.setCssErrorHandler(SilentCssErrorHandler.new)
 
@@ -55,6 +53,12 @@ else
       def visit(url)
         client.getPage(url)
         page
+      end
+
+      # @return [Page] the current page
+      def page
+        self.page = client.getCurrentWindow.getTopWindow.getEnclosedPage
+        @page
       end
 
       # Update the current page.
