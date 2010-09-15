@@ -1,7 +1,7 @@
 # Begin a new Capybara session, by default connecting to localhost on port
 # 3000.
 def session
-  Capybara.app_host = "http://localhost:3000"
+  Capybara.app_host ||= "http://localhost:3000"
   @session ||= Capybara::Session.new(:Akephalos)
 end
 alias page session
