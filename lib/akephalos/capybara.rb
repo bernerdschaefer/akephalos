@@ -190,8 +190,15 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   end
 
   # Clear all cookie session data.
+  # @deprecated This method is deprecated in Capybara's master branch. Use
+  # {#reset!} instead.
   def cleanup!
-    browser.clear_cookies
+    reset!
+  end
+
+  # Clear all cookie session data.
+  def reset!
+    cookies.clear
   end
 
   # @return [String] the page's current URL
@@ -233,6 +240,11 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   # @return the browser
   def browser
     self.class.driver
+  end
+
+  # @return the session cookies
+  def cookies
+    browser.cookies
   end
 
   # Disable waiting in Capybara, since waiting is handled directly by

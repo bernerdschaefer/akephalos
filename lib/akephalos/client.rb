@@ -10,6 +10,7 @@ else
   require 'akephalos/page'
   require 'akephalos/node'
 
+  require 'akephalos/client/cookies'
   require 'akephalos/client/filter'
 
   module Akephalos
@@ -55,9 +56,9 @@ else
         page
       end
 
-      # Clear all cookies for this browser session.
-      def clear_cookies
-        client.getCookieManager.clearCookies
+      # @return [Cookies] the cookies for this session
+      def cookies
+        @cookies ||= Cookies.new(client.getCookieManager)
       end
 
       # @return [Page] the current page

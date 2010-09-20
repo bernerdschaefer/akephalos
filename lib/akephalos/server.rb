@@ -14,7 +14,12 @@ class NameError::Message
   end
 end
 
-[Akephalos::Page, Akephalos::Node].each { |klass| klass.send(:include, DRbUndumped) }
+[
+  Akephalos::Page,
+  Akephalos::Node,
+  Akephalos::Client::Cookies,
+  Akephalos::Client::Cookies::Cookie
+].each { |klass| klass.send(:include, DRbUndumped) }
 
 module Akephalos
 
