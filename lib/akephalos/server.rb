@@ -30,9 +30,26 @@ module Akephalos
     #
     # @param [String] socket_file path to socket file to start
     def self.start!(socket_file)
+      abort_on_parent_exit!
       client = Client.new
       DRb.start_service("drbunix://#{socket_file}", client)
       DRb.thread.join
+    end
+
+    private
+
+    # Exit if STDIN is no longer readable, which corresponds to the process
+    # which started the server exiting prematurely.
+    #
+    # @api private
+    def self.abort_on_parent_exit!
+      Thread.new do
+        begin
+          STDIN.read
+        rescue IOError
+          exit
+        end
+      end
     end
   end
 

@@ -34,24 +34,22 @@ module Akephalos
 
     # Start a remote server process and return when it is available for use.
     def self.start!
-      remote_client = fork do
-        exec("#{Akephalos::BIN_DIR + 'akephalos'} #{@socket_file}")
-      end
+      remote_client = IO.popen("#{Akephalos::BIN_DIR + 'akephalos'} #{@socket_file}")
 
       # Set up a monitor thread to detect if the forked server exits
       # prematurely.
-      server_monitor = Thread.new { Thread.current[:exited] = Process.wait }
+      server_monitor = Thread.new { Thread.current[:exited] = Process.wait(remote_client.pid) }
 
       # Wait for the server to be accessible on the socket we specified.
       until File.exists?(@socket_file)
         exit!(1) if server_monitor[:exited]
-        sleep 1
+        sleep 0.5
       end
       server_monitor.kill
 
       # Ensure that the remote server shuts down gracefully when we are
       # finished.
-      at_exit { Process.kill(:INT, remote_client); File.unlink(@socket_file) }
+      at_exit { Process.kill(:INT, remote_client.pid); File.unlink(@socket_file) }
     end
   end
 end
