@@ -19,18 +19,15 @@ else
     # point for all interaction with the browser, exposing its current page and
     # allowing navigation.
     class Client
-      java_import 'com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController'
-      java_import 'com.gargoylesoftware.htmlunit.SilentCssErrorHandler'
-
       attr_reader :page
 
       def initialize
         @_client = java.util.concurrent.FutureTask.new do
-          client = WebClient.new
+          client = HtmlUnit::WebClient.new
 
           Filter.new(client)
-          client.setAjaxController(NicelyResynchronizingAjaxController.new)
-          client.setCssErrorHandler(SilentCssErrorHandler.new)
+          client.setAjaxController(HtmlUnit::NicelyResynchronizingAjaxController.new)
+          client.setCssErrorHandler(HtmlUnit::SilentCssErrorHandler.new)
 
           client
         end

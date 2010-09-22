@@ -9,11 +9,7 @@ module Akephalos
     # found. If no filters are defined, or no filters match the request, then
     # the response will bubble up to HtmlUnit for the normal request/response
     # cycle.
-    class Filter < WebConnectionWrapper
-      java_import 'com.gargoylesoftware.htmlunit.util.NameValuePair'
-      java_import 'com.gargoylesoftware.htmlunit.WebResponseData'
-      java_import 'com.gargoylesoftware.htmlunit.WebResponseImpl'
-
+    class Filter < HtmlUnit::Util::WebConnectionWrapper
       # Filters an outgoing request, and if a match is found, returns the mock
       # response.
       #
@@ -23,14 +19,16 @@ module Akephalos
       def filter(request)
         if filter = find_filter(request)
           start_time = Time.now
-          headers = filter[:headers].map { |name, value| NameValuePair.new(name.to_s, value.to_s) }
-          response = WebResponseData.new(
+          headers = filter[:headers].map do |name, value|
+            HtmlUnit::Util::NameValuePair.new(name.to_s, value.to_s)
+          end
+          response = HtmlUnit::WebResponseData.new(
             filter[:body].to_s.to_java_bytes,
             filter[:status],
             HTTP_STATUS_CODES.fetch(filter[:status], "Unknown"),
             headers
           )
-          WebResponseImpl.new(response, request, Time.now - start_time)
+          HtmlUnit::WebResponseImpl.new(response, request, Time.now - start_time)
         end
       end
 

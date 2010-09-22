@@ -13,15 +13,26 @@ java.lang.System.setProperty("org.apache.commons.logging.Log", "org.apache.commo
 java.lang.System.setProperty("org.apache.commons.logging.simplelog.defaultlog", "fatal")
 java.lang.System.setProperty("org.apache.commons.logging.simplelog.showdatetime", "true")
 
-java_import "com.gargoylesoftware.htmlunit.WebClient"
-java_import "com.gargoylesoftware.htmlunit.util.WebConnectionWrapper"
-java_import 'com.gargoylesoftware.htmlunit.HttpMethod'
+# Container module for com.gargoylesoftware.htmlunit namespace.
+module HtmlUnit
+  java_import "com.gargoylesoftware.htmlunit.BrowserVersion"
+  java_import "com.gargoylesoftware.htmlunit.History"
+  java_import "com.gargoylesoftware.htmlunit.HttpMethod"
+  java_import "com.gargoylesoftware.htmlunit.NicelyResynchronizingAjaxController"
+  java_import "com.gargoylesoftware.htmlunit.SilentCssErrorHandler"
+  java_import "com.gargoylesoftware.htmlunit.WebClient"
+  java_import "com.gargoylesoftware.htmlunit.WebResponseData"
+  java_import "com.gargoylesoftware.htmlunit.WebResponseImpl"
 
+  # Container module for com.gargoylesoftware.htmlunit.util namespace.
+  module Util
+    java_import "com.gargoylesoftware.htmlunit.util.NameValuePair"
+    java_import "com.gargoylesoftware.htmlunit.util.WebConnectionWrapper"
+  end
 
-# Disable history tracking
-com.gargoylesoftware.htmlunit.History.field_reader :ignoreNewPages_
+  # Disable history tracking
+  History.field_reader :ignoreNewPages_
 
-# Run in Firefox compatibility mode
-com.gargoylesoftware.htmlunit.BrowserVersion.setDefault(
-  com.gargoylesoftware.htmlunit.BrowserVersion::FIREFOX_3
-)
+  # Run in Firefox compatibility mode
+  BrowserVersion.setDefault(BrowserVersion::FIREFOX_3)
+end
