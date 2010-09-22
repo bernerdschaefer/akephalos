@@ -28,11 +28,11 @@ module Akephalos
   class Server
     # Start DRb service for an Akephalos::Client.
     #
-    # @param [String] socket_file path to socket file to start
-    def self.start!(socket_file)
+    # @param [String] port attach server to
+    def self.start!(port)
       abort_on_parent_exit!
       client = Client.new
-      DRb.start_service("drbunix://#{socket_file}", client)
+      DRb.start_service("druby://127.0.0.1:#{port}", client)
       DRb.thread.join
     end
 

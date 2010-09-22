@@ -7,7 +7,7 @@ require "optparse"
 options = { :interactive => false }
 
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: akephalos [--interactive, --use-htmlunit-snapshot] | [--server] <socket_file>"
+  opts.banner = "Usage: akephalos [--interactive, --use-htmlunit-snapshot] | [--server] <port>"
   opts.on("-s", "--server", "Run in server mode (default)")
   opts.on("-i", "--interactive", "Run in interactive mode") { options[:interactive] = true }
   opts.on("--use-htmlunit-snapshot", "Use the snapshot of htmlunit") { options[:use_htmlunit_snapshot] = true }
@@ -50,7 +50,7 @@ when options[:interactive]
   require 'akephalos/console'
   Akephalos::Console.start
 else
-  unless socket_file = ARGV[0]
+  unless port = ARGV[0]
     puts parser.help
     exit
   end
@@ -58,7 +58,7 @@ else
   if RUBY_PLATFORM == "java"
     $:.unshift("vendor", lib, src)
     require 'akephalos/server'
-    Akephalos::Server.start!(socket_file)
+    Akephalos::Server.start!(port)
   else
     require 'rubygems'
     require 'jruby-jars'
@@ -74,7 +74,7 @@ else
     ruby_args = [
       "-I", "vendor:#{lib}:#{src}",
       "-r", "akephalos/server",
-      "-e", "Akephalos::Server.start!(#{socket_file.inspect})"
+      "-e", "Akephalos::Server.start!(#{port.inspect})"
     ]
 
     # Bundler sets ENV["RUBYOPT"] to automatically load bundler/setup.rb, but
