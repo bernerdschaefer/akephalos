@@ -24,6 +24,10 @@ class Application < TestApp
   </body>
    HTML
   end
+
+  get '/user_agent_detection' do
+    request.user_agent
+  end
 end
 
 if $0 == __FILE__

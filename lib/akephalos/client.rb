@@ -58,6 +58,26 @@ else
         @cookies ||= Cookies.new(client.getCookieManager)
       end
 
+      # @return [String] the current user agent string
+      def user_agent
+        @user_agent || client.getBrowserVersion.getUserAgent
+      end
+
+      # Set the User-Agent header for this session. If :default is given, the
+      # User-Agent header will be reset to the default browser's user agent.
+      #
+      # @param [:default] user_agent the default user agent
+      # @param [String] user_agent the user agent string to use
+      def user_agent=(user_agent)
+        if user_agent == :default
+          @user_agent = nil
+          client.removeRequestHeader("User-Agent")
+        else
+          @user_agent = user_agent
+          client.addRequestHeader("User-Agent", user_agent)
+        end
+      end
+
       # @return [Page] the current page
       def page
         self.page = client.getCurrentWindow.getTopWindow.getEnclosedPage

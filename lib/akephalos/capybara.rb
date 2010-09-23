@@ -247,6 +247,20 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     browser.cookies
   end
 
+  # @return [String] the current user agent string
+  def user_agent
+    browser.user_agent
+  end
+
+  # Set the User-Agent header for this session. If :default is given, the
+  # User-Agent header will be reset to the default browser's user agent.
+  #
+  # @param [:default] user_agent the default user agent
+  # @param [String] user_agent the user agent string to use
+  def user_agent=(user_agent)
+    browser.user_agent = user_agent
+  end
+
   # Disable waiting in Capybara, since waiting is handled directly by
   # Akephalos.
   #
