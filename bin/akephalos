@@ -30,15 +30,15 @@ when options[:use_htmlunit_snapshot]
   Dir.chdir("vendor") do
     $stdout.print "Downloading latest snapshot... "
     $stdout.flush
-    %x[curl -O http://build.canoo.com/htmlunit/artifacts/htmlunit-2.8-SNAPSHOT-with-dependencies.zip &> /dev/null]
+    %x[curl -O http://build.canoo.com/htmlunit/artifacts/htmlunit-2.9-SNAPSHOT-with-dependencies.zip &> /dev/null]
     puts "done"
 
     $stdout.print "Extracting dependencies... "
     $stdout.flush
-    %x[unzip -j -d htmlunit htmlunit-2.8-SNAPSHOT-with-dependencies.zip htmlunit-2.8-SNAPSHOT/lib htmlunit-2.8-SNAPSHOT/lib/* &> /dev/null]
+    %x[unzip -j -d htmlunit htmlunit-2.9-SNAPSHOT-with-dependencies.zip htmlunit-2.9-SNAPSHOT/lib htmlunit-2.9-SNAPSHOT/lib/* &> /dev/null]
     puts "done"
 
-    File.unlink "htmlunit-2.8-SNAPSHOT-with-dependencies.zip"
+    File.unlink "htmlunit-2.9-SNAPSHOT-with-dependencies.zip"
   end
 
   $stdout.puts "="*40
