@@ -191,7 +191,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   # Clear all cookie session data.
   # @deprecated This method is deprecated in Capybara's master branch. Use
-  # {#reset!} instead.
+  #   {#reset!} instead.
   def cleanup!
     reset!
   end
