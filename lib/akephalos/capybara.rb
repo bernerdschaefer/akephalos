@@ -7,7 +7,9 @@
 class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   # Akephalos-specific implementation for Capybara's Node class.
-  class Node < Capybara::Node
+  class Node < Capybara::Driver::Node
+
+    alias node native
 
     # @api capybara
     # @param [String] name attribute name
@@ -56,34 +58,20 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     #
     # @api capybara
     # @param [String] option the option to select
-    def select(option)
-      result = node.select_option(option)
-
-      if result == nil
-        options = node.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+    def select_option
+      native.click
     end
 
     # Unselect an option from a select box.
     #
     # @api capybara
     # @param [String] option the option to unselect
-    def unselect(option)
-      unless self[:multiple]
-        raise Capybara::UnselectNotAllowed, "Cannot unselect option '#{option}' from single select box."
+    def unselect_option
+      unless select_node[:multiple]
+        raise Capybara::UnselectNotAllowed, "Cannot unselect option '#{value}' from single select box."
       end
 
-      result = node.unselect_option(option)
-
-      if result == nil
-        options = node.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+      select_node.native.unselect_option(text)
     end
 
     # Trigger an event on the element.
@@ -121,16 +109,21 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       node.click
     end
 
-    private
-
     # Return all child nodes which match the selector criteria.
     #
     # @api capybara
     # @return [Array<Node>] the matched nodes
-    def all_unfiltered(selector)
+    def find(selector)
       nodes = []
       node.find(selector).each { |node| nodes << Node.new(driver, node) }
       nodes
+    end
+
+    private
+
+    # @return [Node] the select node for this option
+    def select_node
+      find('./ancestor::select').first
     end
 
     # @return [String] the node's type attribute

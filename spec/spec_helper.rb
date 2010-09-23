@@ -1,4 +1,5 @@
 require 'rubygems'
+require "bundler/setup"
 
 root = File.expand_path('../../', __FILE__)
 %w(vendor lib src).each do |dir|
