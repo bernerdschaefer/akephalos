@@ -22,7 +22,7 @@ module Akephalos
     def self.new
       server_port = start!
 
-      DRb.start_service
+      DRb.start_service("druby://127.0.0.1:#{find_available_port}")
       client = DRbObject.new_with_uri("druby://127.0.0.1:#{server_port}")
 
       # We want to share our local configuration with the remote server
@@ -64,7 +64,7 @@ module Akephalos
     # @param [Integer] port the port to check for responsiveness
     # @return [true, false] whether the port is responsive
     def self.responsive?(port)
-      socket = TCPSocket.open("127.0.0.1", port)
+      socket = TCPSocket.open('127.0.0.1', port)
       true
     rescue Errno::ECONNREFUSED
       false
