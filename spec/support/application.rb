@@ -28,6 +28,10 @@ class Application < TestApp
   get '/user_agent_detection' do
     request.user_agent
   end
+
+  get '/app_domain_detection' do
+    "http://#{request.host_with_port}/app_domain_detection"
+  end
 end
 
 if $0 == __FILE__
