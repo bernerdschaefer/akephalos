@@ -55,10 +55,30 @@ module Akephalos
     def value=(value)
       case tag_name
       when "textarea"
-        @_node.setText(value)
+        @_node.setText("")
+        type(value)
       when "input"
-        @_node.setValueAttribute(value)
+        if file_input?
+          @_node.setValueAttribute(value)
+        else
+          @_node.setValueAttribute("")
+          type(value)
+        end
       end
+    end
+
+    # Types each character into a text or input field.
+    #
+    # @param [String] value the string to type
+    def type(value)
+      value.each_char do |c|
+        @_node.type(c)
+      end
+    end
+
+    # @return [true, false] whether the node is a file input
+    def file_input?
+      tag_name == "input" && @_node.getAttribute("type") == "file"
     end
 
     # Select an option from a select box by its value.
