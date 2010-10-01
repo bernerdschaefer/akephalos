@@ -11,8 +11,20 @@ module Akephalos
 end
 
 require 'akephalos/client'
-require 'capybara'
-require 'akephalos/capybara'
+
+if Object.const_defined? :Capybara
+  require 'capybara'
+  
+  module Capybara
+    module Driver
+      autoload :Akephalos, 'akephalos/capybara'
+    end
+  end
+
+  Capybara.register_driver :akephalos do |app|
+    Capybara::Driver::Akephalos.new(app)
+  end
+end
 
 if Object.const_defined? :Cucumber
   require 'akephalos/cucumber'
