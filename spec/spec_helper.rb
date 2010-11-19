@@ -1,8 +1,8 @@
 require 'rubygems'
 
 root = File.expand_path('../../', __FILE__)
-%w(vendor lib src).each do |dir|
-  dir = File.join(root, dir)
+lib_paths = [root] + %w(vendor lib src).collect { |dir| File.join(root, dir) }
+(lib_paths).each do |dir|
   $:.unshift dir unless $:.include?(dir)
 end
 
