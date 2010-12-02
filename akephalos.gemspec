@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   end
 
   s.add_development_dependency "sinatra"
-  s.add_development_dependency "rspec", "~> 2.1.0"
+  s.add_development_dependency "rspec", "~> 2.2.0"
 
   s.files         = Dir.glob("lib/**/*.rb") + Dir.glob("src/**/*.jar") + %w(README.md MIT_LICENSE)
   s.require_paths = %w(lib src)
