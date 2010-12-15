@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "akephalos"
 
-  s.add_runtime_dependency "capybara", "~> 4.0.0"
+  s.add_runtime_dependency "capybara", "~> 0.4.0"
 
   if RUBY_PLATFORM != "java" && ENV["PLATFORM"] != "java"
     s.add_runtime_dependency "jruby-jars"
