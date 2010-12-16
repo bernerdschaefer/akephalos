@@ -1,3 +1,4 @@
+require 'cucumber'
 require 'capybara/cucumber'
 
 Before('@akephalos') do
