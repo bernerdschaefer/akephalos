@@ -7,7 +7,7 @@
 class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   # Akephalos-specific implementation for Capybara's Node class.
-  class Node < Capybara::Node
+  class Node < Capybara::Driver::Node
 
     # @api capybara
     # @param [String] name attribute name
@@ -16,22 +16,22 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       name = name.to_s
       case name
       when 'checked'
-        node.checked?
+        native.checked?
       else
-        node[name.to_s]
+        native[name.to_s]
       end
     end
 
     # @api capybara
     # @return [String] the inner text of the node
     def text
-      node.text
+      native.text
     end
 
     # @api capybara
     # @return [String] the form element's value
     def value
-      node.value
+      native.value
     end
 
     # Set the form element's value.
@@ -40,7 +40,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @param [String] value the form element's new value
     def set(value)
       if tag_name == 'textarea'
-        node.value = value.to_s
+        native.value = value.to_s
       elsif tag_name == 'input' and type == 'radio'
         click
       elsif tag_name == 'input' and type == 'checkbox'
@@ -48,7 +48,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
           click
         end
       elsif tag_name == 'input'
-        node.value = value.to_s
+        native.value = value.to_s
       end
     end
 
@@ -57,10 +57,10 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @api capybara
     # @param [String] option the option to select
     def select(option)
-      result = node.select_option(option)
+      result = native.select_option(option)
 
       if result == nil
-        options = node.options.map(&:text).join(", ")
+        options = native.options.map(&:text).join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -76,10 +76,10 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
         raise Capybara::UnselectNotAllowed, "Cannot unselect option '#{option}' from single select box."
       end
 
-      result = node.unselect_option(option)
+      result = native.unselect_option(option)
 
       if result == nil
-        options = node.options.map(&:text).join(", ")
+        options = native.options.map(&:text).join(", ")
         raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
       else
         result
@@ -91,19 +91,19 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @api capybara
     # @param [String] event the event to trigger
     def trigger(event)
-      node.fire_event(event.to_s)
+      native.fire_event(event.to_s)
     end
 
     # @api capybara
     # @return [String] the element's tag name
     def tag_name
-      node.tag_name
+      native.tag_name
     end
 
     # @api capybara
     # @return [true, false] the element's visiblity
     def visible?
-      node.visible?
+      native.visible?
     end
 
     # Drag the element on top of the target element.
@@ -118,7 +118,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
     # Click the element.
     def click
-      node.click
+      native.click
     end
 
     private
@@ -135,7 +135,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
     # @return [String] the node's type attribute
     def type
-      node[:type]
+      native[:type]
     end
   end
 
