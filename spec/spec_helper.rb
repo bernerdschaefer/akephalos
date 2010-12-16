@@ -17,4 +17,4 @@ $:.detect do |dir|
 end
 
 require File.join(spec_dir,"spec_helper")
-require "spec/support/application"
+require "support/application"
