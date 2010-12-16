@@ -83,6 +83,12 @@ module Akephalos
       !self[:multiple].nil?
     end
 
+    # @return [true, false] whether the node is a file input
+    def file_input?
+      tag_name == "input" && @_node.getAttribute("type") == "file"
+    end
+    
+
     # Unselect an option.
     #
     # @return [true, false] whether the unselection was successful
