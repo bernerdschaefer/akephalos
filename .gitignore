@@ -6,3 +6,5 @@ burn
 docs/build
 pkg
 tags
+
+.idea/

@@ -55,7 +55,7 @@ describe Capybara::Driver::Akephalos do
               end
 
               it "includes the domain" do
-                cookie.domain.should == "localhost"
+                ["localhost", "127.0.0.1", "0.0.0.0"].include?(cookie.domain).should be_true
               end
 
               it "includes the path" do

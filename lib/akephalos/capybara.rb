@@ -6,8 +6,14 @@
 # directly or over DRb.
 class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
-  # Akephalos-specific implementation for Capybara's Node class.
+  # Akephalos-specific implementation for Capybara's Driver::Node class.
   class Node < Capybara::Driver::Node
+
+    # @api capybara
+    # @return [String] the inner text of the node
+    def text
+      native.text
+    end
 
     # @api capybara
     # @param [String] name attribute name
@@ -23,13 +29,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     end
 
     # @api capybara
-    # @return [String] the inner text of the node
-    def text
-      native.text
-    end
-
-    # @api capybara
-    # @return [String] the form element's value
+    # @return [String, Array<String>] the form element's value
     def value
       native.value
     end
@@ -52,46 +52,35 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       end
     end
 
-    # Select an option from a select box.
-    #
     # @api capybara
-    # @param [String] option the option to select
-    def select(option)
-      result = native.select_option(option)
-
-      if result == nil
-        options = native.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+    def select_option
+      native.click
     end
 
     # Unselect an option from a select box.
     #
     # @api capybara
-    # @param [String] option the option to unselect
-    def unselect(option)
-      unless self[:multiple]
-        raise Capybara::UnselectNotAllowed, "Cannot unselect option '#{option}' from single select box."
+    def unselect_option
+      unless select_node.multiple_select?
+        raise Capybara::UnselectNotAllowed, "Cannot unselect option from single select box."
       end
 
-      result = native.unselect_option(option)
-
-      if result == nil
-        options = native.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+      native.unselect
     end
 
-    # Trigger an event on the element.
+    # Click the element.
+    def click
+      native.click
+    end
+
+    # Drag the element on top of the target element.
     #
     # @api capybara
-    # @param [String] event the event to trigger
-    def trigger(event)
-      native.fire_event(event.to_s)
+    # @param [Node] element the target element
+    def drag_to(element)
+      trigger('mousedown')
+      element.trigger('mousemove')
+      element.trigger('mouseup')
     end
 
     # @api capybara
@@ -106,19 +95,34 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       native.visible?
     end
 
-    # Drag the element on top of the target element.
-    #
     # @api capybara
-    # @param [Node] element the target element
-    def drag_to(element)
-      trigger('mousedown')
-      element.trigger('mousemove')
-      element.trigger('mouseup')
+    # @return [String] the XPath to locate the node
+    def path
+      native.xpath
     end
 
-    # Click the element.
-    def click
-      native.click
+    # Trigger an event on the element.
+    #
+    # @api capybara
+    # @param [String] event the event to trigger
+    def trigger(event)
+      native.fire_event(event.to_s)
+    end
+
+    # @api capybara
+    # @param [String] selector XPath query
+    # @return [Array<Node>] the matched nodes
+    def find(selector)
+      nodes = []
+      native.find(selector).each { |node| nodes << self.class.new(self, node) }
+      nodes
+    end
+
+    protected
+
+    # @return [true, false] whether the node allows multiple-option selection (if the node is a select).
+    def multiple_select?
+      tag_name == "select" && native.multiple_select?
     end
 
     private
@@ -129,13 +133,18 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @return [Array<Node>] the matched nodes
     def all_unfiltered(selector)
       nodes = []
-      node.find(selector).each { |node| nodes << Node.new(driver, node) }
+      native.find(selector).each { |node| nodes << self.class.new(driver, node) }
       nodes
     end
 
     # @return [String] the node's type attribute
     def type
       native[:type]
+    end
+
+    # @return [Node] the select node, if this is an option node
+    def select_node
+      find('./ancestor::select').first
     end
   end
 
@@ -277,4 +286,8 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     rack_server.url(path)
   end
 
+end
+
+Capybara.register_driver :akephalos do |app|
+  Capybara::Driver::Akephalos.new(app)
 end
