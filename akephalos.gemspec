@@ -17,14 +17,14 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "akephalos"
 
-  s.add_runtime_dependency "capybara", "~> 0.4.0"
+  s.add_runtime_dependency "capybara", ">= 0.4.0"
 
   if RUBY_PLATFORM != "java" && ENV["PLATFORM"] != "java"
     s.add_runtime_dependency "jruby-jars"
   end
 
   s.add_development_dependency "sinatra"
-  s.add_development_dependency "rspec", "~> 2.3.0"
+  s.add_development_dependency "rspec", ">= 2.3.0"
 
   s.files         = Dir.glob("lib/**/*.rb") + Dir.glob("src/**/*.jar") + %w(README.md MIT_LICENSE)
   s.require_paths = %w(lib src)
