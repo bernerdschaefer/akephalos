@@ -151,6 +151,11 @@ module Akephalos
       @nodes << nodes
       nodes
     end
+    
+    # @return [String] the XPath expression for this node
+    def xpath
+      @_node.getCanonicalXPath
+    end
   end
 
 end
