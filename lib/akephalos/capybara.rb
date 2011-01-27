@@ -96,6 +96,18 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     end
 
     # @api capybara
+    # @return [true, false] the element's visiblity
+    def checked?
+      native.checked?
+    end
+
+    # @api capybara
+    # @return [true, false] the element's visiblity
+    def selected?
+      native.selected?
+    end
+
+    # @api capybara
     # @return [String] the XPath to locate the node
     def path
       native.xpath

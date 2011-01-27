@@ -58,5 +58,7 @@ PLATFORMS
 
 DEPENDENCIES
   akephalos!
+  capybara (>= 0.4.0)
+  jruby-jars
   rspec (>= 2.3.0)
   sinatra

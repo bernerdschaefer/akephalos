@@ -87,7 +87,7 @@ module Akephalos
     def file_input?
       tag_name == "input" && @_node.getAttribute("type") == "file"
     end
-    
+
 
     # Unselect an option.
     #
@@ -131,6 +131,10 @@ module Akephalos
       @_node.isDisplayed
     end
 
+    def selected?
+      @_node.isSelected
+    end
+
     # Click the node and then wait for any triggered JavaScript callbacks to
     # fire.
     def click
@@ -148,7 +152,7 @@ module Akephalos
       @nodes << nodes
       nodes
     end
-    
+
     # @return [String] the XPath expression for this node
     def xpath
       @_node.getCanonicalXPath
