@@ -11,7 +11,11 @@ module Akephalos
 
     # @return [true, false] whether the element is checked
     def checked?
-      @_node.isChecked
+      if @_node.respond_to?(:isChecked)
+        @_node.isChecked
+      else
+        !! self[:checked]
+      end
     end
 
     # @return [String] inner text of the node
@@ -131,8 +135,14 @@ module Akephalos
       @_node.isDisplayed
     end
 
+    # @return [true, false] whether the node is selected to the user accounting
+    # for CSS.
     def selected?
-      @_node.isSelected
+      if @_node.respond_to?(:isSelected)
+        @_node.isSelected
+      else
+        !! self[:selected]
+      end
     end
 
     # Click the node and then wait for any triggered JavaScript callbacks to
