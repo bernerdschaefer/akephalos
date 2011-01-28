@@ -186,8 +186,19 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   end
 
   # @return [String] the page's modified source
+  # page.modified_source will return a string with
+  # html entities converted into the unicode equivalent
+  # but the string will be marked as ASCII-8BIT
+  # which causes conversion issues so we force the encoding
+  # to UTF-8 (ruby 1.9 only)
   def body
-    page.modified_source
+    body_source = page.modified_source
+
+    if body_source.respond_to?(:force_encoding)
+      body_source.force_encoding("UTF-8")
+    else
+      body_source
+    end
   end
 
   # @return [Hash{String => String}] the page's response headers
