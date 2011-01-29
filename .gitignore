@@ -2,6 +2,7 @@
 .rvmrc
 .yardoc
 burn
+Gemfile.lock
 docs/build
 pkg
 tags
