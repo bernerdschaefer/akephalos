@@ -15,23 +15,31 @@ module Akephalos
   #     client.visit "http://www.oinopa.com"
   #     client.page.source # => "<!DOCTYPE html PUBLIC..."
   class RemoteClient
-    # Start a remote akephalos server and return the remote Akephalos::Client
-    # instance.
-    #
-    # @return [DRbObject] the remote client instance
+    # @return [DRbObject] a new instance of Akephalos::Client from the DRb
+    #   server
     def self.new
+      manager.new_client
+    end
+
+    # Starts a remove JRuby DRb server unless already running and returns an
+    # instance of Akephalos::ClientManager.
+    #
+    # @returns [DRbObject] an instance of Akephalos::ClientManager
+    def self.manager
+      return @manager if defined?(@manager)
+
       server_port = start!
 
-      DRb.start_service("druby://127.0.0.1:#{find_available_port}")
-      client = DRbObject.new_with_uri("druby://127.0.0.1:#{server_port}")
+      DRb.start_service
+      manager = DRbObject.new_with_uri("druby://127.0.0.1:#{server_port}")
 
       # We want to share our local configuration with the remote server
       # process, so we share an undumped version of our configuration. This
       # lets us continue to make changes locally and have them reflected in the
       # remote process.
-      client.configuration = Akephalos.configuration.extend(DRbUndumped)
+      manager.configuration = Akephalos.configuration.extend(DRbUndumped)
 
-      client
+      @manager = manager
     end
 
     # Start a remote server process and return when it is available for use.

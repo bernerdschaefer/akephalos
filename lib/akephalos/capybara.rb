@@ -162,11 +162,6 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   attr_reader :app, :rack_server
 
-  # @return [Client] an instance of Akephalos::Client
-  def self.driver
-    @driver ||= Akephalos::Client.new
-  end
-
   def initialize(app)
     @app = app
     @rack_server = Capybara::Server.new(@app)
@@ -271,7 +266,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
   # @return the browser
   def browser
-    self.class.driver
+    @browser ||= Akephalos::Client.new
   end
 
   # @return the session cookies

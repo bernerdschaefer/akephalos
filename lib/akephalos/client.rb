@@ -35,16 +35,6 @@ else
         Thread.new { @_client.run }
       end
 
-      # Set the global configuration settings for Akephalos.
-      #
-      # @note This is only used when communicating over DRb, since just a
-      # single client instance is exposed.
-      # @param [Hash] config the configuration settings
-      # @return [Hash] the configuration
-      def configuration=(config)
-        Akephalos.configuration = config
-      end
-
       # Visit the requested URL and return the page.
       #
       # @param [String] url the URL to load

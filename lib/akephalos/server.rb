@@ -23,16 +23,39 @@ end
 
 module Akephalos
 
+  # The ClientManager is shared over DRb with the remote process, and
+  # facilitates communication between the processes.
+  #
+  # @api private
+  class ClientManager
+    include DRbUndumped
+
+    # @return [Akephalos::Client] a new client instance
+    def self.new_client
+      # Store the client to ensure it isn't prematurely garbage collected.
+      @client = Client.new
+    end
+
+    # Set the global configuration settings for Akephalos.
+    #
+    # @param [Hash] config the configuration settings
+    # @return [Hash] the configuration
+    def self.configuration=(config)
+      Akephalos.configuration = config
+    end
+
+  end
+
   # Akephalos::Server is used by `akephalos --server` to start a DRb server
-  # serving an instance of Akephalos::Client.
+  # serving Akephalos::ClientManager.
   class Server
-    # Start DRb service for an Akephalos::Client.
+
+    # Start DRb service for Akephalos::ClientManager.
     #
     # @param [String] port attach server to
     def self.start!(port)
       abort_on_parent_exit!
-      client = Client.new
-      DRb.start_service("druby://127.0.0.1:#{port}", client)
+      DRb.start_service("druby://127.0.0.1:#{port}", ClientManager)
       DRb.thread.join
     end
 
