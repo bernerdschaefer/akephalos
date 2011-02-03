@@ -71,7 +71,8 @@ else
       "-cp", [JRubyJars.core_jar_path, JRubyJars.stdlib_jar_path].join(":"),
       "org.jruby.Main"
     ]
-    ruby_args = [
+    ruby_args = [ 
+      "-Ku",
       "-I", "vendor:#{lib}:#{src}",
       "-r", "akephalos/server",
       "-e", "Akephalos::Server.start!(#{port.inspect})"

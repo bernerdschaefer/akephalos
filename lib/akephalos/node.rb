@@ -11,7 +11,11 @@ module Akephalos
 
     # @return [true, false] whether the element is checked
     def checked?
-      @_node.isChecked
+      if @_node.respond_to?(:isChecked)
+        @_node.isChecked
+      else
+        !! self[:checked]
+      end
     end
 
     # @return [String] inner text of the node
@@ -37,11 +41,13 @@ module Akephalos
       case tag_name
       when "select"
         if self[:multiple]
-          @_node.selected_options.map { |option| option.text }
+          selected_options.map { |option| option.value }
         else
           selected_option = @_node.selected_options.first
-          selected_option ? selected_option.text : nil
+          selected_option ? Node.new(selected_option).value : nil
         end
+      when "option"
+        self[:value] || text
       when "textarea"
         @_node.getText
       else
@@ -76,27 +82,22 @@ module Akephalos
       end
     end
 
+    # @return [true, false] whether the node allows multiple-option selection (if the node is a select).
+    def multiple_select?
+      !self[:multiple].nil?
+    end
+
     # @return [true, false] whether the node is a file input
     def file_input?
       tag_name == "input" && @_node.getAttribute("type") == "file"
     end
 
-    # Select an option from a select box by its value.
-    #
-    # @return [true, false] whether the selection was successful
-    def select_option(option)
-      opt = @_node.getOptions.detect { |o| o.asText == option }
 
-      opt && opt.setSelected(true)
-    end
-
-    # Unselect an option from a select box by its value.
+    # Unselect an option.
     #
     # @return [true, false] whether the unselection was successful
-    def unselect_option(option)
-      opt = @_node.getOptions.detect { |o| o.asText == option }
-
-      opt && opt.setSelected(false)
+    def unselect
+      @_node.setSelected(false)
     end
 
     # Return the option elements for a select box.
@@ -134,6 +135,16 @@ module Akephalos
       @_node.isDisplayed
     end
 
+    # @return [true, false] whether the node is selected to the user accounting
+    # for CSS.
+    def selected?
+      if @_node.respond_to?(:isSelected)
+        @_node.isSelected
+      else
+        !! self[:selected]
+      end
+    end
+
     # Click the node and then wait for any triggered JavaScript callbacks to
     # fire.
     def click
@@ -150,6 +161,11 @@ module Akephalos
       nodes = @_node.getByXPath(selector).map { |node| Node.new(node) }
       @nodes << nodes
       nodes
+    end
+
+    # @return [String] the XPath expression for this node
+    def xpath
+      @_node.getCanonicalXPath
     end
   end
 

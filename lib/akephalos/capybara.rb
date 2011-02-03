@@ -6,8 +6,14 @@
 # directly or over DRb.
 class Capybara::Driver::Akephalos < Capybara::Driver::Base
 
-  # Akephalos-specific implementation for Capybara's Node class.
-  class Node < Capybara::Node
+  # Akephalos-specific implementation for Capybara's Driver::Node class.
+  class Node < Capybara::Driver::Node
+
+    # @api capybara
+    # @return [String] the inner text of the node
+    def text
+      native.text
+    end
 
     # @api capybara
     # @param [String] name attribute name
@@ -16,22 +22,16 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       name = name.to_s
       case name
       when 'checked'
-        node.checked?
+        native.checked?
       else
-        node[name.to_s]
+        native[name.to_s]
       end
     end
 
     # @api capybara
-    # @return [String] the inner text of the node
-    def text
-      node.text
-    end
-
-    # @api capybara
-    # @return [String] the form element's value
+    # @return [String, Array<String>] the form element's value
     def value
-      node.value
+      native.value
     end
 
     # Set the form element's value.
@@ -40,7 +40,7 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @param [String] value the form element's new value
     def set(value)
       if tag_name == 'textarea'
-        node.value = value.to_s
+        native.value = value.to_s
       elsif tag_name == 'input' and type == 'radio'
         click
       elsif tag_name == 'input' and type == 'checkbox'
@@ -48,62 +48,29 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
           click
         end
       elsif tag_name == 'input'
-        node.value = value.to_s
+        native.value = value.to_s
       end
     end
 
-    # Select an option from a select box.
-    #
     # @api capybara
-    # @param [String] option the option to select
-    def select(option)
-      result = node.select_option(option)
-
-      if result == nil
-        options = node.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+    def select_option
+      native.click
     end
 
     # Unselect an option from a select box.
     #
     # @api capybara
-    # @param [String] option the option to unselect
-    def unselect(option)
-      unless self[:multiple]
-        raise Capybara::UnselectNotAllowed, "Cannot unselect option '#{option}' from single select box."
+    def unselect_option
+      unless select_node.multiple_select?
+        raise Capybara::UnselectNotAllowed, "Cannot unselect option from single select box."
       end
 
-      result = node.unselect_option(option)
-
-      if result == nil
-        options = node.options.map(&:text).join(", ")
-        raise Capybara::OptionNotFound, "No such option '#{option}' in this select box. Available options: #{options}"
-      else
-        result
-      end
+      native.unselect
     end
 
-    # Trigger an event on the element.
-    #
-    # @api capybara
-    # @param [String] event the event to trigger
-    def trigger(event)
-      node.fire_event(event.to_s)
-    end
-
-    # @api capybara
-    # @return [String] the element's tag name
-    def tag_name
-      node.tag_name
-    end
-
-    # @api capybara
-    # @return [true, false] the element's visiblity
-    def visible?
-      node.visible?
+    # Click the element.
+    def click
+      native.click
     end
 
     # Drag the element on top of the target element.
@@ -116,9 +83,58 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
       element.trigger('mouseup')
     end
 
-    # Click the element.
-    def click
-      node.click
+    # @api capybara
+    # @return [String] the element's tag name
+    def tag_name
+      native.tag_name
+    end
+
+    # @api capybara
+    # @return [true, false] the element's visiblity
+    def visible?
+      native.visible?
+    end
+
+    # @api capybara
+    # @return [true, false] the element's visiblity
+    def checked?
+      native.checked?
+    end
+
+    # @api capybara
+    # @return [true, false] the element's visiblity
+    def selected?
+      native.selected?
+    end
+
+    # @api capybara
+    # @return [String] the XPath to locate the node
+    def path
+      native.xpath
+    end
+
+    # Trigger an event on the element.
+    #
+    # @api capybara
+    # @param [String] event the event to trigger
+    def trigger(event)
+      native.fire_event(event.to_s)
+    end
+
+    # @api capybara
+    # @param [String] selector XPath query
+    # @return [Array<Node>] the matched nodes
+    def find(selector)
+      nodes = []
+      native.find(selector).each { |node| nodes << self.class.new(self, node) }
+      nodes
+    end
+
+    protected
+
+    # @return [true, false] whether the node allows multiple-option selection (if the node is a select).
+    def multiple_select?
+      tag_name == "select" && native.multiple_select?
     end
 
     private
@@ -129,13 +145,18 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     # @return [Array<Node>] the matched nodes
     def all_unfiltered(selector)
       nodes = []
-      node.find(selector).each { |node| nodes << Node.new(driver, node) }
+      native.find(selector).each { |node| nodes << self.class.new(driver, node) }
       nodes
     end
 
     # @return [String] the node's type attribute
     def type
-      node[:type]
+      native[:type]
+    end
+
+    # @return [Node] the select node, if this is an option node
+    def select_node
+      find('./ancestor::select').first
     end
   end
 
@@ -165,8 +186,19 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
   end
 
   # @return [String] the page's modified source
+  # page.modified_source will return a string with
+  # html entities converted into the unicode equivalent
+  # but the string will be marked as ASCII-8BIT
+  # which causes conversion issues so we force the encoding
+  # to UTF-8 (ruby 1.9 only)
   def body
-    page.modified_source
+    body_source = page.modified_source
+
+    if body_source.respond_to?(:force_encoding)
+      body_source.force_encoding("UTF-8")
+    else
+      body_source
+    end
   end
 
   # @return [Hash{String => String}] the page's response headers
@@ -277,4 +309,8 @@ class Capybara::Driver::Akephalos < Capybara::Driver::Base
     rack_server.url(path)
   end
 
+end
+
+Capybara.register_driver :akephalos do |app|
+  Capybara::Driver::Akephalos.new(app)
 end

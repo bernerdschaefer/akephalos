@@ -26,9 +26,10 @@ else
           client = HtmlUnit::WebClient.new
 
           Filter.new(client)
+          client.setThrowExceptionOnFailingStatusCode(false)
           client.setAjaxController(HtmlUnit::NicelyResynchronizingAjaxController.new)
           client.setCssErrorHandler(HtmlUnit::SilentCssErrorHandler.new)
-
+          client.setThrowExceptionOnScriptError(false);
           client
         end
         Thread.new { @_client.run }

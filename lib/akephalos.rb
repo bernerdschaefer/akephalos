@@ -14,6 +14,6 @@ require 'akephalos/client'
 require 'capybara'
 require 'akephalos/capybara'
 
-if Object.const_defined? :Cucumber
-  require 'akephalos/cucumber'
+Capybara.register_driver :akephalos do |app|
+  Capybara::Driver::Akephalos.new(app)
 end
