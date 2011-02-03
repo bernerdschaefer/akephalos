@@ -25,7 +25,7 @@ else
         @_client = java.util.concurrent.FutureTask.new do
           client = HtmlUnit::WebClient.new
 
-          Filter.new(client)                           
+          Filter.new(client)
           client.setThrowExceptionOnFailingStatusCode(false)
           client.setAjaxController(HtmlUnit::NicelyResynchronizingAjaxController.new)
           client.setCssErrorHandler(HtmlUnit::SilentCssErrorHandler.new)
