@@ -22,7 +22,7 @@ class Application < TestApp
   <body>
     <a href="#" id="ajax_load">Click me</a>
   </body>
-   HTML
+    HTML
   end
 
   get '/user_agent_detection' do
@@ -31,6 +31,34 @@ class Application < TestApp
 
   get '/app_domain_detection' do
     "http://#{request.host_with_port}/app_domain_detection"
+  end
+
+  get '/page_with_javascript_error' do
+    <<-HTML
+  <head>
+    <script type="text/javascript">
+      $() // is not defined
+    </script>
+  </head>
+  <body>
+  </body>
+   HTML
+  end
+
+  get '/ie_test' do
+    <<-HTML
+  <body>
+  <!--[if IE 6]>
+  This is for InternetExplorer6
+  <![endif]-->
+  <!--[if IE 7]>
+  This is for InternetExplorer7
+  <![endif]-->
+  <!--[if IE 8]>
+  This is for InternetExplorer8
+  <![endif]-->
+  </body>
+    HTML
   end
 end
 

@@ -19,17 +19,50 @@ else
     # point for all interaction with the browser, exposing its current page and
     # allowing navigation.
     class Client
+
+      # @return [Akephalos::Page] the current page
       attr_reader :page
 
-      def initialize
+      # @return [HtmlUnit::BrowserVersion] the configured browser version
+      attr_reader :browser_version
+
+      # @return [true/false] whether to raise errors on javascript failures
+      attr_reader :validate_scripts
+
+      # The default configuration options for a new Client.
+      DEFAULT_OPTIONS = {
+        :browser => :firefox_3_6,
+        :validate_scripts => true
+      }
+
+      # Map of browser version symbols to their HtmlUnit::BrowserVersion
+      # instances.
+      BROWSER_VERSIONS = {
+        :ie6         => HtmlUnit::BrowserVersion::INTERNET_EXPLORER_6,
+        :ie7         => HtmlUnit::BrowserVersion::INTERNET_EXPLORER_7,
+        :ie8         => HtmlUnit::BrowserVersion::INTERNET_EXPLORER_8,
+        :firefox_3   => HtmlUnit::BrowserVersion::FIREFOX_3,
+        :firefox_3_6 => HtmlUnit::BrowserVersion::FIREFOX_3_6
+      }
+
+      # @param [Hash] options the configuration options for this client
+      #
+      # @option options [Symbol] :browser (:firefox_3_6) the browser version (
+      #   see BROWSER_VERSIONS)
+      #
+      # @option options [true, false] :validate_scripts (true) whether to raise
+      #   errors on javascript errors
+      def initialize(options = {})
+        process_options!(options)
+
         @_client = java.util.concurrent.FutureTask.new do
-          client = HtmlUnit::WebClient.new
+          client = HtmlUnit::WebClient.new(browser_version)
 
           Filter.new(client)
           client.setThrowExceptionOnFailingStatusCode(false)
           client.setAjaxController(HtmlUnit::NicelyResynchronizingAjaxController.new)
           client.setCssErrorHandler(HtmlUnit::SilentCssErrorHandler.new)
-          client.setThrowExceptionOnScriptError(false);
+          client.setThrowExceptionOnScriptError(validate_scripts)
           client
         end
         Thread.new { @_client.run }
@@ -84,6 +117,23 @@ else
           @page = Page.new(_page)
         end
         @page
+      end
+
+      # @return [true, false] whether javascript errors will raise exceptions
+      def validate_scripts?
+        !!validate_scripts
+      end
+
+      # Merges the DEFAULT_OPTIONS with those provided to initialize the Client
+      # state, namely, its browser version and whether it should
+      # validate scripts.
+      #
+      # @param [Hash] options the options to process
+      def process_options!(options)
+        options = DEFAULT_OPTIONS.merge(options)
+
+        @browser_version  = BROWSER_VERSIONS.fetch(options.delete(:browser))
+        @validate_scripts = options.delete(:validate_scripts)
       end
 
       private

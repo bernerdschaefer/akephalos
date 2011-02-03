@@ -18,3 +18,13 @@ end
 
 require File.join(spec_dir,"spec_helper")
 require "support/application"
+
+RSpec.configure do |config|
+  running_with_jruby = RUBY_PLATFORM =~ /java/
+
+  warn "[AKEPHALOS] ** Skipping JRuby-only specs" unless running_with_jruby
+
+  config.filter_run_excluding(:platform => lambda { |value|
+    return true if value == :jruby && !running_with_jruby
+  })
+end

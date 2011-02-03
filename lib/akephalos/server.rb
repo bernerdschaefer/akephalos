@@ -31,9 +31,9 @@ module Akephalos
     include DRbUndumped
 
     # @return [Akephalos::Client] a new client instance
-    def self.new_client
+    def self.new_client(options = {})
       # Store the client to ensure it isn't prematurely garbage collected.
-      @client = Client.new
+      @client = Client.new(options)
     end
 
     # Set the global configuration settings for Akephalos.

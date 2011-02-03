@@ -17,14 +17,14 @@ module Akephalos
   class RemoteClient
     # @return [DRbObject] a new instance of Akephalos::Client from the DRb
     #   server
-    def self.new
-      manager.new_client
+    def self.new(options = {})
+      manager.new_client(options)
     end
 
     # Starts a remove JRuby DRb server unless already running and returns an
     # instance of Akephalos::ClientManager.
     #
-    # @returns [DRbObject] an instance of Akephalos::ClientManager
+    # @return [DRbObject] an instance of Akephalos::ClientManager
     def self.manager
       return @manager if defined?(@manager)
 

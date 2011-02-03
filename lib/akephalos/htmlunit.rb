@@ -32,7 +32,4 @@ module HtmlUnit
 
   # Disable history tracking
   History.field_reader :ignoreNewPages_
-
-  # Run in Firefox compatibility mode
-  BrowserVersion.setDefault(BrowserVersion::FIREFOX_3)
 end
