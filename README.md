@@ -38,6 +38,36 @@ Here's some sample RSpec code:
       end
     end
 
+## Configuration
+
+There are now a few configuration options available through Capybara's new
+`register_driver` API.
+
+### Using a different browser
+
+HtmlUnit supports a few browser implementations, and you can choose which
+browser you would like to use through Akephalos. By default, Akephalos uses
+Firefox 3.6.
+
+    Capybara.register_driver :akephalos do |app|
+      # available options:
+      #   :ie6, :ie7, :ie8, :firefox_3, :firefox_3_6
+      Capybara::Driver::Akephalos.new(app, :browser => :ie8)
+    end
+
+### Ignoring javascript errors
+
+By default HtmlUnit (and Akephalos) will raise an exception when an error
+is encountered in javascript files. This is generally desireable, except
+that certain libraries aren't supported by HtmlUnit. If possible, it's
+best to keep the default behavior, and use Filters (see below) to mock
+offending libraries. If needed, however, you can configure Akephalos to
+ignore javascript errors.
+
+    Capybara.register_driver :akephalos do |app|
+      Capybara::Driver::Akephalos.new(app, :validate_scripts => false)
+    end
+
 ## More
 
 * [bin/akephalos](http://bernerdschaefer.github.com/akephalos/akephalos-bin.html)
