@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../_index.html">Index (N)</a> &raquo; 
-    <span class='title'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span>
+    <span class='title'><span class='object_link'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span></span>
      &raquo; 
     <span class="title">Node</span>
   
@@ -178,6 +178,30 @@ fire.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#file_input%3F-instance_method" title="#file_input? (instance method)">- (true, false) <strong>file_input?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether the node is a file input.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#find-instance_method" title="#find (instance method)">- (Array&lt;Node&gt;) <strong>find</strong>(selector) </a>
     
 
@@ -252,6 +276,31 @@ A new instance of Node.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#multiple_select%3F-instance_method" title="#multiple_select? (instance method)">- (true, false) <strong>multiple_select?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether the node allows multiple-option selection (if the node is a
+select).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#options-instance_method" title="#options (instance method)">- (Array&lt;Node&gt;) <strong>options</strong> </a>
     
 
@@ -276,7 +325,7 @@ Return the option elements for a select box.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#select_option-instance_method" title="#select_option (instance method)">- (true, false) <strong>select_option</strong>(option) </a>
+      <a href="#selected%3F-instance_method" title="#selected? (instance method)">- (true, false) <strong>selected?</strong> </a>
     
 
     
@@ -290,7 +339,7 @@ Return the option elements for a select box.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Select an option from a select box by its value.
+for CSS.
 </p>
 </div></span>
   
@@ -372,7 +421,7 @@ Inner text of the node.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#unselect_option-instance_method" title="#unselect_option (instance method)">- (true, false) <strong>unselect_option</strong>(option) </a>
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong>(value) </a>
     
 
     
@@ -386,7 +435,31 @@ Inner text of the node.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Unselect an option from a select box by its value.
+Types each character into a text or input field.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unselect-instance_method" title="#unselect (instance method)">- (true, false) <strong>unselect</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Unselect an option.
 </p>
 </div></span>
   
@@ -458,7 +531,31 @@ Set the value of the form input.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Whether the node is visible to the user accounting for CSS.
+for CSS.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#xpath-instance_method" title="#xpath (instance method)">- (String) <strong>xpath</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The XPath expression for this node.
 </p>
 </div></span>
   
@@ -474,7 +571,7 @@ Whether the node is visible to the user accounting for CSS.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Akephalos::Node (class)">Node</a></tt>) <strong>initialize</strong>(node) 
+    - (<tt><span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span></tt>) <strong>initialize</strong>(node) 
   
 
   
@@ -518,11 +615,10 @@ A new instance of Node
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span>
-  <span class='@nodes ivar id'>@nodes</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='@_node ivar id'>@_node</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id node'>node</span><span class='rparen'>)</span>
+  <span class='ivar'>@nodes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@_node</span> <span class='op'>=</span> <span class='id node'>node</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -614,17 +710,16 @@ when the node does not have the named attribute
       <pre class="lines">
 
 
-27
-28
-29</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 31</span>
 
-<span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='hasAttribute identifier id'>hasAttribute</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span> <span class='question op'>?</span> <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getAttribute identifier id'>getAttribute</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span> <span class='colon op'>:</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id hasAttribute'>hasAttribute</span><span class='lparen'>(</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getAttribute'>getAttribute</span><span class='lparen'>(</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -675,15 +770,22 @@ whether the element is checked
 
 13
 14
-15</pre>
+15
+16
+17
+18
+19</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 13</span>
 
-<span class='def def kw'>def</span> <span class='checked? fid id'>checked?</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='isChecked identifier id'>isChecked</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id checked?'>checked?</span>
+  <span class='kw'>if</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:isChecked</span><span class='rparen'>)</span>
+    <span class='ivar'>@_node</span><span class='period'>.</span><span class='id isChecked'>isChecked</span>
+  <span class='kw'>else</span>
+    <span class='op'>!</span><span class='op'>!</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:checked</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -714,21 +816,78 @@ fire.
       <pre class="lines">
 
 
-119
-120
-121
-122
-123</pre>
+150
+151
+152
+153
+154</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 150</span>
 
-<span class='def def kw'>def</span> <span class='click identifier id'>click</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='dot token'>.</span><span class='getEnclosingWindow identifier id'>getEnclosingWindow</span><span class='dot token'>.</span><span class='getJobManager identifier id'>getJobManager</span><span class='dot token'>.</span><span class='waitForJobs identifier id'>waitForJobs</span><span class='lparen token'>(</span><span class='integer val'>1000</span><span class='rparen token'>)</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='dot token'>.</span><span class='getEnclosingWindow identifier id'>getEnclosingWindow</span><span class='dot token'>.</span><span class='getJobManager identifier id'>getJobManager</span><span class='dot token'>.</span><span class='waitForJobsStartingBefore identifier id'>waitForJobsStartingBefore</span><span class='lparen token'>(</span><span class='integer val'>1000</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id click'>click</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id click'>click</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getPage'>getPage</span><span class='period'>.</span><span class='id getEnclosingWindow'>getEnclosingWindow</span><span class='period'>.</span><span class='id getJobManager'>getJobManager</span><span class='period'>.</span><span class='id waitForJobs'>waitForJobs</span><span class='lparen'>(</span><span class='int'>1000</span><span class='rparen'>)</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getPage'>getPage</span><span class='period'>.</span><span class='id getEnclosingWindow'>getEnclosingWindow</span><span class='period'>.</span><span class='id getJobManager'>getJobManager</span><span class='period'>.</span><span class='id waitForJobsStartingBefore'>waitForJobsStartingBefore</span><span class='lparen'>(</span><span class='int'>1000</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="file_input?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>file_input?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether the node is a file input
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+whether the node is a file input
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id file_input?'>file_input?</span>
+  <span class='id tag_name'>tag_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>input</span><span class='tstring_end'>&quot;</span></span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getAttribute'>getAttribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -737,7 +896,7 @@ fire.
       <div class="method_details ">
   <p class="signature " id="find-instance_method">
   
-    - (<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>find</strong>(selector) 
+    - (<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>) <strong>find</strong>(selector) 
   
 
   
@@ -777,7 +936,7 @@ an XPath selector
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>)</span>
       
       
       
@@ -798,21 +957,20 @@ the matched nodes
       <pre class="lines">
 
 
-129
-130
-131
-132
-133</pre>
+160
+161
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 129</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 160</span>
 
-<span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
-  <span class='nodes identifier id'>nodes</span> <span class='assign token'>=</span> <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getByXPath identifier id'>getByXPath</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span> <span class='Node constant id'>Node</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='@nodes ivar id'>@nodes</span> <span class='lshft op'>&lt;&lt;</span> <span class='nodes identifier id'>nodes</span>
-  <span class='nodes identifier id'>nodes</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id find'>find</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span>
+  <span class='id nodes'>nodes</span> <span class='op'>=</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getByXPath'>getByXPath</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id node'>node</span><span class='op'>|</span> <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id node'>node</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@nodes</span> <span class='op'>&lt;&lt;</span> <span class='id nodes'>nodes</span>
+  <span class='id nodes'>nodes</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -832,8 +990,7 @@ Fire a JavaScript event on the current node. Note that you should not
 prefix event names with &#8220;on&#8221;, so:
 </p>
 <pre class="code">
-  <span class='link identifier id'>link</span><span class='dot token'>.</span><span class='fire_event identifier id'>fire_event</span><span class='lparen token'>(</span><span class='string val'>'mousedown'</span><span class='rparen token'>)</span>
-</pre>
+  <span class='id link'>link</span><span class='period'>.</span><span class='id fire_event'>fire_event</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mousedown</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span></pre>
 
 
   </div>
@@ -867,17 +1024,76 @@ event name
       <pre class="lines">
 
 
-102
-103
-104</pre>
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 123</span>
 
-<span class='def def kw'>def</span> <span class='fire_event identifier id'>fire_event</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='fireEvent identifier id'>fireEvent</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id fire_event'>fire_event</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id fireEvent'>fireEvent</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="multiple_select?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>multiple_select?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether the node allows multiple-option selection (if the node is a
+select).
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+whether the node allows multiple-option selection (if the node is a
+select).
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id multiple_select?'>multiple_select?</span>
+  <span class='op'>!</span><span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:multiple</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id nil?'>nil?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -886,7 +1102,7 @@ event name
       <div class="method_details ">
   <p class="signature " id="options-instance_method">
   
-    - (<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>options</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>) <strong>options</strong> 
   
 
   
@@ -905,7 +1121,7 @@ Return the option elements for a select box.
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>)</span>
       
       
       
@@ -926,33 +1142,32 @@ the options
       <pre class="lines">
 
 
-85
-86
-87</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 106</span>
 
-<span class='def def kw'>def</span> <span class='options identifier id'>options</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span> <span class='Node constant id'>Node</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id options'>options</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getOptions'>getOptions</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id node'>node</span><span class='op'>|</span> <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id node'>node</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="select_option-instance_method">
+  <p class="signature " id="selected?-instance_method">
   
-    - (<tt>true</tt>, <tt>false</tt>) <strong>select_option</strong>(option) 
+    - (<tt>true</tt>, <tt>false</tt>) <strong>selected?</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Select an option from a select box by its value.
+for CSS.
 </p>
 
 
@@ -971,7 +1186,7 @@ Select an option from a select box by its value.
       
         &mdash;
         <div class='inline'><p>
-whether the selection was successful
+whether the node is selected to the user accounting
 </p>
 </div>
       
@@ -985,21 +1200,24 @@ whether the selection was successful
       <pre class="lines">
 
 
-67
-68
-69
-70
-71</pre>
+140
+141
+142
+143
+144
+145
+146</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 140</span>
 
-<span class='def def kw'>def</span> <span class='select_option identifier id'>select_option</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
-  <span class='opt identifier id'>opt</span> <span class='assign token'>=</span> <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='detect identifier id'>detect</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='o identifier id'>o</span><span class='bitor op'>|</span> <span class='o identifier id'>o</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span> <span class='eq op'>==</span> <span class='option identifier id'>option</span> <span class='rbrace token'>}</span>
-
-  <span class='opt identifier id'>opt</span> <span class='andop op'>&amp;&amp;</span> <span class='opt identifier id'>opt</span><span class='dot token'>.</span><span class='setSelected identifier id'>setSelected</span><span class='lparen token'>(</span><span class='true true kw'>true</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id selected?'>selected?</span>
+  <span class='kw'>if</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:isSelected</span><span class='rparen'>)</span>
+    <span class='ivar'>@_node</span><span class='period'>.</span><span class='id isSelected'>isSelected</span>
+  <span class='kw'>else</span>
+    <span class='op'>!</span><span class='op'>!</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:selected</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1008,7 +1226,7 @@ whether the selection was successful
       <div class="method_details ">
   <p class="signature " id="selected_options-instance_method">
   
-    - (<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>selected_options</strong> 
+    - (<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>) <strong>selected_options</strong> 
   
 
   
@@ -1027,7 +1245,7 @@ Return the selected option elements for a select box.
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;<a href="" title="Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>)</span>
       
       
       
@@ -1048,17 +1266,16 @@ the selected options
       <pre class="lines">
 
 
-92
-93
-94</pre>
+113
+114
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 113</span>
 
-<span class='def def kw'>def</span> <span class='selected_options identifier id'>selected_options</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getSelectedOptions identifier id'>getSelectedOptions</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span> <span class='Node constant id'>Node</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id selected_options'>selected_options</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getSelectedOptions'>getSelectedOptions</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id node'>node</span><span class='op'>|</span> <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id node'>node</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1107,17 +1324,16 @@ the node&#8217;s tag name
       <pre class="lines">
 
 
-107
-108
-109</pre>
+128
+129
+130</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 128</span>
 
-<span class='def def kw'>def</span> <span class='tag_name identifier id'>tag_name</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getNodeName identifier id'>getNodeName</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id tag_name'>tag_name</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getNodeName'>getNodeName</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1166,33 +1382,96 @@ inner text of the node
       <pre class="lines">
 
 
-18
-19
-20</pre>
+22
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 22</span>
 
-<span class='def def kw'>def</span> <span class='text identifier id'>text</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id text'>text</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id asText'>asText</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unselect_option-instance_method">
+  <p class="signature " id="type-instance_method">
   
-    - (<tt>true</tt>, <tt>false</tt>) <strong>unselect_option</strong>(option) 
+    - (<tt>Object</tt>) <strong>type</strong>(value) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Unselect an option from a select box by its value.
+Types each character into a text or input field.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>value</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the string to type
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id type'>type</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='id value'>value</span><span class='period'>.</span><span class='id each_char'>each_char</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id c'>c</span><span class='op'>|</span>
+    <span class='ivar'>@_node</span><span class='period'>.</span><span class='id type'>type</span><span class='lparen'>(</span><span class='id c'>c</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="unselect-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>unselect</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Unselect an option.
 </p>
 
 
@@ -1225,21 +1504,16 @@ whether the unselection was successful
       <pre class="lines">
 
 
-76
-77
-78
-79
-80</pre>
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 99</span>
 
-<span class='def def kw'>def</span> <span class='unselect_option identifier id'>unselect_option</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
-  <span class='opt identifier id'>opt</span> <span class='assign token'>=</span> <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getOptions identifier id'>getOptions</span><span class='dot token'>.</span><span class='detect identifier id'>detect</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='o identifier id'>o</span><span class='bitor op'>|</span> <span class='o identifier id'>o</span><span class='dot token'>.</span><span class='asText identifier id'>asText</span> <span class='eq op'>==</span> <span class='option identifier id'>option</span> <span class='rbrace token'>}</span>
-
-  <span class='opt identifier id'>opt</span> <span class='andop op'>&amp;&amp;</span> <span class='opt identifier id'>opt</span><span class='dot token'>.</span><span class='setSelected identifier id'>setSelected</span><span class='lparen token'>(</span><span class='false false kw'>false</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id unselect'>unselect</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id setSelected'>setSelected</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1290,10 +1564,6 @@ the node&#8217;s value
       <pre class="lines">
 
 
-36
-37
-38
-39
 40
 41
 42
@@ -1304,27 +1574,34 @@ the node&#8217;s value
 47
 48
 49
-50</pre>
+50
+51
+52
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 40</span>
 
-<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
-  <span class='case case kw'>case</span> <span class='tag_name identifier id'>tag_name</span>
-  <span class='when when kw'>when</span> <span class='string val'>&quot;select&quot;</span>
-    <span class='if if kw'>if</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:multiple</span><span class='rbrack token'>]</span>
-      <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='selected_options identifier id'>selected_options</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='option identifier id'>option</span><span class='bitor op'>|</span> <span class='option identifier id'>option</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='rbrace token'>}</span>
-    <span class='else else kw'>else</span>
-      <span class='selected_option identifier id'>selected_option</span> <span class='assign token'>=</span> <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='selected_options identifier id'>selected_options</span><span class='dot token'>.</span><span class='first identifier id'>first</span>
-      <span class='selected_option identifier id'>selected_option</span> <span class='integer val'>? </span><span class='selected_option identifier id'>selected_option</span><span class='dot token'>.</span><span class='text identifier id'>text</span> <span class='colon op'>:</span> <span class='nil nil kw'>nil</span>
-    <span class='end end kw'>end</span>
-  <span class='when when kw'>when</span> <span class='string val'>&quot;textarea&quot;</span>
-    <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='getText identifier id'>getText</span>
-  <span class='else else kw'>else</span>
-    <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:value</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id value'>value</span>
+  <span class='kw'>case</span> <span class='id tag_name'>tag_name</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>select</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>if</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:multiple</span><span class='rbracket'>]</span>
+      <span class='id selected_options'>selected_options</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id option'>option</span><span class='op'>|</span> <span class='id option'>option</span><span class='period'>.</span><span class='id value'>value</span> <span class='rbrace'>}</span>
+    <span class='kw'>else</span>
+      <span class='id selected_option'>selected_option</span> <span class='op'>=</span> <span class='ivar'>@_node</span><span class='period'>.</span><span class='id selected_options'>selected_options</span><span class='period'>.</span><span class='id first'>first</span>
+      <span class='id selected_option'>selected_option</span> <span class='op'>?</span> <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id selected_option'>selected_option</span><span class='rparen'>)</span><span class='period'>.</span><span class='id value'>value</span> <span class='op'>:</span> <span class='kw'>nil</span>
+    <span class='kw'>end</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>option</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id text'>text</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>textarea</span><span class='tstring_end'>&quot;</span></span>
+    <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getText'>getText</span>
+  <span class='kw'>else</span>
+    <span class='kw'>self</span><span class='lbracket'>[</span><span class='symbol'>:value</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1369,27 +1646,38 @@ Set the value of the form input.
       <pre class="lines">
 
 
-55
-56
-57
-58
-59
-60
 61
-62</pre>
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 61</span>
 
-<span class='def def kw'>def</span> <span class='value= identifier id'>value=</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='case case kw'>case</span> <span class='tag_name identifier id'>tag_name</span>
-  <span class='when when kw'>when</span> <span class='string val'>&quot;textarea&quot;</span>
-    <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='setText identifier id'>setText</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='when when kw'>when</span> <span class='string val'>&quot;input&quot;</span>
-    <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='setValueAttribute identifier id'>setValueAttribute</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id value='>value=</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>case</span> <span class='id tag_name'>tag_name</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>textarea</span><span class='tstring_end'>&quot;</span></span>
+    <span class='ivar'>@_node</span><span class='period'>.</span><span class='id setText'>setText</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id type'>type</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>input</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>if</span> <span class='id file_input?'>file_input?</span>
+      <span class='ivar'>@_node</span><span class='period'>.</span><span class='id setValueAttribute'>setValueAttribute</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='ivar'>@_node</span><span class='period'>.</span><span class='id setValueAttribute'>setValueAttribute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id type'>type</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1405,7 +1693,7 @@ Set the value of the form input.
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Whether the node is visible to the user accounting for CSS.
+for CSS.
 </p>
 
 
@@ -1424,7 +1712,7 @@ Whether the node is visible to the user accounting for CSS.
       
         &mdash;
         <div class='inline'><p>
-whether the node is visible to the user accounting for CSS.
+whether the node is visible to the user accounting
 </p>
 </div>
       
@@ -1438,17 +1726,74 @@ whether the node is visible to the user accounting for CSS.
       <pre class="lines">
 
 
-113
-114
-115</pre>
+134
+135
+136</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 134</span>
 
-<span class='def def kw'>def</span> <span class='visible? fid id'>visible?</span>
-  <span class='@_node ivar id'>@_node</span><span class='dot token'>.</span><span class='isDisplayed identifier id'>isDisplayed</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id visible?'>visible?</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id isDisplayed'>isDisplayed</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="xpath-instance_method">
+  
+    - (<tt>String</tt>) <strong>xpath</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The XPath expression for this node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the XPath expression for this node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+167
+168
+169</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/node.rb', line 167</span>
+
+<span class='kw'>def</span> <span class='id xpath'>xpath</span>
+  <span class='ivar'>@_node</span><span class='period'>.</span><span class='id getCanonicalXPath'>getCanonicalXPath</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1459,9 +1804,9 @@ whether the node is visible to the user accounting for CSS.
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:10 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:14 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

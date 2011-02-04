@@ -65,11 +65,11 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Akephalos.html" title="Akephalos (module)">Akephalos</a>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Akephalos.html" title="Akephalos (module)">Akephalos</a></span>, <span class='object_link'><a href="HtmlUnit.html" title="HtmlUnit (module)">HtmlUnit</a></span>
     
    
     
-      <strong class="classes">Classes:</strong> <a href="HttpMethod.html" title="HttpMethod (class)">HttpMethod</a>, <a href="NativeException.html" title="NativeException (class)">NativeException</a>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="NativeException.html" title="NativeException (class)">NativeException</a></span>
     
   
 </p>
@@ -157,11 +157,10 @@ Begin a new Capybara session, by default connecting to localhost on port
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/console.rb', line 3</span>
 
-<span class='def def kw'>def</span> <span class='session identifier id'>session</span>
-  <span class='Capybara constant id'>Capybara</span><span class='dot token'>.</span><span class='app_host identifier id'>app_host</span> <span class='assign token'>=</span> <span class='string val'>&quot;http://localhost:3000&quot;</span>
-  <span class='@session ivar id'>@session</span> <span class='opasgn op'>||=</span> <span class='Capybara constant id'>Capybara</span><span class='colon2 op'>::</span><span class='Session constant id'>Session</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='symbol val'>:Akephalos</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id session'>session</span>
+  <span class='const'>Capybara</span><span class='period'>.</span><span class='id app_host'>app_host</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://localhost:3000</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@session</span> <span class='op'>||=</span> <span class='const'>Capybara</span><span class='op'>::</span><span class='const'>Session</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='symbol'>:Akephalos</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -172,9 +171,9 @@ Begin a new Capybara session, by default connecting to localhost on port
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:11 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:16 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

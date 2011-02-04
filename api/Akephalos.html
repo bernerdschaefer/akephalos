@@ -54,7 +54,7 @@
   
     
       <dt class="r1">Extended by:</dt>
-      <dd class="r1"><a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Akephalos::Filters</a></dd>
+      <dd class="r1"><span class='object_link'><a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Filters</a></span></dd>
       
     
   
@@ -64,7 +64,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/akephalos/version.rb<span class="defines">,<br />
-  lib/akephalos.rb,<br /> lib/akephalos/page.rb,<br /> lib/akephalos/node.rb,<br /> lib/akephalos/client.rb,<br /> lib/akephalos/console.rb,<br /> lib/akephalos/remote_client.rb,<br /> lib/akephalos/client/filter.rb,<br /> lib/akephalos/configuration.rb,<br /> lib/akephalos/server.rb</span>
+  lib/akephalos.rb,<br /> lib/akephalos/node.rb,<br /> lib/akephalos/page.rb,<br /> lib/akephalos/client.rb,<br /> lib/akephalos/console.rb,<br /> lib/akephalos/configuration.rb,<br /> lib/akephalos/remote_client.rb,<br /> lib/akephalos/client/filter.rb,<br /> lib/akephalos/client/cookies.rb,<br /> lib/akephalos/server.rb</span>
 </dd>
   
 </dl>
@@ -85,11 +85,11 @@
 <p class="children">
    
     
-      <strong class="modules">Modules:</strong> <a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Filters</a>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Filters</a></span>
     
    
     
-      <strong class="classes">Classes:</strong> <a href="Akephalos/Client.html" title="Akephalos::Client (class)">Client</a>, <a href="Akephalos/Console.html" title="Akephalos::Console (class)">Console</a>, <a href="Akephalos/Node.html" title="Akephalos::Node (class)">Node</a>, <a href="Akephalos/Page.html" title="Akephalos::Page (class)">Page</a>, <a href="Akephalos/RemoteClient.html" title="Akephalos::RemoteClient (class)">RemoteClient</a>, <a href="Akephalos/Server.html" title="Akephalos::Server (class)">Server</a>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Akephalos/Client.html" title="Akephalos::Client (class)">Client</a></span>, <span class='object_link'><a href="Akephalos/ClientManager.html" title="Akephalos::ClientManager (class)">ClientManager</a></span>, <span class='object_link'><a href="Akephalos/Console.html" title="Akephalos::Console (class)">Console</a></span>, <span class='object_link'><a href="Akephalos/Node.html" title="Akephalos::Node (class)">Node</a></span>, <span class='object_link'><a href="Akephalos/Page.html" title="Akephalos::Page (class)">Page</a></span>, <span class='object_link'><a href="Akephalos/RemoteClient.html" title="Akephalos::RemoteClient (class)">RemoteClient</a></span>, <span class='object_link'><a href="Akephalos/Server.html" title="Akephalos::Server (class)">Server</a></span>
     
   
 </p>
@@ -101,14 +101,12 @@
         <dt id="BIN_DIR-constant" class="">BIN_DIR =
           
         </dt>
-        <dd><pre class="code"><span class='Pathname constant id'>Pathname</span><span class='lparen token'>(</span><span class='__FILE__ __file__ kw'>__FILE__</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='expand_path identifier id'>expand_path</span><span class='dot token'>.</span><span class='dirname identifier id'>dirname</span><span class='dot token'>.</span><span class='parent identifier id'>parent</span> <span class='plus op'>+</span> <span class='string val'>'bin'</span>
-</pre></dd>
+        <dd><pre class="code"><span class='const'>Pathname</span><span class='lparen'>(</span><span class='kw'>__FILE__</span><span class='rparen'>)</span><span class='period'>.</span><span class='id expand_path'>expand_path</span><span class='period'>.</span><span class='id dirname'>dirname</span><span class='period'>.</span><span class='id parent'>parent</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bin</span><span class='tstring_end'>'</span></span></pre></dd>
       
         <dt id="VERSION-constant" class="">VERSION =
           
         </dt>
-        <dd><pre class="code"><span class='string val'>&quot;0.2.4&quot;</span>
-</pre></dd>
+        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.2.5</span><span class='tstring_end'>&quot;</span></span></pre></dd>
       
     </dl>
   
@@ -159,8 +157,8 @@ The configuration.
   
   <h2>Method Summary</h2>
   
-  <h3 class="inherited">Methods included from <a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Akephalos::Filters</a></h3>
-  <p class="inherited"><a href="Akephalos/Filters.html#filter-instance_method" title="Akephalos::Filters#filter (method)">filter</a>, <a href="Akephalos/Filters.html#filters-instance_method" title="Akephalos::Filters#filters (method)">filters</a></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Akephalos/Filters.html" title="Akephalos::Filters (module)">Filters</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Akephalos/Filters.html#filter-instance_method" title="Akephalos::Filters#filter (method)">filter</a></span>, <span class='object_link'><a href="Akephalos/Filters.html#filters-instance_method" title="Akephalos::Filters#filters (method)">filters</a></span></p>
 
   <div id="class_attr_details" class="attr_details">
     <h2>Class Attribute Details</h2>
@@ -218,10 +216,9 @@ the configuration
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/configuration.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='configuration identifier id'>configuration</span>
-  <span class='@configuration ivar id'>@configuration</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id configuration'>configuration</span>
+  <span class='ivar'>@configuration</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -233,9 +230,9 @@ the configuration
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:09 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:14 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

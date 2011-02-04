@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../../../_index.html">Index (N)</a> &raquo; 
-    <span class='title'>Capybara</span> &raquo; <span class='title'>Driver</span> &raquo; <span class='title'><a href="../Akephalos.html" title="Capybara::Driver::Akephalos (class)">Akephalos</a></span>
+    <span class='title'>Capybara</span> &raquo; <span class='title'>Driver</span> &raquo; <span class='title'><span class='object_link'><a href="../Akephalos.html" title="Capybara::Driver::Akephalos (class)">Akephalos</a></span></span>
      &raquo; 
     <span class="title">Node</span>
   
@@ -53,12 +53,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Capybara::Node</span>
+      <span class="inheritName">Node</span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">Capybara::Node</li>
+            <li class="next">Node</li>
           
             <li class="next">Capybara::Driver::Akephalos::Node</li>
           
@@ -84,7 +84,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     <p>
-Akephalos-specific implementation for Capybara&#8217;s Node class.
+Akephalos-specific implementation for Capybara&#8217;s Driver::Node class.
 </p>
 
 
@@ -122,6 +122,30 @@ Akephalos-specific implementation for Capybara&#8217;s Node class.
   
     <span class="summary_desc"><div class='inline'><p>
 The attribute value.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#checked%3F-instance_method" title="#checked? (instance method)">- (true, false) <strong>checked?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The element&#8217;s visiblity.
 </p>
 </div></span>
   
@@ -179,7 +203,7 @@ Drag the element on top of the target element.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#select-instance_method" title="#select (instance method)">- (Object) <strong>select</strong>(option) </a>
+      <a href="#find-instance_method" title="#find (instance method)">- (Array&lt;Node&gt;) <strong>find</strong>(selector) </a>
     
 
     
@@ -193,7 +217,76 @@ Drag the element on top of the target element.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Select an option from a select box.
+The matched nodes.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#path-instance_method" title="#path (instance method)">- (String) <strong>path</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The XPath to locate the node.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#select_option-instance_method" title="#select_option (instance method)">- (Object) <strong>select_option</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#selected%3F-instance_method" title="#selected? (instance method)">- (true, false) <strong>selected?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The element&#8217;s visiblity.
 </p>
 </div></span>
   
@@ -299,7 +392,7 @@ Trigger an event on the element.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#unselect-instance_method" title="#unselect (instance method)">- (Object) <strong>unselect</strong>(option) </a>
+      <a href="#unselect_option-instance_method" title="#unselect_option (instance method)">- (Object) <strong>unselect_option</strong> </a>
     
 
     
@@ -323,7 +416,7 @@ Unselect an option from a select box.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#value-instance_method" title="#value (instance method)">- (String) <strong>value</strong> </a>
+      <a href="#value-instance_method" title="#value (instance method)">- (String<sup>+</sup>) <strong>value</strong> </a>
     
 
     
@@ -442,29 +535,86 @@ the attribute value
       <pre class="lines">
 
 
-15
-16
-17
-18
-19
-20
 21
 22
-23</pre>
+23
+24
+25
+26
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 21</span>
 
-<span class='def def kw'>def</span> <span class='aref op'>[]</span><span class='lparen token'>(</span><span class='name identifier id'>name</span><span class='rparen token'>)</span>
-  <span class='name identifier id'>name</span> <span class='assign token'>=</span> <span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
-  <span class='case case kw'>case</span> <span class='name identifier id'>name</span>
-  <span class='when when kw'>when</span> <span class='string val'>'checked'</span>
-    <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='checked? fid id'>checked?</span>
-  <span class='else else kw'>else</span>
-    <span class='node identifier id'>node</span><span class='lbrack token'>[</span><span class='name identifier id'>name</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id name'>name</span><span class='rparen'>)</span>
+  <span class='id name'>name</span> <span class='op'>=</span> <span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='kw'>case</span> <span class='id name'>name</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>checked</span><span class='tstring_end'>'</span></span>
+    <span class='id native'>native</span><span class='period'>.</span><span class='id checked?'>checked?</span>
+  <span class='kw'>else</span>
+    <span class='id native'>native</span><span class='lbracket'>[</span><span class='id name'>name</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="checked?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>checked?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The element&#8217;s visiblity
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the element&#8217;s visiblity
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+100
+101
+102</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 100</span>
+
+<span class='kw'>def</span> <span class='id checked?'>checked?</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id checked?'>checked?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -494,17 +644,16 @@ Click the element.
       <pre class="lines">
 
 
-120
-121
-122</pre>
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 72</span>
 
-<span class='def def kw'>def</span> <span class='click identifier id'>click</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='click identifier id'>click</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id click'>click</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id click'>click</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -532,7 +681,7 @@ Drag the element on top of the target element.
   
     <li>
       
-        <span class='type'>(<tt><a href="" title="Capybara::Driver::Akephalos::Node (class)">Node</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Capybara::Driver::Akephalos::Node (class)">Node</a></span></tt>)</span>
       
       
         <span class='name'>element</span>
@@ -555,37 +704,36 @@ the target element
       <pre class="lines">
 
 
-113
-114
-115
-116
-117</pre>
+80
+81
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 113</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 80</span>
 
-<span class='def def kw'>def</span> <span class='drag_to identifier id'>drag_to</span><span class='lparen token'>(</span><span class='element identifier id'>element</span><span class='rparen token'>)</span>
-  <span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='string val'>'mousedown'</span><span class='rparen token'>)</span>
-  <span class='element identifier id'>element</span><span class='dot token'>.</span><span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='string val'>'mousemove'</span><span class='rparen token'>)</span>
-  <span class='element identifier id'>element</span><span class='dot token'>.</span><span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='string val'>'mouseup'</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id drag_to'>drag_to</span><span class='lparen'>(</span><span class='id element'>element</span><span class='rparen'>)</span>
+  <span class='id trigger'>trigger</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mousedown</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id element'>element</span><span class='period'>.</span><span class='id trigger'>trigger</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mousemove</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+  <span class='id element'>element</span><span class='period'>.</span><span class='id trigger'>trigger</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>mouseup</span><span class='tstring_end'>'</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="select-instance_method">
+  <p class="signature " id="find-instance_method">
   
-    - (<tt>Object</tt>) <strong>select</strong>(option) 
+    - (<tt>Array&lt;<span class='object_link'><a href="" title="Capybara::Driver::Akephalos::Node (class)">Node</a></span>&gt;</tt>) <strong>find</strong>(selector) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Select an option from a select box.
+The matched nodes
 </p>
 
 
@@ -600,13 +748,32 @@ Select an option from a select box.
         <span class='type'>(<tt>String</tt>)</span>
       
       
-        <span class='name'>option</span>
+        <span class='name'>selector</span>
       
       
       
         &mdash;
         <div class='inline'><p>
-the option to select
+XPath query
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+<h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="" title="Capybara::Driver::Akephalos::Node (class)">Node</a></span>&gt;</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the matched nodes
 </p>
 </div>
       
@@ -620,31 +787,164 @@ the option to select
       <pre class="lines">
 
 
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68</pre>
+127
+128
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 127</span>
 
-<span class='def def kw'>def</span> <span class='select identifier id'>select</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
-  <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='select_option identifier id'>select_option</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
+<span class='kw'>def</span> <span class='id find'>find</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span>
+  <span class='id nodes'>nodes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span><span class='period'>.</span><span class='id each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id node'>node</span><span class='op'>|</span> <span class='id nodes'>nodes</span> <span class='op'>&lt;&lt;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id class'>class</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='kw'>self</span><span class='comma'>,</span> <span class='id node'>node</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id nodes'>nodes</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="path-instance_method">
+  
+    - (<tt>String</tt>) <strong>path</strong> 
+  
 
-  <span class='if if kw'>if</span> <span class='result identifier id'>result</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
-    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='symbol val'>:text</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;, &quot;</span><span class='rparen token'>)</span>
-    <span class='raise identifier id'>raise</span> <span class='Capybara constant id'>Capybara</span><span class='colon2 op'>::</span><span class='OptionNotFound constant id'>OptionNotFound</span><span class='comma token'>,</span> <span class='dstring node'>&quot;No such option '#{option}' in this select box. Available options: #{options}&quot;</span>
-  <span class='else else kw'>else</span>
-    <span class='result identifier id'>result</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The XPath to locate the node
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the XPath to locate the node
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+112
+113
+114</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 112</span>
+
+<span class='kw'>def</span> <span class='id path'>path</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id xpath'>xpath</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="select_option-instance_method">
+  
+    - (<tt>Object</tt>) <strong>select_option</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+56
+57
+58</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 56</span>
+
+<span class='kw'>def</span> <span class='id select_option'>select_option</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id click'>click</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="selected?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>selected?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The element&#8217;s visiblity
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the element&#8217;s visiblity
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id selected?'>selected?</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id selected?'>selected?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -712,20 +1012,19 @@ the form element&#8217;s new value
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 41</span>
 
-<span class='def def kw'>def</span> <span class='set identifier id'>set</span><span class='lparen token'>(</span><span class='value identifier id'>value</span><span class='rparen token'>)</span>
-  <span class='if if kw'>if</span> <span class='tag_name identifier id'>tag_name</span> <span class='eq op'>==</span> <span class='string val'>'textarea'</span>
-    <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='tag_name identifier id'>tag_name</span> <span class='eq op'>==</span> <span class='string val'>'input'</span> <span class='and and kw'>and</span> <span class='type identifier id'>type</span> <span class='eq op'>==</span> <span class='string val'>'radio'</span>
-    <span class='click identifier id'>click</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='tag_name identifier id'>tag_name</span> <span class='eq op'>==</span> <span class='string val'>'input'</span> <span class='and and kw'>and</span> <span class='type identifier id'>type</span> <span class='eq op'>==</span> <span class='string val'>'checkbox'</span>
-    <span class='if if kw'>if</span> <span class='value identifier id'>value</span> <span class='neq op'>!=</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='string val'>'checked'</span><span class='rbrack token'>]</span>
-      <span class='click identifier id'>click</span>
-    <span class='end end kw'>end</span>
-  <span class='elsif elsif kw'>elsif</span> <span class='tag_name identifier id'>tag_name</span> <span class='eq op'>==</span> <span class='string val'>'input'</span>
-    <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='value identifier id'>value</span> <span class='assign token'>=</span> <span class='value identifier id'>value</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id set'>set</span><span class='lparen'>(</span><span class='id value'>value</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id tag_name'>tag_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>textarea</span><span class='tstring_end'>'</span></span>
+    <span class='id native'>native</span><span class='period'>.</span><span class='id value'>value</span> <span class='op'>=</span> <span class='id value'>value</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='kw'>elsif</span> <span class='id tag_name'>tag_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>input</span><span class='tstring_end'>'</span></span> <span class='kw'>and</span> <span class='id type'>type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>radio</span><span class='tstring_end'>'</span></span>
+    <span class='id click'>click</span>
+  <span class='kw'>elsif</span> <span class='id tag_name'>tag_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>input</span><span class='tstring_end'>'</span></span> <span class='kw'>and</span> <span class='id type'>type</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>checkbox</span><span class='tstring_end'>'</span></span>
+    <span class='kw'>if</span> <span class='id value'>value</span> <span class='op'>!=</span> <span class='kw'>self</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>checked</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+      <span class='id click'>click</span>
+    <span class='kw'>end</span>
+  <span class='kw'>elsif</span> <span class='id tag_name'>tag_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>input</span><span class='tstring_end'>'</span></span>
+    <span class='id native'>native</span><span class='period'>.</span><span class='id value'>value</span> <span class='op'>=</span> <span class='id value'>value</span><span class='period'>.</span><span class='id to_s'>to_s</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -774,17 +1073,16 @@ the element&#8217;s tag name
       <pre class="lines">
 
 
-99
-100
-101</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 99</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 88</span>
 
-<span class='def def kw'>def</span> <span class='tag_name identifier id'>tag_name</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='tag_name identifier id'>tag_name</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id tag_name'>tag_name</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id tag_name'>tag_name</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -833,17 +1131,16 @@ the inner text of the node
       <pre class="lines">
 
 
-27
-28
-29</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 14</span>
 
-<span class='def def kw'>def</span> <span class='text identifier id'>text</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='text identifier id'>text</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id text'>text</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id text'>text</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -894,26 +1191,25 @@ the event to trigger
       <pre class="lines">
 
 
-93
-94
-95</pre>
+120
+121
+122</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 120</span>
 
-<span class='def def kw'>def</span> <span class='trigger identifier id'>trigger</span><span class='lparen token'>(</span><span class='event identifier id'>event</span><span class='rparen token'>)</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='fire_event identifier id'>fire_event</span><span class='lparen token'>(</span><span class='event identifier id'>event</span><span class='dot token'>.</span><span class='to_s identifier id'>to_s</span><span class='rparen token'>)</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id trigger'>trigger</span><span class='lparen'>(</span><span class='id event'>event</span><span class='rparen'>)</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id fire_event'>fire_event</span><span class='lparen'>(</span><span class='id event'>event</span><span class='period'>.</span><span class='id to_s'>to_s</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="unselect-instance_method">
+  <p class="signature " id="unselect_option-instance_method">
   
-    - (<tt>Object</tt>) <strong>unselect</strong>(option) 
+    - (<tt>Object</tt>) <strong>unselect_option</strong> 
   
 
   
@@ -927,67 +1223,31 @@ Unselect an option from a select box.
   </div>
 </div>
 <div class="tags">
-  <h3>Parameters:</h3>
-<ul class="param">
   
-    <li>
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <span class='name'>option</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the option to unselect
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87</pre>
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 63</span>
 
-<span class='def def kw'>def</span> <span class='unselect identifier id'>unselect</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
-  <span class='unless unless kw'>unless</span> <span class='self self kw'>self</span><span class='lbrack token'>[</span><span class='symbol val'>:multiple</span><span class='rbrack token'>]</span>
-    <span class='raise identifier id'>raise</span> <span class='Capybara constant id'>Capybara</span><span class='colon2 op'>::</span><span class='UnselectNotAllowed constant id'>UnselectNotAllowed</span><span class='comma token'>,</span> <span class='dstring node'>&quot;Cannot unselect option '#{option}' from single select box.&quot;</span>
-  <span class='end end kw'>end</span>
+<span class='kw'>def</span> <span class='id unselect_option'>unselect_option</span>
+  <span class='kw'>unless</span> <span class='id select_node'>select_node</span><span class='period'>.</span><span class='id multiple_select?'>multiple_select?</span>
+    <span class='id raise'>raise</span> <span class='const'>Capybara</span><span class='op'>::</span><span class='const'>UnselectNotAllowed</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Cannot unselect option from single select box.</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
 
-  <span class='result identifier id'>result</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='unselect_option identifier id'>unselect_option</span><span class='lparen token'>(</span><span class='option identifier id'>option</span><span class='rparen token'>)</span>
-
-  <span class='if if kw'>if</span> <span class='result identifier id'>result</span> <span class='eq op'>==</span> <span class='nil nil kw'>nil</span>
-    <span class='options identifier id'>options</span> <span class='assign token'>=</span> <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='options identifier id'>options</span><span class='dot token'>.</span><span class='map identifier id'>map</span><span class='lparen token'>(</span><span class='bitand op'>&amp;</span><span class='symbol val'>:text</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='join identifier id'>join</span><span class='lparen token'>(</span><span class='string val'>&quot;, &quot;</span><span class='rparen token'>)</span>
-    <span class='raise identifier id'>raise</span> <span class='Capybara constant id'>Capybara</span><span class='colon2 op'>::</span><span class='OptionNotFound constant id'>OptionNotFound</span><span class='comma token'>,</span> <span class='dstring node'>&quot;No such option '#{option}' in this select box. Available options: #{options}&quot;</span>
-  <span class='else else kw'>else</span>
-    <span class='result identifier id'>result</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
-</pre>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id unselect'>unselect</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -996,7 +1256,7 @@ the option to unselect
       <div class="method_details ">
   <p class="signature " id="value-instance_method">
   
-    - (<tt>String</tt>) <strong>value</strong> 
+    - (<tt>String</tt><sup>+</sup>) <strong>value</strong> 
   
 
   
@@ -1015,7 +1275,7 @@ The form element&#8217;s value
   
     <li>
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'>(<tt>String</tt>, <tt>Array&lt;String&gt;</tt>)</span>
       
       
       
@@ -1043,10 +1303,9 @@ the form element&#8217;s value
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 33</span>
 
-<span class='def def kw'>def</span> <span class='value identifier id'>value</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='value identifier id'>value</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id value'>value</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id value'>value</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1095,17 +1354,16 @@ the element&#8217;s visiblity
       <pre class="lines">
 
 
-105
-106
-107</pre>
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/capybara.rb', line 94</span>
 
-<span class='def def kw'>def</span> <span class='visible? fid id'>visible?</span>
-  <span class='node identifier id'>node</span><span class='dot token'>.</span><span class='visible? fid id'>visible?</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id visible?'>visible?</span>
+  <span class='id native'>native</span><span class='period'>.</span><span class='id visible?'>visible?</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1116,9 +1374,9 @@ the element&#8217;s visiblity
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:11 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:16 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

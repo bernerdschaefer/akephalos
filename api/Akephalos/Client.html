@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../_index.html">Index (C)</a> &raquo; 
-    <span class='title'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span>
+    <span class='title'><span class='object_link'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span></span>
      &raquo; 
     <span class="title">Client</span>
   
@@ -75,7 +75,7 @@
   
     <dt class="r2 last">Defined in:</dt>
     <dd class="r2 last">lib/akephalos/client.rb<span class="defines">,<br />
-  lib/akephalos/client/filter.rb</span>
+  lib/akephalos/client/filter.rb,<br /> lib/akephalos/client/cookies.rb</span>
 </dd>
   
 </dl>
@@ -100,14 +100,89 @@ and allowing navigation.
     
    
     
-      <strong class="classes">Classes:</strong> <a href="Client/Filter.html" title="Akephalos::Client::Filter (class)">Filter</a>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Client/Cookies.html" title="Akephalos::Client::Cookies (class)">Cookies</a></span>, <span class='object_link'><a href="Client/Filter.html" title="Akephalos::Client::Filter (class)">Filter</a></span>
     
   
 </p>
 
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="DEFAULT_OPTIONS-constant" class="">DEFAULT_OPTIONS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+The default configuration options for a new Client.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:browser</span> <span class='op'>=&gt;</span> <span class='symbol'>:firefox_3_6</span><span class='comma'>,</span>
+  <span class='symbol'>:validate_scripts</span> <span class='op'>=&gt;</span> <span class='kw'>true</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+        <dt id="BROWSER_VERSIONS-constant" class="">BROWSER_VERSIONS =
+          <div class="docstring">
+  <div class="discussion">
+    <p>
+Map of browser version symbols to their HtmlUnit::BrowserVersion instances.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+        </dt>
+        <dd><pre class="code"><span class='lbrace'>{</span>
+  <span class='symbol'>:ie6</span>         <span class='op'>=&gt;</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>BrowserVersion</span><span class='op'>::</span><span class='const'>INTERNET_EXPLORER_6</span><span class='comma'>,</span>
+  <span class='symbol'>:ie7</span>         <span class='op'>=&gt;</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>BrowserVersion</span><span class='op'>::</span><span class='const'>INTERNET_EXPLORER_7</span><span class='comma'>,</span>
+  <span class='symbol'>:ie8</span>         <span class='op'>=&gt;</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>BrowserVersion</span><span class='op'>::</span><span class='const'>INTERNET_EXPLORER_8</span><span class='comma'>,</span>
+  <span class='symbol'>:firefox_3</span>   <span class='op'>=&gt;</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>BrowserVersion</span><span class='op'>::</span><span class='const'>FIREFOX_3</span><span class='comma'>,</span>
+  <span class='symbol'>:firefox_3_6</span> <span class='op'>=&gt;</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>BrowserVersion</span><span class='op'>::</span><span class='const'>FIREFOX_3_6</span>
+<span class='rbrace'>}</span></pre></dd>
+      
+    </dl>
+  
+
 
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#browser_version-instance_method" title="#browser_version (instance method)">- (HtmlUnit::BrowserVersion) <strong>browser_version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The configured browser version.
+</p>
+</div></span>
+  
+</li>
+
     
       <li class="public ">
   <span class="summary_signature">
@@ -136,6 +211,33 @@ The current page.
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_scripts-instance_method" title="#validate_scripts (instance method)">- (true/false) <strong>validate_scripts</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether to raise errors on javascript failures.
+</p>
+</div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -150,7 +252,7 @@ The current page.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#clear_cookies-instance_method" title="#clear_cookies (instance method)">- (Object) <strong>clear_cookies</strong> </a>
+      <a href="#cookies-instance_method" title="#cookies (instance method)">- (Cookies) <strong>cookies</strong> </a>
     
 
     
@@ -164,7 +266,7 @@ The current page.
 
   
     <span class="summary_desc"><div class='inline'><p>
-Clear all cookies for this browser session.
+The cookies for this session.
 </p>
 </div></span>
   
@@ -174,31 +276,7 @@ Clear all cookies for this browser session.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#configuration%3D-instance_method" title="#configuration= (instance method)">- (Hash) <strong>configuration=</strong>(config) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'><p>
-Set the global configuration settings for Akephalos.
-</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong> </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(options = {}) </a>
     
 
     
@@ -215,6 +293,103 @@ Set the global configuration settings for Akephalos.
   
     <span class="summary_desc"><div class='inline'><p>
 A new instance of Client.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#process_options%21-instance_method" title="#process_options! (instance method)">- (Object) <strong>process_options!</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Merges the DEFAULT_OPTIONS with those provided to initialize the Client
+state, namely, its browser version and whether it should validate scripts.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agent-instance_method" title="#user_agent (instance method)">- (String) <strong>user_agent</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The current user agent string.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user_agent%3D-instance_method" title="#user_agent= (instance method)">- (Object) <strong>user_agent=</strong>(user_agent) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Set the User-Agent header for this session.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#validate_scripts%3F-instance_method" title="#validate_scripts? (instance method)">- (true, false) <strong>validate_scripts?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Whether javascript errors will raise exceptions.
 </p>
 </div></span>
   
@@ -254,7 +429,7 @@ Visit the requested URL and return the page.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Akephalos::Client (class)">Client</a></tt>) <strong>initialize</strong> 
+    - (<tt><span class='object_link'><a href="" title="Akephalos::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(options = {}) 
   
 
   
@@ -268,42 +443,109 @@ A new instance of Client
   </div>
 </div>
 <div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
   
+    <li>
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <span class='name'>options</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the configuration options for this client
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <h3>Options Hash (<tt>options</tt>):</h3>
+    <ul class="option">
+      
+        <li>
+          <span class="type">(<tt>Symbol</tt>)</span>
+          <span class="name">:browser</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>:firefox_3_6</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>
+the browser version ( see BROWSER_VERSIONS)
+</p>
+</div>
+        </tr>
+      
+        <li>
+          <span class="type">(<tt>true</tt>, <tt>false</tt>)</span>
+          <span class="name">:validate_scripts</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>true</tt>
+            
+          </span>
+          &mdash; <div class='inline'><p>
+whether to raise errors on javascript errors
+</p>
+</div>
+        </tr>
+      
+    </ul>
+  
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37</pre>
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 55</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span>
-  <span class='@_client ivar id'>@_client</span> <span class='assign token'>=</span> <span class='java identifier id'>java</span><span class='dot token'>.</span><span class='util identifier id'>util</span><span class='dot token'>.</span><span class='concurrent identifier id'>concurrent</span><span class='dot token'>.</span><span class='FutureTask constant id'>FutureTask</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='do do kw'>do</span>
-    <span class='client identifier id'>client</span> <span class='assign token'>=</span> <span class='WebClient constant id'>WebClient</span><span class='dot token'>.</span><span class='new identifier id'>new</span>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id process_options!'>process_options!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
 
-    <span class='Filter constant id'>Filter</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='client identifier id'>client</span><span class='rparen token'>)</span>
-    <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='setAjaxController identifier id'>setAjaxController</span><span class='lparen token'>(</span><span class='NicelyResynchronizingAjaxController constant id'>NicelyResynchronizingAjaxController</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
-    <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='setCssErrorHandler identifier id'>setCssErrorHandler</span><span class='lparen token'>(</span><span class='SilentCssErrorHandler constant id'>SilentCssErrorHandler</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='rparen token'>)</span>
+  <span class='ivar'>@_client</span> <span class='op'>=</span> <span class='id java'>java</span><span class='period'>.</span><span class='id util'>util</span><span class='period'>.</span><span class='id concurrent'>concurrent</span><span class='period'>.</span><span class='const'>FutureTask</span><span class='period'>.</span><span class='id new'>new</span> <span class='kw'>do</span>
+    <span class='id client'>client</span> <span class='op'>=</span> <span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>WebClient</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id browser_version'>browser_version</span><span class='rparen'>)</span>
 
-    <span class='client identifier id'>client</span>
-  <span class='end end kw'>end</span>
-  <span class='Thread constant id'>Thread</span><span class='dot token'>.</span><span class='new identifier id'>new</span> <span class='lbrace token'>{</span> <span class='@_client ivar id'>@_client</span><span class='dot token'>.</span><span class='run identifier id'>run</span> <span class='rbrace token'>}</span>
-<span class='end end kw'>end</span>
-</pre>
+    <span class='const'>Filter</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id client'>client</span><span class='rparen'>)</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id setThrowExceptionOnFailingStatusCode'>setThrowExceptionOnFailingStatusCode</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id setAjaxController'>setAjaxController</span><span class='lparen'>(</span><span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>NicelyResynchronizingAjaxController</span><span class='period'>.</span><span class='id new'>new</span><span class='rparen'>)</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id setCssErrorHandler'>setCssErrorHandler</span><span class='lparen'>(</span><span class='const'>HtmlUnit</span><span class='op'>::</span><span class='const'>SilentCssErrorHandler</span><span class='period'>.</span><span class='id new'>new</span><span class='rparen'>)</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id setThrowExceptionOnScriptError'>setThrowExceptionOnScriptError</span><span class='lparen'>(</span><span class='id validate_scripts'>validate_scripts</span><span class='rparen'>)</span>
+    <span class='id client'>client</span>
+  <span class='kw'>end</span>
+  <span class='const'>Thread</span><span class='period'>.</span><span class='id new'>new</span> <span class='lbrace'>{</span> <span class='ivar'>@_client</span><span class='period'>.</span><span class='id run'>run</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -315,12 +557,73 @@ A new instance of Client
     <h2>Instance Attribute Details</h2>
     
       
+      <span id=""></span>
+      <span id="browser_version-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="browser_version-instance_method">
+  
+    - (<tt>HtmlUnit::BrowserVersion</tt>) <strong>browser_version</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The configured browser version
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>HtmlUnit::BrowserVersion</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the configured browser version
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='id browser_version'>browser_version</span>
+  <span class='ivar'>@browser_version</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
       <span id="page=-instance_method"></span>
       <span id="page-instance_method"></span>
-      <div class="method_details first">
-  <p class="signature first" id="page-instance_method">
+      <div class="method_details ">
+  <p class="signature " id="page-instance_method">
   
-    - (<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>) <strong>page</strong> 
+    - (<tt><span class='object_link'><a href="Page.html" title="Akephalos::Page (class)">Page</a></span></tt>) <strong>page</strong> 
   
 
   
@@ -339,7 +642,7 @@ The current page
   
     <li>
       
-        <span class='type'>(<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Page.html" title="Akephalos::Page (class)">Page</a></span></tt>)</span>
       
       
       
@@ -360,19 +663,79 @@ the current page
       <pre class="lines">
 
 
-64
-65
-66
-67</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 24</span>
 
-<span class='def def kw'>def</span> <span class='page identifier id'>page</span>
-  <span class='self self kw'>self</span><span class='dot token'>.</span><span class='page identifier id'>page</span> <span class='assign token'>=</span> <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getCurrentWindow identifier id'>getCurrentWindow</span><span class='dot token'>.</span><span class='getTopWindow identifier id'>getTopWindow</span><span class='dot token'>.</span><span class='getEnclosedPage identifier id'>getEnclosedPage</span>
-  <span class='@page ivar id'>@page</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id page'>page</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id page'>page</span> <span class='op'>=</span> <span class='id client'>client</span><span class='period'>.</span><span class='id getCurrentWindow'>getCurrentWindow</span><span class='period'>.</span><span class='id getTopWindow'>getTopWindow</span><span class='period'>.</span><span class='id getEnclosedPage'>getEnclosedPage</span>
+  <span class='ivar'>@page</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <span id="validate_scripts-instance_method"></span>
+      <div class="method_details ">
+  <p class="signature " id="validate_scripts-instance_method">
+  
+    - (<tt>true/false</tt>) <strong>validate_scripts</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether to raise errors on javascript failures
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true/false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+whether to raise errors on javascript failures
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id validate_scripts'>validate_scripts</span>
+  <span class='ivar'>@validate_scripts</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -386,66 +749,75 @@ the current page
     
     
       <div class="method_details first">
-  <p class="signature first" id="clear_cookies-instance_method">
+  <p class="signature first" id="cookies-instance_method">
   
-    - (<tt>Object</tt>) <strong>clear_cookies</strong> 
+    - (<tt><span class='object_link'><a href="Client/Cookies.html" title="Akephalos::Client::Cookies (class)">Cookies</a></span></tt>) <strong>cookies</strong> 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
     <p>
-Clear all cookies for this browser session.
+The cookies for this session
 </p>
 
 
   </div>
 </div>
 <div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
   
+    <li>
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Client/Cookies.html" title="Akephalos::Client::Cookies (class)">Cookies</a></span></tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the cookies for this session
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-59
-60
-61</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 81</span>
 
-<span class='def def kw'>def</span> <span class='clear_cookies identifier id'>clear_cookies</span>
-  <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getCookieManager identifier id'>getCookieManager</span><span class='dot token'>.</span><span class='clearCookies identifier id'>clearCookies</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id cookies'>cookies</span>
+  <span class='ivar'>@cookies</span> <span class='op'>||=</span> <span class='const'>Cookies</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id client'>client</span><span class='period'>.</span><span class='id getCookieManager'>getCookieManager</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       <div class="method_details ">
-  <p class="signature " id="configuration=-instance_method">
+  <p class="signature " id="process_options!-instance_method">
   
-    - (<tt>Hash</tt>) <strong>configuration=</strong>(config) 
+    - (<tt>Object</tt>) <strong>process_options!</strong>(options) 
   
 
   
 </p><div class="docstring">
   <div class="discussion">
-    
-  <div class="note notetag">
-    <strong>Note:</strong> 
-    <div class='inline'><p>
-This is only used when communicating over DRb, since just a single client
-instance is exposed.
-</p>
-</div>
-  </div>
-
-<p>
-Set the global configuration settings for Akephalos.
+    <p>
+Merges the DEFAULT_OPTIONS with those provided to initialize the Client
+state, namely, its browser version and whether it should validate scripts.
 </p>
 
 
@@ -460,32 +832,13 @@ Set the global configuration settings for Akephalos.
         <span class='type'>(<tt>Hash</tt>)</span>
       
       
-        <span class='name'>config</span>
+        <span class='name'>options</span>
       
       
       
         &mdash;
         <div class='inline'><p>
-the configuration settings
-</p>
-</div>
-      
-    </li>
-  
-</ul>
-<h3>Returns:</h3>
-<ul class="return">
-  
-    <li>
-      
-        <span class='type'>(<tt>Hash</tt>)</span>
-      
-      
-      
-      
-        &mdash;
-        <div class='inline'><p>
-the configuration
+the options to process
 </p>
 </div>
       
@@ -499,17 +852,228 @@ the configuration
       <pre class="lines">
 
 
-45
-46
-47</pre>
+132
+133
+134
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 132</span>
 
-<span class='def def kw'>def</span> <span class='configuration= identifier id'>configuration=</span><span class='lparen token'>(</span><span class='config identifier id'>config</span><span class='rparen token'>)</span>
-  <span class='Akephalos constant id'>Akephalos</span><span class='dot token'>.</span><span class='configuration identifier id'>configuration</span> <span class='assign token'>=</span> <span class='config identifier id'>config</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id process_options!'>process_options!</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id options'>options</span> <span class='op'>=</span> <span class='const'>DEFAULT_OPTIONS</span><span class='period'>.</span><span class='id merge'>merge</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@browser_version</span>  <span class='op'>=</span> <span class='const'>BROWSER_VERSIONS</span><span class='period'>.</span><span class='id fetch'>fetch</span><span class='lparen'>(</span><span class='id options'>options</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:browser</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='ivar'>@validate_scripts</span> <span class='op'>=</span> <span class='id options'>options</span><span class='period'>.</span><span class='id delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:validate_scripts</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent-instance_method">
+  
+    - (<tt>String</tt>) <strong>user_agent</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The current user agent string
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the current user agent string
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id user_agent'>user_agent</span>
+  <span class='ivar'>@user_agent</span> <span class='op'>||</span> <span class='id client'>client</span><span class='period'>.</span><span class='id getBrowserVersion'>getBrowserVersion</span><span class='period'>.</span><span class='id getUserAgent'>getUserAgent</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="user_agent=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>user_agent=</strong>(user_agent) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Set the User-Agent header for this session. If :default is given, the
+User-Agent header will be reset to the default browser&#8217;s user agent.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Parameters:</h3>
+<ul class="param">
+  
+    <li>
+      
+        <span class='type'>(<tt>:default</tt>)</span>
+      
+      
+        <span class='name'>user_agent</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the default user agent
+</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <span class='name'>user_agent</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+the user agent string to use
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id user_agent='>user_agent=</span><span class='lparen'>(</span><span class='id user_agent'>user_agent</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id user_agent'>user_agent</span> <span class='op'>==</span> <span class='symbol'>:default</span>
+    <span class='ivar'>@user_agent</span> <span class='op'>=</span> <span class='kw'>nil</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id removeRequestHeader'>removeRequestHeader</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='ivar'>@user_agent</span> <span class='op'>=</span> <span class='id user_agent'>user_agent</span>
+    <span class='id client'>client</span><span class='period'>.</span><span class='id addRequestHeader'>addRequestHeader</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id user_agent'>user_agent</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="validate_scripts?-instance_method">
+  
+    - (<tt>true</tt>, <tt>false</tt>) <strong>validate_scripts?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Whether javascript errors will raise exceptions
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+        <span class='type'>(<tt>true</tt>, <tt>false</tt>)</span>
+      
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>
+whether javascript errors will raise exceptions
+</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 123</span>
+
+<span class='kw'>def</span> <span class='id validate_scripts?'>validate_scripts?</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id validate_scripts'>validate_scripts</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -518,7 +1082,7 @@ the configuration
       <div class="method_details ">
   <p class="signature " id="visit-instance_method">
   
-    - (<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>) <strong>visit</strong>(url) 
+    - (<tt><span class='object_link'><a href="Page.html" title="Akephalos::Page (class)">Page</a></span></tt>) <strong>visit</strong>(url) 
   
 
   
@@ -558,7 +1122,7 @@ the URL to load
   
     <li>
       
-        <span class='type'>(<tt><a href="Page.html" title="Akephalos::Page (class)">Page</a></tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="Page.html" title="Akephalos::Page (class)">Page</a></span></tt>)</span>
       
       
       
@@ -579,19 +1143,18 @@ the loaded page
       <pre class="lines">
 
 
-53
-54
-55
-56</pre>
+75
+76
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/akephalos/client.rb', line 75</span>
 
-<span class='def def kw'>def</span> <span class='visit identifier id'>visit</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
-  <span class='client identifier id'>client</span><span class='dot token'>.</span><span class='getPage identifier id'>getPage</span><span class='lparen token'>(</span><span class='url identifier id'>url</span><span class='rparen token'>)</span>
-  <span class='page identifier id'>page</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id visit'>visit</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span>
+  <span class='id client'>client</span><span class='period'>.</span><span class='id getPage'>getPage</span><span class='lparen'>(</span><span class='id url'>url</span><span class='rparen'>)</span>
+  <span class='id page'>page</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -602,9 +1165,9 @@ the loaded page
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:11 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:15 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

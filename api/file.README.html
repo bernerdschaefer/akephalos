@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta name="Content-Type" content="text/html; charset=utf-8" />
-<title>Documentation by YARD 0.5.8</title>
+<title>Documentation by YARD 0.6.4</title>
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
 
@@ -41,66 +41,108 @@
     
     <iframe id="search_frame"></iframe>
     
-    <div id="content"><div id='filecontents'><h1 id='akephalos'>Akephalos</h1>
+    <div id="content"><div id='filecontents'><h1>Akephalos</h1>
 
-<p>Akephalos is a full-stack headless browser for integration testing with Capybara. It is built on top of <a href='http://htmlunit.sourceforge.net'>HtmlUnit</a>, a GUI-less browser for the Java platform, but can be run on both JRuby and MRI with no need for JRuby to be installed on the system.</p>
+<p>Akephalos is a full-stack headless browser for integration testing with
+Capybara. It is built on top of <a href="http://htmlunit.sourceforge.net">HtmlUnit</a>,
+a GUI-less browser for the Java platform, but can be run on both JRuby and
+MRI with no need for JRuby to be installed on the system.</p>
 
-<h2 id='installation'>Installation</h2>
+<h2>Installation</h2>
 
-<pre class="code"><span class='gem identifier id'>gem</span> <span class='install identifier id'>install</span> <span class='akephalos identifier id'>akephalos</span>
+<pre class="code"><span class='id gem'>gem</span> <span class='id install'>install</span> <span class='id akephalos'>akephalos</span>
 </pre>
 
-<h2 id='setup'>Setup</h2>
+<h2>Setup</h2>
 
-<p>Configuring akephalos is as simple as requiring it and setting Capybara&#8217;s javascript driver:</p>
+<p>Configuring akephalos is as simple as requiring it and setting Capybara's
+javascript driver:</p>
 
-<pre class="code"><span class='require identifier id'>require</span> <span class='string val'>'akephalos'</span>
-<span class='Capybara constant id'>Capybara</span><span class='dot token'>.</span><span class='javascript_driver identifier id'>javascript_driver</span> <span class='assign token'>=</span> <span class='symbol val'>:akephalos</span>
+<pre class="code"><span class='id require'>require</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>akephalos</span><span class='tstring_end'>'</span></span>
+<span class='const'>Capybara</span><span class='period'>.</span><span class='id javascript_driver'>javascript_driver</span> <span class='op'>=</span> <span class='symbol'>:akephalos</span>
 </pre>
 
-<h2 id='basic_usage'>Basic Usage</h2>
+<h2>Basic Usage</h2>
 
-<p>Akephalos provides a driver for Capybara, so using Akephalos is no different than using Selenium or Rack::Test. For a full usage guide, check out Capybara&#8217;s DSL <a href='http://github.com/jnicklas/capybara'>documentation</a>. It makes no assumptions about the testing framework being used, and works with RSpec, Cucumber, and Test::Unit.</p>
+<p>Akephalos provides a driver for Capybara, so using Akephalos is no
+different than using Selenium or Rack::Test. For a full usage guide, check
+out Capybara's DSL <a href="http://github.com/jnicklas/capybara">documentation</a>. It
+makes no assumptions about the testing framework being used, and works with
+RSpec, Cucumber, and Test::Unit.</p>
 
-<p>Here&#8217;s some sample RSpec code:</p>
+<p>Here's some sample RSpec code:</p>
 
-<pre class="code"><span class='describe identifier id'>describe</span> <span class='string val'>&quot;Home Page&quot;</span> <span class='do do kw'>do</span>
-  <span class='before identifier id'>before</span> <span class='lbrace token'>{</span> <span class='visit identifier id'>visit</span> <span class='string val'>&quot;/&quot;</span> <span class='rbrace token'>}</span>
-  <span class='context identifier id'>context</span> <span class='string val'>&quot;searching&quot;</span> <span class='do do kw'>do</span>
-    <span class='before identifier id'>before</span> <span class='do do kw'>do</span>
-      <span class='fill_in identifier id'>fill_in</span> <span class='string val'>&quot;Search&quot;</span><span class='comma token'>,</span> <span class='symbol val'>:with</span> <span class='assign token'>=</span><span class='gt op'>&gt;</span> <span class='string val'>&quot;akephalos&quot;</span>
-      <span class='click_button identifier id'>click_button</span> <span class='string val'>&quot;Go&quot;</span>
-    <span class='end end kw'>end</span>
-    <span class='it identifier id'>it</span> <span class='string val'>&quot;returns results&quot;</span> <span class='lbrace token'>{</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='should identifier id'>should</span> <span class='have_css identifier id'>have_css</span><span class='lparen token'>(</span><span class='string val'>&quot;#results&quot;</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-    <span class='it identifier id'>it</span> <span class='string val'>&quot;includes the search term&quot;</span> <span class='lbrace token'>{</span> <span class='page identifier id'>page</span><span class='dot token'>.</span><span class='should identifier id'>should</span> <span class='have_content identifier id'>have_content</span><span class='lparen token'>(</span><span class='string val'>&quot;akephalos&quot;</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='end end kw'>end</span>
-<span class='end end kw'>end</span>
+<pre class="code">describe &quot;Home Page&quot; do
+  before { visit &quot;/&quot; }
+  context &quot;searching&quot; do
+    before do
+      fill_in &quot;Search&quot;, :with =&gt; &quot;akephalos&quot;
+      click_button &quot;Go&quot;
+    end
+    it &quot;returns results&quot; { page.should have_css(&quot;#results&quot;) }
+    it &quot;includes the search term&quot; { page.should have_content(&quot;akephalos&quot;) }
+  end
+end
 </pre>
 
-<h2 id='more'>More</h2>
+<h2>Configuration</h2>
+
+<p>There are now a few configuration options available through Capybara's new
+<code>register_driver</code> API.</p>
+
+<h3>Using a different browser</h3>
+
+<p>HtmlUnit supports a few browser implementations, and you can choose which
+browser you would like to use through Akephalos. By default, Akephalos uses
+Firefox 3.6.</p>
+
+<pre class="code"><span class='const'>Capybara</span><span class='period'>.</span><span class='id register_driver'>register_driver</span> <span class='symbol'>:akephalos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id app'>app</span><span class='op'>|</span>
+  <span class='comment'># available options:
+</span>  <span class='comment'>#   :ie6, :ie7, :ie8, :firefox_3, :firefox_3_6
+</span>  <span class='const'>Capybara</span><span class='op'>::</span><span class='const'>Driver</span><span class='op'>::</span><span class='const'>Akephalos</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id app'>app</span><span class='comma'>,</span> <span class='symbol'>:browser</span> <span class='op'>=&gt;</span> <span class='symbol'>:ie8</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+
+<h3>Ignoring javascript errors</h3>
+
+<p>By default HtmlUnit (and Akephalos) will raise an exception when an error
+is encountered in javascript files. This is generally desireable, except
+that certain libraries aren't supported by HtmlUnit. If possible, it's
+best to keep the default behavior, and use Filters (see below) to mock
+offending libraries. If needed, however, you can configure Akephalos to
+ignore javascript errors.</p>
+
+<pre class="code"><span class='const'>Capybara</span><span class='period'>.</span><span class='id register_driver'>register_driver</span> <span class='symbol'>:akephalos</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id app'>app</span><span class='op'>|</span>
+  <span class='const'>Capybara</span><span class='op'>::</span><span class='const'>Driver</span><span class='op'>::</span><span class='const'>Akephalos</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id app'>app</span><span class='comma'>,</span> <span class='symbol'>:validate_scripts</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+</pre>
+
+<h2>More</h2>
 
 <ul>
-<li>
-<p><a href='http://bernerdschaefer.github.com/akephalos/akephalos-bin.html'>bin/akephalos</a> allows you to start an interactive shell or DRb server, as well as perform other maintenance features.</p>
-</li>
-
-<li>
-<p><a href='http://bernerdschaefer.github.com/akephalos/filters.html'>Filters</a> allows you to declare mock responses for external resources and services requested by the browser.</p>
-</li>
+<li><p><a href="http://bernerdschaefer.github.com/akephalos/akephalos-bin.html">bin/akephalos</a>
+allows you to start an interactive shell or DRb server, as well as perform
+other maintenance features.</p></li>
+<li><p><a href="http://bernerdschaefer.github.com/akephalos/filters.html">Filters</a> allows
+you to declare mock responses for external resources and services requested
+by the browser.</p></li>
 </ul>
 
-<h2 id='resources'>Resources</h2>
+
+<h2>Resources</h2>
 
 <ul>
-<li><a href='http://bernerdschaefer.github.com/akephalos/api'>API Documentation</a></li>
-
-<li><a href='http://github.com/bernerdschaefer/akephalos'>Source code</a> and <a href='http://github.com/bernerdschaefer/akephalos/issues'>issues</a> are hosted on github.</li>
-</ul></div></div>
+<li><a href="http://bernerdschaefer.github.com/akephalos/api">API Documentation</a></li>
+<li><a href="http://github.com/bernerdschaefer/akephalos">Source code</a> and
+<a href="http://github.com/bernerdschaefer/akephalos/issues">issues</a> are hosted on
+github.</li>
+</ul>
+</div></div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:07 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:14 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

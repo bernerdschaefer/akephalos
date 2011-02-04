@@ -24,7 +24,7 @@
       <div id="menu">
   
     <a href="../_index.html">Index (P)</a> &raquo; 
-    <span class='title'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span>
+    <span class='title'><span class='object_link'><a href="../Akephalos.html" title="Akephalos (module)">Akephalos</a></span></span>
      &raquo; 
     <span class="title">Page</span>
   
@@ -378,7 +378,7 @@ Execute the given block in the context of the frame specified.
     <div class="method_details first">
   <p class="signature first" id="initialize-instance_method">
   
-    - (<tt><a href="" title="Akephalos::Page (class)">Page</a></tt>) <strong>initialize</strong>(page) 
+    - (<tt><span class='object_link'><a href="" title="Akephalos::Page (class)">Page</a></span></tt>) <strong>initialize</strong>(page) 
   
 
   
@@ -422,11 +422,10 @@ A new instance of Page
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 7</span>
 
-<span class='def def kw'>def</span> <span class='initialize identifier id'>initialize</span><span class='lparen token'>(</span><span class='page identifier id'>page</span><span class='rparen token'>)</span>
-  <span class='@nodes ivar id'>@nodes</span> <span class='assign token'>=</span> <span class='lbrack token'>[</span><span class='rbrack token'>]</span>
-  <span class='@_page ivar id'>@_page</span> <span class='assign token'>=</span> <span class='page identifier id'>page</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id page'>page</span><span class='rparen'>)</span>
+  <span class='ivar'>@nodes</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@_page</span> <span class='op'>=</span> <span class='id page'>page</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -504,10 +503,9 @@ an HtmlUnit page
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 88</span>
 
-<span class='def def kw'>def</span> <span class='eq op'>==</span><span class='lparen token'>(</span><span class='other identifier id'>other</span><span class='rparen token'>)</span>
-  <span class='@_page ivar id'>@_page</span> <span class='eq op'>==</span> <span class='other identifier id'>other</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id other'>other</span><span class='rparen'>)</span>
+  <span class='ivar'>@_page</span> <span class='op'>==</span> <span class='id other'>other</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -563,10 +561,9 @@ the current page&#8217;s URL.
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 63</span>
 
-<span class='def def kw'>def</span> <span class='current_url identifier id'>current_url</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getRequestSettings identifier id'>getRequestSettings</span><span class='dot token'>.</span><span class='getUrl identifier id'>getUrl</span><span class='dot token'>.</span><span class='toString identifier id'>toString</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id current_url'>current_url</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id getWebResponse'>getWebResponse</span><span class='period'>.</span><span class='id getRequestSettings'>getRequestSettings</span><span class='period'>.</span><span class='id getUrl'>getUrl</span><span class='period'>.</span><span class='id toString'>toString</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -643,10 +640,9 @@ the result of the JavaScript
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 80</span>
 
-<span class='def def kw'>def</span> <span class='evaluate_script identifier id'>evaluate_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='executeJavaScript identifier id'>executeJavaScript</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='getJavaScriptResult identifier id'>getJavaScriptResult</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id evaluate_script'>evaluate_script</span><span class='lparen'>(</span><span class='id script'>script</span><span class='rparen'>)</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id executeJavaScript'>executeJavaScript</span><span class='lparen'>(</span><span class='id script'>script</span><span class='rparen'>)</span><span class='period'>.</span><span class='id getJavaScriptResult'>getJavaScriptResult</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -718,11 +714,10 @@ the JavaScript to be executed
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 71</span>
 
-<span class='def def kw'>def</span> <span class='execute_script identifier id'>execute_script</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='executeJavaScript identifier id'>executeJavaScript</span><span class='lparen token'>(</span><span class='script identifier id'>script</span><span class='rparen token'>)</span>
-  <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id execute_script'>execute_script</span><span class='lparen'>(</span><span class='id script'>script</span><span class='rparen'>)</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id executeJavaScript'>executeJavaScript</span><span class='lparen'>(</span><span class='id script'>script</span><span class='rparen'>)</span>
+  <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -731,7 +726,7 @@ the JavaScript to be executed
       <div class="method_details ">
   <p class="signature " id="find-instance_method">
   
-    - (<tt>Array&lt;<a href="Node.html" title="Akephalos::Node (class)">Node</a>&gt;</tt>) <strong>find</strong>(selector) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>) <strong>find</strong>(selector) 
   
 
   
@@ -771,7 +766,7 @@ an XPath selector
   
     <li>
       
-        <span class='type'>(<tt>Array&lt;<a href="Node.html" title="Akephalos::Node (class)">Node</a>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Node.html" title="Akephalos::Node (class)">Node</a></span>&gt;</tt>)</span>
       
       
       
@@ -801,12 +796,11 @@ the matched nodes
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 16</span>
 
-<span class='def def kw'>def</span> <span class='find identifier id'>find</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span>
-  <span class='nodes identifier id'>nodes</span> <span class='assign token'>=</span> <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='getByXPath identifier id'>getByXPath</span><span class='lparen token'>(</span><span class='selector identifier id'>selector</span><span class='rparen token'>)</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='lbrace token'>{</span> <span class='bitor op'>|</span><span class='node identifier id'>node</span><span class='bitor op'>|</span> <span class='Node constant id'>Node</span><span class='dot token'>.</span><span class='new identifier id'>new</span><span class='lparen token'>(</span><span class='node identifier id'>node</span><span class='rparen token'>)</span> <span class='rbrace token'>}</span>
-  <span class='@nodes ivar id'>@nodes</span> <span class='lshft op'>&lt;&lt;</span> <span class='nodes identifier id'>nodes</span>
-  <span class='nodes identifier id'>nodes</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id find'>find</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span>
+  <span class='id nodes'>nodes</span> <span class='op'>=</span> <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id getByXPath'>getByXPath</span><span class='lparen'>(</span><span class='id selector'>selector</span><span class='rparen'>)</span><span class='period'>.</span><span class='id map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id node'>node</span><span class='op'>|</span> <span class='const'>Node</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id node'>node</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='ivar'>@nodes</span> <span class='op'>&lt;&lt;</span> <span class='id nodes'>nodes</span>
+  <span class='id nodes'>nodes</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -863,10 +857,9 @@ the page&#8217;s modified source
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 25</span>
 
-<span class='def def kw'>def</span> <span class='modified_source identifier id'>modified_source</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='asXml identifier id'>asXml</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id modified_source'>modified_source</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id asXml'>asXml</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -925,13 +918,12 @@ the page&#8217;s response headers
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 37</span>
 
-<span class='def def kw'>def</span> <span class='response_headers identifier id'>response_headers</span>
-  <span class='headers identifier id'>headers</span> <span class='assign token'>=</span> <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getResponseHeaders identifier id'>getResponseHeaders</span><span class='dot token'>.</span><span class='map identifier id'>map</span> <span class='do do kw'>do</span> <span class='bitor op'>|</span><span class='header identifier id'>header</span><span class='bitor op'>|</span>
-    <span class='lbrack token'>[</span><span class='header identifier id'>header</span><span class='dot token'>.</span><span class='getName identifier id'>getName</span><span class='comma token'>,</span> <span class='header identifier id'>header</span><span class='dot token'>.</span><span class='getValue identifier id'>getValue</span><span class='rbrack token'>]</span>
-  <span class='end end kw'>end</span>
-  <span class='Hash constant id'>Hash</span><span class='lbrack token'>[</span><span class='mult op'>*</span><span class='headers identifier id'>headers</span><span class='dot token'>.</span><span class='flatten identifier id'>flatten</span><span class='rbrack token'>]</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id response_headers'>response_headers</span>
+  <span class='id headers'>headers</span> <span class='op'>=</span> <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id getWebResponse'>getWebResponse</span><span class='period'>.</span><span class='id getResponseHeaders'>getResponseHeaders</span><span class='period'>.</span><span class='id map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id header'>header</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='id header'>header</span><span class='period'>.</span><span class='id getName'>getName</span><span class='comma'>,</span> <span class='id header'>header</span><span class='period'>.</span><span class='id getValue'>getValue</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='const'>Hash</span><span class='lbracket'>[</span><span class='op'>*</span><span class='id headers'>headers</span><span class='period'>.</span><span class='id flatten'>flatten</span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -987,10 +979,9 @@ the page&#8217;s original source
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 32</span>
 
-<span class='def def kw'>def</span> <span class='source identifier id'>source</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getContentAsString identifier id'>getContentAsString</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id source'>source</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id getWebResponse'>getWebResponse</span><span class='period'>.</span><span class='id getContentAsString'>getContentAsString</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1046,10 +1037,9 @@ the response&#8217;s status code
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 45</span>
 
-<span class='def def kw'>def</span> <span class='status_code identifier id'>status_code</span>
-  <span class='current_frame identifier id'>current_frame</span><span class='dot token'>.</span><span class='getWebResponse identifier id'>getWebResponse</span><span class='dot token'>.</span><span class='getStatusCode identifier id'>getStatusCode</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id status_code'>status_code</span>
+  <span class='id current_frame'>current_frame</span><span class='period'>.</span><span class='id getWebResponse'>getWebResponse</span><span class='period'>.</span><span class='id getStatusCode'>getStatusCode</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1145,14 +1135,13 @@ if the frame is not found
     <td>
       <pre class="code"><span class="info file"># File 'lib/akephalos/page.rb', line 54</span>
 
-<span class='def def kw'>def</span> <span class='within_frame identifier id'>within_frame</span><span class='lparen token'>(</span><span class='frame_id identifier id'>frame_id</span><span class='rparen token'>)</span>
-  <span class='return return kw'>return</span> <span class='unless unless_mod kw'>unless</span> <span class='@current_frame ivar id'>@current_frame</span> <span class='assign token'>=</span> <span class='find_frame identifier id'>find_frame</span><span class='lparen token'>(</span><span class='frame_id identifier id'>frame_id</span><span class='rparen token'>)</span>
-  <span class='yield yield kw'>yield</span>
-  <span class='true true kw'>true</span>
-<span class='ensure ensure kw'>ensure</span>
-  <span class='@current_frame ivar id'>@current_frame</span> <span class='assign token'>=</span> <span class='nil nil kw'>nil</span>
-<span class='end end kw'>end</span>
-</pre>
+<span class='kw'>def</span> <span class='id within_frame'>within_frame</span><span class='lparen'>(</span><span class='id frame_id'>frame_id</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='ivar'>@current_frame</span> <span class='op'>=</span> <span class='id find_frame'>find_frame</span><span class='lparen'>(</span><span class='id frame_id'>frame_id</span><span class='rparen'>)</span>
+  <span class='kw'>yield</span>
+  <span class='kw'>true</span>
+<span class='kw'>ensure</span>
+  <span class='ivar'>@current_frame</span> <span class='op'>=</span> <span class='kw'>nil</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -1163,9 +1152,9 @@ if the frame is not found
 </div>
     
     <div id="footer">
-  Generated on Tue Sep 14 17:54:10 2010 by 
-  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
-  0.5.8 (ruby-1.8.7).
+  Generated on Fri Feb  4 13:08:14 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.6.4 (ruby-1.9.2).
 </div>
 
   </body>

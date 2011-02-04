@@ -55,6 +55,34 @@
         <div class="highlight"><pre><span class="n">describe</span> <span class="s2">&quot;Home Page&quot;</span> <span class="k">do</span>&#x000A;  <span class="n">before</span> <span class="p">{</span> <span class="n">visit</span> <span class="s2">&quot;/&quot;</span> <span class="p">}</span>&#x000A;  <span class="n">context</span> <span class="s2">&quot;searching&quot;</span> <span class="k">do</span>&#x000A;    <span class="n">before</span> <span class="k">do</span>&#x000A;      <span class="n">fill_in</span> <span class="s2">&quot;Search&quot;</span><span class="p">,</span> <span class="ss">:with</span> <span class="o">=&gt;</span> <span class="s2">&quot;akephalos&quot;</span>&#x000A;      <span class="n">click_button</span> <span class="s2">&quot;Go&quot;</span>&#x000A;    <span class="k">end</span>&#x000A;    <span class="n">it</span> <span class="s2">&quot;returns results&quot;</span> <span class="p">{</span> <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_css</span><span class="p">(</span><span class="s2">&quot;#results&quot;</span><span class="p">)</span> <span class="p">}</span>&#x000A;    <span class="n">it</span> <span class="s2">&quot;includes the search term&quot;</span> <span class="p">{</span> <span class="n">page</span><span class="o">.</span><span class="n">should</span> <span class="n">have_content</span><span class="p">(</span><span class="s2">&quot;akephalos&quot;</span><span class="p">)</span> <span class="p">}</span>&#x000A;  <span class="k">end</span>&#x000A;<span class="k">end</span></pre></div>
       </aside>
       <section>
+        <h2>Configuration</h2>
+        
+        <p>There are now a few configuration options available through Capybara's new
+        <code>register_driver</code> API.</p>
+        
+        <h3>Using a different browser</h3>
+        
+        <p>HtmlUnit supports a few browser implementations, and you can choose which
+        browser you would like to use through Akephalos. By default, Akephalos uses
+        Firefox 3.6.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Capybara</span><span class="o">.</span><span class="n">register_driver</span> <span class="ss">:akephalos</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>&#x000A;  <span class="c1"># available options:</span>&#x000A;  <span class="c1">#   :ie6, :ie7, :ie8, :firefox_3, :firefox_3_6</span>&#x000A;  <span class="no">Capybara</span><span class="o">::</span><span class="no">Driver</span><span class="o">::</span><span class="no">Akephalos</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="ss">:browser</span> <span class="o">=&gt;</span> <span class="ss">:ie8</span><span class="p">)</span>&#x000A;<span class="k">end</span></pre></div>
+      </aside>
+      <section>
+        <h3>Ignoring javascript errors</h3>
+        
+        <p>By default HtmlUnit (and Akephalos) will raise an exception when an error
+        is encountered in javascript files. This is generally desireable, except
+        that certain libraries aren't supported by HtmlUnit. If possible, it's
+        best to keep the default behavior, and use Filters (see below) to mock
+        offending libraries. If needed, however, you can configure Akephalos to
+        ignore javascript errors.</p>
+      </section>
+      <aside>
+        <div class="highlight"><pre><span class="no">Capybara</span><span class="o">.</span><span class="n">register_driver</span> <span class="ss">:akephalos</span> <span class="k">do</span> <span class="o">|</span><span class="n">app</span><span class="o">|</span>&#x000A;  <span class="no">Capybara</span><span class="o">::</span><span class="no">Driver</span><span class="o">::</span><span class="no">Akephalos</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">app</span><span class="p">,</span> <span class="ss">:validate_scripts</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">)</span>&#x000A;<span class="k">end</span></pre></div>
+      </aside>
+      <section>
         <h2>More</h2>
         
         <ul>
