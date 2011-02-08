@@ -2,7 +2,7 @@
 # 3000.
 def session
   Capybara.app_host ||= "http://localhost:3000"
-  @session ||= Capybara::Session.new(:Akephalos)
+  @session ||= Capybara::Session.new(:akephalos)
 end
 alias page session
 
