@@ -68,12 +68,12 @@ else
 
     java_args = [
       "-Xmx128M",
-      "-cp", [JRubyJars.core_jar_path, JRubyJars.stdlib_jar_path].join(":"),
+      "-cp", [JRubyJars.core_jar_path, JRubyJars.stdlib_jar_path].join(File::PATH_SEPARATOR),
       "org.jruby.Main"
     ]
     ruby_args = [ 
       "-Ku",
-      "-I", "vendor:#{lib}:#{src}",
+      "-I", ["vendor", lib, src].join(File::PATH_SEPARATOR),
       "-r", "akephalos/server",
       "-e", "Akephalos::Server.start!(#{port.inspect})"
     ]

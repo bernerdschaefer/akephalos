@@ -46,7 +46,7 @@ module Akephalos
     def self.start!
       port = find_available_port
 
-      remote_client = IO.popen("#{Akephalos::BIN_DIR + 'akephalos'} #{port}")
+      remote_client = IO.popen("ruby #{Akephalos::BIN_DIR + 'akephalos'} #{port}")
 
       # Set up a monitor thread to detect if the forked server exits
       # prematurely.
