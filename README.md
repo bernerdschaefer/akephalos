@@ -16,6 +16,11 @@ javascript driver:
     require 'akephalos'
     Capybara.javascript_driver = :akephalos
 
+For Rails 3:
+
+    gem 'akephalos' # in Gemfile
+    Capybara.javascript_driver = :akephalos
+
 ## Basic Usage
 
 Akephalos provides a driver for Capybara, so using Akephalos is no
